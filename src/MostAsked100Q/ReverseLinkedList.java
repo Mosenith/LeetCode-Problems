@@ -1,0 +1,55 @@
+package MostAsked100Q;
+
+public class ReverseLinkedList {
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
+    public static void main(String[] args) {
+        ListNode myNode = new ListNode(1, new ListNode(2,
+                new ListNode(3, new ListNode(4, new ListNode(5)))));
+
+        printListNode(reverseList(myNode));
+    }
+
+    private static void printListNode(ListNode myNode) {
+        while (myNode != null) {
+            System.out.println(myNode.val);
+            myNode = myNode.next;
+        }
+        System.out.println("~~~~~~~~");
+    }
+
+    // ***************** 1st Method ******************
+    // Approach : Very Basic & Efficient Approach
+    // Runtime  : 0ms        -> + 100%
+    // Memory   : 41.4 MB      -> + 70.25%
+    public static ListNode reverseList(ListNode head) {
+        ListNode pre = null, next = null;
+        ListNode cur = head;
+
+        while(cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        head = pre;
+
+        return head;
+    }
+}
