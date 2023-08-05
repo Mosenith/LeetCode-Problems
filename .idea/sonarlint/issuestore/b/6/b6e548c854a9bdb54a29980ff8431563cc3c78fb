@@ -1,0 +1,26 @@
+
+^
+java:S2259a"CA "NullPointerException" could be thrown; "start" is nullable here.(¶ø‚Ìıÿÿÿÿ
+>
+java:S1125"(Remove the unnecessary boolean literals.(úŒÍÅ
+A
+java:S1481"+Remove this unused "isEven" local variable.(úŒÍÅ
+V	java:S125)"<This block of commented-out lines of code should be removed.(¶†ğÀüÿÿÿÿ
+<
+java:S1659M"!Declare "cur" on a separate line.(õ‰çíúÿÿÿÿ
+5
+java:S1659l"Declare "p" on a separate line.(ôğÌ
+9
+java:S1659’""Declare "next" on a separate line.(Öƒû
+>
+java:S1481¡"'Remove this unused "l1" local variable.(é‚ªÃ
+C
+java:S1481¢"'Remove this unused "l2" local variable.(¯æõ½şÿÿÿÿ
+C
+java:S1481£"'Remove this unused "l3" local variable.(şïÎÿÿÿÿÿ
+>
+java:S1481¤"'Remove this unused "l4" local variable.(æñÖ¤
+=
+java:S1481§"&Remove this unused "k" local variable.(½òâ‡
+R	java:S125¨"<This block of commented-out lines of code should be removed.(àù£Ö
+R	java:S125ª"<This block of commented-out lines of code should be removed.(™™éõ

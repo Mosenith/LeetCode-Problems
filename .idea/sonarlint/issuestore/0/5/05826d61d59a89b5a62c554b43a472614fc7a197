@@ -1,0 +1,9 @@
+
+m
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(¸Œ“¨ÿÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(Ð½Ûÿÿÿÿÿ
+Q	java:S125""<This block of commented-out lines of code should be removed.(âž¯¦
+Q	java:S125L"<This block of commented-out lines of code should be removed.(Å‚æ§
+R	java:S125†"<This block of commented-out lines of code should be removed.(Ö–”£
+H
+java:S1068"-Remove this unused "afterSwap" private field.(ì°ù×úÿÿÿÿ

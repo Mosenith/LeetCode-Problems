@@ -1,0 +1,22 @@
+
+t
+java:S2293#"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷êèüÿÿÿÿ
+C
+java:S5411,"(Use a primitive boolean expression here.(Áâß‹ÿÿÿÿÿ
+[
+java:S2184"@Cast one of the operands of this addition operation to a "long".(ã¯÷«ûÿÿÿÿ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(â¢Öàüÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(¶–§Ì
+Q	java:S125""<This block of commented-out lines of code should be removed.(Ñ…Úí
+V	java:S125)"<This block of commented-out lines of code should be removed.(€íç°úÿÿÿÿ
+Q	java:S125-"<This block of commented-out lines of code should be removed.(ÎüÄ
+Q	java:S1251"<This block of commented-out lines of code should be removed.(ÎüÄ
+Q	java:S1258"<This block of commented-out lines of code should be removed.(ß®ÿ
+V	java:S125>"<This block of commented-out lines of code should be removed.(¨ğö’şÿÿÿÿ
+V	java:S125L"<This block of commented-out lines of code should be removed.(ÿ‡óüÿÿÿÿ
+m
+java:S3776Z"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(ÓÔòİûÿÿÿÿ
+:
+java:S1659i"Declare "l" on a separate line.(Ê°©ìşÿÿÿÿ
+W	java:S125"<This block of commented-out lines of code should be removed.(ñÓ×Úøÿÿÿÿ

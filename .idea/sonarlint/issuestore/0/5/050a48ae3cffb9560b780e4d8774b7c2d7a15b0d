@@ -1,0 +1,15 @@
+
+‡
+java:S1192!"lDefine a constant instead of duplicating this literal "*******************************************" 3 times.(±èâàüÿÿÿÿ
+^
+java:S3824c"HReplace this "Map.containsKey()" with a call to "Map.computeIfAbsent()".(÷„×”
+V	java:S125"<This block of commented-out lines of code should be removed.(£Ô•÷şÿÿÿÿ
+T
+java:S1155>">Use isEmpty() to check whether the collection is empty or not.(äÎ„Á
+V	java:S125t"<This block of commented-out lines of code should be removed.(ÓÚà½úÿÿÿÿ
+Q	java:S125w"<This block of commented-out lines of code should be removed.(áûûï
+V	java:S125z"<This block of commented-out lines of code should be removed.(é±‰–şÿÿÿÿ
+Q	java:S125|"<This block of commented-out lines of code should be removed.(…‘¬…
+V	java:S125~"<This block of commented-out lines of code should be removed.(ä¤Ûùÿÿÿÿ
+W	java:S125‚"<This block of commented-out lines of code should be removed.(ã³Ÿ€ûÿÿÿÿ
+W	java:S125„"<This block of commented-out lines of code should be removed.(Û•®şüÿÿÿÿ

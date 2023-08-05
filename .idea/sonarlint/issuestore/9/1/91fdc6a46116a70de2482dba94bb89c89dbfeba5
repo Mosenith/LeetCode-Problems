@@ -1,0 +1,24 @@
+
+€
+java:S11928"eDefine a constant instead of duplicating this literal "************************************" 3 times.(¦Ÿ˜Šúÿÿÿÿ
+m
+java:S3776
+"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(ıŒŒŞşÿÿÿÿ
+7
+java:S1659"!Declare "row" on a separate line.(ó”äò
+h
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+7
+java:S1659M"!Declare "row" on a separate line.(ó”äò
+h
+java:S6204G"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+P	java:S125["<This block of commented-out lines of code should be removed.(›Í•c
+:
+java:S1659k"Declare "n" on a separate line.(½ªÌ•ÿÿÿÿÿ
+Y
+java:S1659m">Declare "j" and all following declarations on a separate line.(ãäÚ‘üÿÿÿÿ
+5
+java:S1659t"Declare "y" on a separate line.(ıìè
+W	java:S125€"<This block of commented-out lines of code should be removed.(ıË…Šûÿÿÿÿ
+R	java:S125„"<This block of commented-out lines of code should be removed.(Ôô²±
+W	java:S125†"<This block of commented-out lines of code should be removed.(…üŸåşÿÿÿÿ

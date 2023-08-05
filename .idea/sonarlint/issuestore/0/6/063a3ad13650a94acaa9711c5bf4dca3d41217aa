@@ -1,0 +1,40 @@
+
+E
+java:S3740["/Provide the parametrized type for this generic.(Çæö
+l	java:S127="XRefactor the code in order to not assign to this loop counter from within the loop body.(¨…ÄK
+m	java:S127G"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+7
+java:S1643"Use a StringBuilder instead.(ô¦Ê–üÿÿÿÿ
+2
+java:S1643"Use a StringBuilder instead.(äŠ£ÿ
+2
+java:S1643"Use a StringBuilder instead.(Ìò‹ú
+7
+java:S1643#"Use a StringBuilder instead.(Î«Ûşÿÿÿÿ
+2
+java:S1643&"Use a StringBuilder instead.(Âä›•
+2
+java:S1643)"Use a StringBuilder instead.(Â±ºÌ
+7
+java:S16434"Use a StringBuilder instead.(ôáê¦øÿÿÿÿ
+7
+java:S1643:"Use a StringBuilder instead.(ôáê¦øÿÿÿÿ
+7
+java:S1643D"Use a StringBuilder instead.(ôáê¦øÿÿÿÿ
+u
+java:S1149l"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 47 to the 15 allowed.(ƒöß„
+7	java:S131""Add a default case to this switch.(ŸÓüÂ
+7	java:S131!""Add a default case to this switch.(ŸÓüÂ
+`
+java:S1124N"EReorder the modifiers to comply with the Java Language Specification.(†©£ûÿÿÿÿ
+c	java:S100Z"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıî±ï
+?
+java:S1481z")Remove this unused "num1" local variable.(Ó¶ÛÆ
+D
+java:S1481{")Remove this unused "num2" local variable.(Úè¤Üüÿÿÿÿ
+?
+java:S1481|")Remove this unused "num3" local variable.(è“ƒâ
+?
+java:S1481}")Remove this unused "num4" local variable.(È›ìˆ

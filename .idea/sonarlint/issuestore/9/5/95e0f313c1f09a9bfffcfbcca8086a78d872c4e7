@@ -1,0 +1,24 @@
+
+…
+java:S1192-"cDefine a constant instead of duplicating this literal "**********************************" 3 times.(°”Ç¥üÿÿÿÿ8–éèº–1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ÔõŒıÿÿÿÿ8™éèº–1
+|
+java:S1149~"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(‰Ã¿Ÿ8ãéèº–1
+|
+java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(§Èş—8äéèº–1
+X	java:S125`"<This block of commented-out lines of code should be removed.( Ç•8óéèº–1
+E
+java:S1659d"#Declare "right" on a separate line.(»ßÇÆıÿÿÿÿ8ôéèº–1
+a
+java:S1124u"EReorder the modifiers to comply with the Java Language Specification.(ÖÌÑW8øéèº–1
+H
+java:S1481v"&Remove this unused "x" local variable.(èä…°ùÿÿÿÿ8ùéèº–1
+C
+java:S1481w"&Remove this unused "y" local variable.(Äğü³8úéèº–1
+]	java:S125y"<This block of commented-out lines of code should be removed.(ğÅûÿÿÿÿÿ8ûéèº–1
+D
+java:S1481}"'Remove this unused "aa" local variable.(Ä¡¿¬8ıéèº–1
+E
+java:S1481~"(Remove this unused "str" local variable.(‰Ã¿Ÿ8şéèº–1
+F
+java:S1481")Remove this unused "str2" local variable.(§Èş—8ÿéèº–1

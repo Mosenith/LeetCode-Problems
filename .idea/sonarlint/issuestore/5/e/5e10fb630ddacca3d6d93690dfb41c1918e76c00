@@ -1,0 +1,13 @@
+
+Q	java:S125"<This block of commented-out lines of code should be removed.(ª³çç
+C
+java:S1481"(Remove this unused "str" local variable.(ú¦ûÿÿÿÿ
+D
+java:S1481")Remove this unused "str3" local variable.(ú¸²èúÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(Œ²¼áüÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ

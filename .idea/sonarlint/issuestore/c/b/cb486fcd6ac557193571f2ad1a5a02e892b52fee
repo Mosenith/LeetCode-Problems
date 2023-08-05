@@ -1,0 +1,33 @@
+
+s	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(Â˜ùÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ÈÙÿúÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èì¶ùÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥Ò€†üÿÿÿÿ
+7
+java:S1643"Use a StringBuilder instead.(üù´òıÿÿÿÿ
+2
+java:S1643"Use a StringBuilder instead.(ï¦…Õ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(öÅÇ¦üÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(Ğ ôÈùÿÿÿÿ
+V	java:S125)"<This block of commented-out lines of code should be removed.(ÁÑÒüÿÿÿÿ
+>
+java:S16595"#Declare "start" on a separate line.(Û¯Íêøÿÿÿÿ
+8
+java:S1659Q"#Declare "start" on a separate line.(ŒÖ†{
+<
+java:S1481M"&Remove this unused "n" local variable.(ŠÑ„á
+?
+java:S1481Q"*Remove this unused "start" local variable.(ŒÖ†{
+B
+java:S1481o"'Remove this unused "wd" local variable.(›¯››ùÿÿÿÿ
+>
+java:S1481p"(Remove this unused "wd2" local variable.(¡ÈÍ€
+Q	java:S125s"<This block of commented-out lines of code should be removed.(ö³°ø
+Q	java:S125v"<This block of commented-out lines of code should be removed.(š‹Ö
+V	java:S125x"<This block of commented-out lines of code should be removed.(‘è“óüÿÿÿÿ
+P	java:S125z"<This block of commented-out lines of code should be removed.(òÒ)
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+D
+java:S1128".Remove this unused import 'java.util.Objects'.(¼¸õ›

@@ -1,0 +1,14 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ÔõŒýÿÿÿÿ8Öð¯›š1
+e
+java:S2259g"CA "NullPointerException" could be thrown; "headA" is nullable here.(ÔØ’âúÿÿÿÿ8äñ¯›š1
+`
+java:S2259m"CA "NullPointerException" could be thrown; "headB" is nullable here.(½•¼ä8äñ¯›š1
+A
+java:S16590"Declare "b" on a separate line.(Œ®Â·ÿÿÿÿÿ8ìñ¯›š1
+=
+java:S1659Y" Declare "l2" on a separate line.( ¾„ê8ïñ¯›š1
+A
+java:S1659Z"Declare "b" on a separate line.(Œ®Â·ÿÿÿÿÿ8ïñ¯›š1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ðñ¯›š1

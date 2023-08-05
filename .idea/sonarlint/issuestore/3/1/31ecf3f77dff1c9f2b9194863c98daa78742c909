@@ -1,0 +1,13 @@
+
+a
+java:S1192"KDefine a constant instead of duplicating this literal ", Right = " 4 times.(š•·
+^
+java:S1192"HDefine a constant instead of duplicating this literal "Left = " 4 times.(š•·
+>
+java:S1659."#Declare "right" on a separate line.(Ï¶ì„ûÿÿÿÿ
+>
+java:S1659["#Declare "right" on a separate line.(õù¡ıÿÿÿÿ
+A
+java:S1481j"+Remove this unused "target" local variable.(å¥Ê’
+E
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ

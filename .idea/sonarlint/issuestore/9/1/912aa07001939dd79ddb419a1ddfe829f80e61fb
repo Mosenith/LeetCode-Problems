@@ -1,0 +1,9 @@
+
+y
+java:S4165i"cRemove this useless assignment; "board" already holds the assigned value along all execution paths.(ÿÒü÷
+h
+java:S3776R"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ø¢¹£
+E
+java:S1656i"/Remove or correct this useless self-assignment.(ÿÒü÷
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ

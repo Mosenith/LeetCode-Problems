@@ -1,0 +1,58 @@
+
+s	java:S135,"YReduce the total number of break and continue statements in this loop to use at most one.(Úšïüÿÿÿÿ
+s	java:S135f"YReduce the total number of break and continue statements in this loop to use at most one.(Úšïüÿÿÿÿ
+p	java:S115 "ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Å„ˆ–
+V	java:S125"<This block of commented-out lines of code should be removed.(‹ö²«ûÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(¿ı‰Şÿÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(¾œ¤
+V	java:S125"<This block of commented-out lines of code should be removed.(´ó• ÿÿÿÿÿ
+Q	java:S125 "<This block of commented-out lines of code should be removed.(ê¼üå
+m
+java:S3776&"RRefactor this method to reduce its Cognitive Complexity from 38 to the 15 allowed.(——ËÎùÿÿÿÿ
+B
+java:S1481-",Remove this unused "numeric" local variable.(ÅˆÁ 
+>
+java:S1481A"(Remove this unused "num" local variable.(š—Şğ
+Q	java:S125O"<This block of commented-out lines of code should be removed.(¾œ¤
+m
+java:S3776`"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ã“ùÿÿÿÿ
+1
+java:S3626l"Remove this redundant jump.(ÉŠ©ƒ
+B
+java:S1481g",Remove this unused "numeric" local variable.(ÅˆÁ 
+Q	java:S125€"<This block of commented-out lines of code should be removed.(‚ÒÍ)
+Q	java:S125ƒ"<This block of commented-out lines of code should be removed.(›Ùı
+R	java:S125‘"<This block of commented-out lines of code should be removed.(¾˜ë«
+D
+java:S1172•"(Remove this unused method parameter "s".(ÜŞÉÿÿÿÿÿ
+?
+java:S1481—"(Remove this unused "neg" local variable.(ïû…ä
+>
+java:S1481˜"(Remove this unused "pos" local variable.(¡²è:
+E
+java:S1481™")Remove this unused "sign" local variable.(Ê¯Ëüÿÿÿÿ
+n
+java:S3776¡"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÇÇ¦¬øÿÿÿÿ
+9
+java:S1659´""Declare "flag" on a separate line.(™¯°
+W	java:S125¬"<This block of commented-out lines of code should be removed.(Œ±¦—ùÿÿÿÿ
+R	java:S125±"<This block of commented-out lines of code should be removed.(ä™“Ç
+W	java:S125Ã"<This block of commented-out lines of code should be removed.(×µĞıÿÿÿÿ
+;
+java:S1659Å"Declare "n" on a separate line.(€Ôùÿÿÿÿ
+B
+java:S1481ß"&Remove this unused "s" local variable.(½œ¹Òşÿÿÿÿ
+=
+java:S1481à"'Remove this unused "s2" local variable.(¿øƒe
+C
+java:S1481á"'Remove this unused "s3" local variable.(…Ç—’şÿÿÿÿ
+C
+java:S1481â"'Remove this unused "s4" local variable.(¼•ñıúÿÿÿÿ
+C
+java:S1481ä"'Remove this unused "s6" local variable.(çşÂ§ûÿÿÿÿ
+W	java:S125æ"<This block of commented-out lines of code should be removed.(§åò‹şÿÿÿÿ
+R	java:S125ì"<This block of commented-out lines of code should be removed.(…Ã½ï
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+R
+java:S1128"7Remove this unused import 'java.util.stream.IntStream'.(ÙÉ½Ÿùÿÿÿÿ

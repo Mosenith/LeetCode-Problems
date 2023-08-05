@@ -1,0 +1,16 @@
+
+L
+java:S3740b"/Provide the parametrized type for this generic.(¿ü‚Ì8æšû œ1
+t
+java:S37767"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(­Û©êÿÿÿÿÿ8­œû œ1
+X	java:S125"<This block of commented-out lines of code should be removed.(ž÷¸¶8¯œû œ1
+G
+java:S1481Y"*Remove this unused "input" local variable.(ßÒžÙ8´œû œ1
+H
+java:S1481Z"+Remove this unused "input2" local variable.(êŽŠ÷8´œû œ1
+H
+java:S1481["+Remove this unused "input3" local variable.(á®û8´œû œ1
+M
+java:S1481\"+Remove this unused "input4" local variable.(‹Ÿéˆùÿÿÿÿ8´œû œ1
+B
+java:S1128"%Remove this unused import 'java.awt'.(ï´µ©8¶œû œ1

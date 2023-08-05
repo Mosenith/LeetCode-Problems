@@ -1,0 +1,32 @@
+
+o
+java:S2293p"YReplace the type specification in this constructor call with the diamond operator ("<>").(˝ÉÑá
+>
+java:S1604h"(Make this anonymous inner class a lambda(◊ãè
+>
+java:S5411"(Use a primitive boolean expression here.(Û‡ô“
+?
+java:S5411ç"(Use a primitive boolean expression here.(Û‡ô“
+V	java:S125%"<This block of commented-out lines of code should be removed.(óÄÔµ˝ˇˇˇˇ
+Q	java:S125'"<This block of commented-out lines of code should be removed.(¶ Ã«
+V	java:S125+"<This block of commented-out lines of code should be removed.(£™Öº˙ˇˇˇˇ
+V	java:S125-"<This block of commented-out lines of code should be removed.(Ì£Òû˙ˇˇˇˇ
+Q	java:S125R"<This block of commented-out lines of code should be removed.(ﬂÑç˜
+M
+java:S1135k"2Complete the task associated to this TODO comment.(ª†Êûˇˇˇˇˇ
+V	java:S125t"<This block of commented-out lines of code should be removed.(Áã≠Ú˚ˇˇˇˇ
+R	java:S125§"<This block of commented-out lines of code should be removed.(ˇ‡ﬂè
+i	java:S100≤"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âﬁ◊ß¸ˇˇˇˇ
+9
+java:S1659◊""Declare "last" on a separate line.(¥µÔµ
+G
+java:S1905–"+Remove this unnecessary cast to "ListNode".(¨·ô ˙ˇˇˇˇ
+6
+java:S1659†"Declare "j" on a separate line.(µà÷ú
+;
+java:S1659≈"Declare "b" on a separate line.(Æóñï˙ˇˇˇˇ
+8
+java:S1659∆"!Declare "cur" on a separate line.(âêÃ
+R	java:S125É"<This block of commented-out lines of code should be removed.(ÿÓ¸¸
+W	java:S125ã"<This block of commented-out lines of code should be removed.(ïÑßñ˚ˇˇˇˇ
+W	java:S125ç"<This block of commented-out lines of code should be removed.(áéìâˇˇˇˇˇ

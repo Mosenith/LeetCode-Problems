@@ -1,0 +1,38 @@
+
+s	java:S135#"YReduce the total number of break and continue statements in this loop to use at most one.(”ÓÂÄÿÿÿÿÿ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ëÖëşÿÿÿÿ
+1
+java:S3626C"Remove this redundant jump.(ÉŠ©ƒ
+V	java:S125"<This block of commented-out lines of code should be removed.(¬œœªùÿÿÿÿ
+V	java:S125*"<This block of commented-out lines of code should be removed.(•¢¯ãÿÿÿÿÿ
+Q	java:S125="<This block of commented-out lines of code should be removed.(Êøš
+;
+java:S1659K" Declare "p1" on a separate line.(ı×ºÎøÿÿÿÿ
+;
+java:S1659L" Declare "p2" on a separate line.(Œ˜Ö–ÿÿÿÿÿ
+;
+java:S1659M" Declare "p3" on a separate line.(Ú´Ä€şÿÿÿÿ
+;
+java:S1659N" Declare "p4" on a separate line.(±´˜÷şÿÿÿÿ
+6
+java:S1659O" Declare "p5" on a separate line.(ìÌï
+B
+java:S1481K"'Remove this unused "s1" local variable.(ı×ºÎøÿÿÿÿ
+B
+java:S1481K"'Remove this unused "p1" local variable.(ı×ºÎøÿÿÿÿ
+B
+java:S1481L"'Remove this unused "s2" local variable.(Œ˜Ö–ÿÿÿÿÿ
+B
+java:S1481L"'Remove this unused "p2" local variable.(Œ˜Ö–ÿÿÿÿÿ
+B
+java:S1481N"'Remove this unused "s4" local variable.(±´˜÷şÿÿÿÿ
+B
+java:S1481N"'Remove this unused "p4" local variable.(±´˜÷şÿÿÿÿ
+=
+java:S1481O"'Remove this unused "s5" local variable.(ìÌï
+=
+java:S1481O"'Remove this unused "p5" local variable.(ìÌï
+Q	java:S125Q"<This block of commented-out lines of code should be removed.(÷í®Ü
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ

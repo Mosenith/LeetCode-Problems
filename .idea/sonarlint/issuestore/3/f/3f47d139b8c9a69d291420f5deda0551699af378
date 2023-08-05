@@ -1,0 +1,12 @@
+
+s	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(Ãê¨ÿÿÿÿÿ
+m	java:S127"XRefactor the code in order to not assign to this loop counter from within the loop body.(ˆ“ÃÖ
+m	java:S127"XRefactor the code in order to not assign to this loop counter from within the loop body.(ˆ“ÃÖ
+r	java:S127?"XRefactor the code in order to not assign to this loop counter from within the loop body.( æƒ«ıÿÿÿÿ
+m	java:S127B"XRefactor the code in order to not assign to this loop counter from within the loop body.(ˆ“ÃÖ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(¨Ü±•üÿÿÿÿ
+h	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êˆÙÎşÿÿÿÿ
+c	java:S100H"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÎã
+<
+java:S1481^"&Remove this unused "s" local variable.(¢Òßİ

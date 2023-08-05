@@ -1,0 +1,8 @@
+
+9
+java:S16597"#Declare "right" on a separate line.(µÁ¹’
+V	java:S125N"<This block of commented-out lines of code should be removed.(øÎö•ýÿÿÿÿ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'java.util.stream.Stream'.(ó÷Ž”

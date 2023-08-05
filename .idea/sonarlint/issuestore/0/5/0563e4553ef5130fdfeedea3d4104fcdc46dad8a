@@ -1,0 +1,11 @@
+
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(àôÉ´üÿÿÿÿ
+l
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(Š‘…ûýÿÿÿÿ
+>
+java:S1659 "#Declare "digit" on a separate line.(÷¢Ùéûÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(È¦©ë
+V	java:S125^"<This block of commented-out lines of code should be removed.(öÜ¦…ÿÿÿÿÿ
+U
+java:S1128":Remove this unused import 'java.time.temporal.ValueRange'.(Â³Íúÿÿÿÿ

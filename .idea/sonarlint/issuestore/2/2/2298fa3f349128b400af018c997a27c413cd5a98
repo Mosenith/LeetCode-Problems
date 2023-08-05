@@ -1,0 +1,16 @@
+
+f
+java:S1149*"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Ã–ô”
+:
+java:S1659"Declare "j" on a separate line.(á”æåþÿÿÿÿ
+G
+java:S1264",Replace this "for" loop with a "while" loop.(±½Ê˜ûÿÿÿÿ
+W
+java:S1126"AReplace this if-then-else statement by a single return statement.(ËÌ÷Ô
+Q	java:S1250"<This block of commented-out lines of code should be removed.(úõèÉ
+?
+java:S1659>"$Declare "popped" on a separate line.(êüåëøÿÿÿÿ
+V	java:S125:"<This block of commented-out lines of code should be removed.(‚ÌÂßúÿÿÿÿ
+P	java:S125<"<This block of commented-out lines of code should be removed.(Äàâ
+V	java:S125:"<This block of commented-out lines of code should be removed.(‚ÌÂßúÿÿÿÿ
+P	java:S125<"<This block of commented-out lines of code should be removed.(Äàâ

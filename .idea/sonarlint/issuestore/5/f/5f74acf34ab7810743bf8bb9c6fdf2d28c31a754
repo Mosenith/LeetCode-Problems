@@ -1,0 +1,18 @@
+
+v
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°«’à8¶½èº–1
+{
+java:S2293\"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ô¡Ûöıÿÿÿÿ8·½èº–1
+t	java:S127a"XRefactor the code in order to not assign to this loop counter from within the loop body.(÷³ëà8¸½èº–1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒáÛé8¹½èº–1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Á´ö‚üÿÿÿÿ8¾½èº–1
+o
+java:S3776
+"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(”Ü¿µ8€Íèº–1
+C
+java:S1659@"!Declare "ans" on a separate line.(¼ƒØúÿÿÿÿ8ÅÍèº–1
+I
+java:S1481k"'Remove this unused "wd" local variable.(Š‹‚àüÿÿÿÿ8¦Îèº–1
+X	java:S125p"<This block of commented-out lines of code should be removed.(°÷«±8¨Îèº–1
+_
+java:S1128"BRemove this unused import 'javax.management.StandardEmitterMBean'.(ë¨Éû8­Îèº–1

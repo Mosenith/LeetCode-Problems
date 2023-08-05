@@ -1,0 +1,16 @@
+
+o
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Üö¬Õ8­õŠö˜1
+F
+java:S5413")Verify that "remove()" is used correctly.(ëú·à8±õŠö˜1
+C
+java:S14810"&Remove this unused "s" local variable.(£²ğ«8¹õŠö˜1
+I
+java:S14811"'Remove this unused "s2" local variable.(ıäûÿÿÿÿ8¹õŠö˜1
+D
+java:S14812"'Remove this unused "s3" local variable.(Èèï¦8¹õŠö˜1
+D
+java:S14813"'Remove this unused "s4" local variable.(é†Ú8ºõŠö˜1
+J
+java:S14814"(Remove this unused "set" local variable.(¡ÌË­üÿÿÿÿ8ÑÁÉ÷˜1
+]	java:S1259"<This block of commented-out lines of code should be removed.(áØñçşÿÿÿÿ8ºõŠö˜1

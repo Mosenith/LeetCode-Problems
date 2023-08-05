@@ -1,0 +1,23 @@
+
+>
+java:S1604"(Make this anonymous inner class a lambda(š·Ùı
+R
+java:S4973"<Strings and Boxed types should be compared using "equals()".(ç‹·¦
+h
+java:S3776
+"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(’ç¯º
+:
+java:S1659"Declare "j" on a separate line.(á”æåşÿÿÿÿ
+P	java:S125/"<This block of commented-out lines of code should be removed.(ºÛÄ
+V	java:S1259"<This block of commented-out lines of code should be removed.(¬®·Ûúÿÿÿÿ
+Q	java:S125`"<This block of commented-out lines of code should be removed.(òîñ©
+W	java:S125´"<This block of commented-out lines of code should be removed.(ºé«Àøÿÿÿÿ
+W	java:S125·"<This block of commented-out lines of code should be removed.(ñÂöüÿÿÿÿ
+R	java:S125º"<This block of commented-out lines of code should be removed.(Ü’Ü
+W	java:S125½"<This block of commented-out lines of code should be removed.(å‹º¥şÿÿÿÿ
+R	java:S125À"<This block of commented-out lines of code should be removed.(Ûû×É
+R	java:S125Ç"<This block of commented-out lines of code should be removed.(îÿ»¹
+W	java:S125Ê"<This block of commented-out lines of code should be removed.(ÒÊæİùÿÿÿÿ
+R	java:S125Ï"<This block of commented-out lines of code should be removed.(øÔö¥
+S
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ

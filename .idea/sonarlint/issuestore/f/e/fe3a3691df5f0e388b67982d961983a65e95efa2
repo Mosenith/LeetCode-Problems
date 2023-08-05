@@ -1,0 +1,13 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ÔõŒýÿÿÿÿ8Ú†û œ1
+T
+java:S25899"7Remove this expression which always evaluates to "true"(×—¸¹8â†û œ1
+T
+java:S25899"7Remove this expression which always evaluates to "true"(×—¸¹8â†û œ1
+]	java:S125"<This block of commented-out lines of code should be removed.(£ƒæÕûÿÿÿÿ8è†û œ1
+w
+java:S2234?"UParameters to dfs have the same names but not the same order as the method arguments.(œÕû”üÿÿÿÿ8ë†û œ1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ë†û œ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ë†û œ1

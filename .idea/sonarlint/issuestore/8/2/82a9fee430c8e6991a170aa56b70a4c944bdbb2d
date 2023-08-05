@@ -1,0 +1,29 @@
+
+f	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªàˆÞ
+k	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷±ÿÝûÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ãÛŠ¥
+h
+java:S3776)"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(»„—ì
+:
+java:S1659I"Declare "j" on a separate line.(·Œí–üÿÿÿÿ
+@
+java:S1197\"*Move the array designators [] to the type.(½Ï”Ž
+B
+java:S1481\",Remove this unused "height1" local variable.(½Ï”Ž
+@
+java:S1197]"*Move the array designators [] to the type.(¼†ò«
+B
+java:S1481]",Remove this unused "height2" local variable.(¼†ò«
+@
+java:S1197^"*Move the array designators [] to the type.(éèØø
+B
+java:S1481^",Remove this unused "height3" local variable.(éèØø
+@
+java:S1197_"*Move the array designators [] to the type.(Ã»
+B
+java:S1481_",Remove this unused "height4" local variable.(Ã»
+@
+java:S1197`"*Move the array designators [] to the type.(…·ö–
+V	java:S125a"<This block of commented-out lines of code should be removed.(‘ü™Áüÿÿÿÿ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ

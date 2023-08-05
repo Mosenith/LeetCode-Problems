@@ -1,0 +1,19 @@
+
+m	java:S127"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+m	java:S1272"XRefactor the code in order to not assign to this loop counter from within the loop body.(Â¨•ù
+m	java:S1274"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ
+m	java:S1279"XRefactor the code in order to not assign to this loop counter from within the loop body.(Â¨•ù
+m	java:S127>"XRefactor the code in order to not assign to this loop counter from within the loop body.(¯ÀÚè
+p
+java:S1488"[Immediately return this expression instead of assigning it to the temporary variable "str".(Šë³c
+p
+java:S1488C"[Immediately return this expression instead of assigning it to the temporary variable "str".(Šë³c
+V	java:S125"<This block of commented-out lines of code should be removed.(¼¡Ç¤ùÿÿÿÿ
+7
+java:S1116"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(†’†³ýÿÿÿÿ
+V	java:S125%"<This block of commented-out lines of code should be removed.(Û•Ÿ‹úÿÿÿÿ
+P	java:S125V"<This block of commented-out lines of code should be removed.(¨¬œ@
+V	java:S125d"<This block of commented-out lines of code should be removed.(ÊûÖãÿÿÿÿÿ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ

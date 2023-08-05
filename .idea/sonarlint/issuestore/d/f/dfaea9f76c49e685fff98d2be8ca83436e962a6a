@@ -1,0 +1,8 @@
+
+y	java:S127z"XRefactor the code in order to not assign to this loop counter from within the loop body.(’œˆÄøÿÿÿÿ8°È¡Ï’1
+y	java:S127z"XRefactor the code in order to not assign to this loop counter from within the loop body.(’œˆÄøÿÿÿÿ8±È¡Ï’1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ÔõŒıÿÿÿÿ8óÂŠÏ’1
+A
+java:S1659	"Declare "n" on a separate line.(²ÃêÌûÿÿÿÿ8£ÄŠÏ’1
+]	java:S125"<This block of commented-out lines of code should be removed.(±Ê¼Öıÿÿÿÿ8˜†Ï’1
+]	java:S125"<This block of commented-out lines of code should be removed.(–‘»”øÿÿÿÿ8¤ÄŠÏ’1

@@ -1,0 +1,14 @@
+
+e
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(«¾Ût
+e
+java:S1149I"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(àÊöh
+Y
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(šŸ×¶þÿÿÿÿ
+m
+java:S3776("RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ã˜ÍÇûÿÿÿÿ
+V	java:S125l"<This block of commented-out lines of code should be removed.(‘Òšˆþÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ

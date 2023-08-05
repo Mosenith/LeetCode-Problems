@@ -1,0 +1,12 @@
+
+C
+java:S1125"(Remove the unnecessary boolean literals.(øşË¤úÿÿÿÿ
+>
+java:S1659"#Declare "count" on a separate line.(õÿ¹ûÿÿÿÿ
+Z
+java:S3358$"DExtract this nested ternary operation into an independent statement.(§çš
+Q	java:S125="<This block of commented-out lines of code should be removed.(¬²æÍ
+Q	java:S125?"<This block of commented-out lines of code should be removed.(ˆ­µ¼
+@
+java:S1659M"%Declare "divisor" on a separate line.(©Óòİÿÿÿÿÿ
+Q	java:S125O"<This block of commented-out lines of code should be removed.(òÆĞÙ

@@ -1,0 +1,16 @@
+
+R
+java:S25896"7Remove this expression which always evaluates to "true"(İúÅÉüÿÿÿÿ
+Q	java:S125 "<This block of commented-out lines of code should be removed.(û…ˆŞ
+V	java:S125%"<This block of commented-out lines of code should be removed.(¿ÍŞ«øÿÿÿÿ
+Q	java:S125'"<This block of commented-out lines of code should be removed.(¢¥”º
+V	java:S125*"<This block of commented-out lines of code should be removed.(…ÿ»éúÿÿÿÿ
+Q	java:S125I"<This block of commented-out lines of code should be removed.(ƒ–¯µ
+Q	java:S125e"<This block of commented-out lines of code should be removed.(ä‹˜½
+V	java:S125h"<This block of commented-out lines of code should be removed.(©Ì‘Üüÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ

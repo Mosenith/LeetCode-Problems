@@ -1,0 +1,8 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(”à·³
+D
+java:S5413-")Verify that "remove()" is used correctly.(¬ö€çùÿÿÿÿ
+D
+java:S5413V")Verify that "remove()" is used correctly.(¬ö€çùÿÿÿÿ
+E
+java:S1197\"*Move the array designators [] to the type.(şùşÿÿÿÿ

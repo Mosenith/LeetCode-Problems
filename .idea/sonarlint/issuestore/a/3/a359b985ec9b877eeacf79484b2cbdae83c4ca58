@@ -1,0 +1,9 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ÔõŒıÿÿÿÿ8í¨ë™1
+Y
+java:S2589/"7Remove this expression which always evaluates to "true"(÷¥Òµüÿÿÿÿ8š©ë™1
+]	java:S125"<This block of commented-out lines of code should be removed.(°•ÿ¨ûÿÿÿÿ8¥©ë™1
+P
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8¯©ë™1
+R
+java:S1128"0Remove this unused import 'java.util.Hashtable'.(Œ»ÏÊüÿÿÿÿ8°©ë™1

@@ -1,0 +1,15 @@
+
+|
+java:S4165{"aRemove this useless assignment; "row" already holds the assigned value along all execution paths.(“…Êëýÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(ªò„ºÿÿÿÿÿ
+G
+java:S1197R",Move the array designators [][] to the type.(­‚Àœøÿÿÿÿ
+E
+java:S1197S"*Move the array designators [] to the type.(Ü˜§¸ÿÿÿÿÿ
+G
+java:S1197^",Move the array designators [][] to the type.(óêëÜùÿÿÿÿ
+B
+java:S1197l",Move the array designators [][] to the type.(¿ÄŽù
+H
+java:S1197„",Move the array designators [][] to the type.(„‚òûüÿÿÿÿ
+R	java:S125"<This block of commented-out lines of code should be removed.(¸õàú

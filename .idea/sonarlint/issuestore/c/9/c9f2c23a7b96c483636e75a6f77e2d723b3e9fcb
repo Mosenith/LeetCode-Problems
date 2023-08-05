@@ -1,0 +1,17 @@
+
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(°«’à
+t
+java:S2293$"YReplace the type specification in this constructor call with the diamond operator ("<>").(°¡ÐÇþÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒáÛé
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(”Ü¿µ
+V	java:S125"<This block of commented-out lines of code should be removed.(Ú—Ñïûÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(äÄ…þÿÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(•›Ùèúÿÿÿÿ
+V	java:S1258"<This block of commented-out lines of code should be removed.(íÁæúÿÿÿÿ
+B
+java:S1481?"'Remove this unused "wd" local variable.(Š‹‚àüÿÿÿÿ
+V	java:S125C"<This block of commented-out lines of code should be removed.(¸ÿÌÀþÿÿÿÿ
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
