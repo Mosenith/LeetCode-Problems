@@ -4,6 +4,8 @@ import java.util.List;
 
 public class LongestCommonPrefix {
     // only compare from left to right
+
+
     public static String longestCommonPrefix(String[] strs) {
         int n = strs.length;
         for (int i = 0; i < strs[0].length(); ++i) {
@@ -23,7 +25,7 @@ public class LongestCommonPrefix {
         String[] str2 = {"dog", "racecar", "car"};
         String[] str3 = {"cir","car"};
 
-        System.out.println(longestCommonPrefix(str2));
+        System.out.println(longestCommonPrefix(str));
         //System.out.println(str[0].charAt(1));
     }
 }
