@@ -43,9 +43,7 @@ public class MoveZeroes {
     // ***************** End of 1st Method ******************
 
     // ***************** 2nd Method : Best Method ******************
-    // Approach : Set nonZeroIndex=0 - loop through array
-    // if arr[i] != 0 => update nums[nonZeroIndex++] = arr[i]
-    // Add 0 till nonZeroIndex > arr.length
+    // f
     // Runtime  : 1ms           -> + 100%
     // Memory   : 44.72 MB      -> + 96.50%
     public static void moveZeroes2(int[] nums) {

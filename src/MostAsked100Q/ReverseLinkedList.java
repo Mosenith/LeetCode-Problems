@@ -36,20 +36,18 @@ public class ReverseLinkedList {
     // ***************** 1st Method ******************
     // Approach : Very Basic & Efficient Approach
     // Runtime  : 0ms        -> + 100%
-    // Memory   : 41.4 MB      -> + 70.25%
+    // Memory   : 40.98 MB      -> + 40.98%
     public static ListNode reverseList(ListNode head) {
-        ListNode pre = null, next = null;
+        ListNode pre = null;
         ListNode cur = head;
 
         while(cur != null) {
-            next = cur.next;
+            ListNode tmp = cur.next;
             cur.next = pre;
             pre = cur;
-            cur = next;
+            cur = tmp;
         }
 
-        head = pre;
-
-        return head;
+        return pre;
     }
 }
