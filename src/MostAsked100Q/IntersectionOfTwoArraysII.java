@@ -10,26 +10,27 @@ public class IntersectionOfTwoArraysII {
         System.out.println(Arrays.toString(intersect(nums1, nums2)));
     }
 
-    // nums1 = [4,9,5], nums2 = [9,4,9,8,4]
     // ***************** 1st Method ******************
-    // Approach :
-    // Runtime  : 1ms        -> + 88.55%
-    // Memory   : 40.1 MB      -> + 26.30%
+    // Approach : Using hashmap to store arr1 as key, number of occurrence as value
+    // Loop through another array and check with hashmap key => common element
+    // Runtime  : 3ms        -> + 66.84%
+    // Memory   : 44 MB      -> + 7.42%
     public static int[] intersect(int[] nums1, int[] nums2) {
         Map<Integer, Integer> counter = new HashMap<>();
         for (int num : nums1) {
             counter.put(num, counter.getOrDefault(num, 0) + 1);
         }
 
-        System.out.println(counter);
-
         List<Integer> t = new ArrayList<>();
         for (int num : nums2) {
+            // add common elements to t
             if (counter.getOrDefault(num, 0) > 0) {
                 t.add(num);
                 counter.put(num, counter.get(num) - 1);
             }
         }
+
+        // convert Arraylist to array
         int[] res = new int[t.size()];
         for (int i = 0; i < res.length; ++i) {
             res[i] = t.get(i);
@@ -41,15 +42,12 @@ public class IntersectionOfTwoArraysII {
     // ***************** 2nd Method ******************
     // Approach : Using 2 pointers on sorted arrays
     // Since ans order is not important, sort both array and find common elements
-    // Runtime  : 1ms        -> + 88.55%
-    // Memory   : 40.1 MB      -> + 26.30%
+    // Runtime  : 3ms        -> + 66.84%
+    // Memory   : 42.34 MB      -> + 67.19%
     public static int[] intersect2(int[] nums1, int[] nums2) {
         // Sort both the arrays first...
         Arrays.sort(nums1);
         Arrays.sort(nums2);
-
-        System.out.println(Arrays.toString(nums1));
-        System.out.println(Arrays.toString(nums2));
 
         // Create an array list...
         ArrayList<Integer> arr = new ArrayList<Integer>();
@@ -76,7 +74,6 @@ public class IntersectionOfTwoArraysII {
             }
         }
 
-        System.out.println("intersect element: " + arr);
         // Create an output list to store the output...
         int[] output = new int[arr.size()];
         int k = 0;

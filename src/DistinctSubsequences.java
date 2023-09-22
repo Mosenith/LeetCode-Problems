@@ -12,9 +12,6 @@ public class DistinctSubsequences {
 
     // ***************** 1st Method ******************
     // Approach : Correct Approach but exceed time limit on LeetCode
-    // Runtime  : 8ms        -> + 31.49%
-    // Memory   : 39.28 MB    -> + 46.58%
-    // Time Complexity: O(nlogn), worst-case=O(n^2), Space Complexity: O(n)
     static int numDis;
     public static int numDistinct(String s, String t) {
         numDis = 0;

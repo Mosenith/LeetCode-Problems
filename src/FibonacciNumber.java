@@ -26,7 +26,7 @@ public class FibonacciNumber {
     // ***************** 2nd Method - Using DP ******************
     // Approach : Optimized runtime & space, Lots of code
     // Runtime  : 0ms         -> + 100%
-    // Memory   : 38.95 MB    -> + 81.30%%
+    // Memory   : 38.95 MB    -> + 81.30%
     static List<Integer> store = new ArrayList<>();
     public static int fib2(int n) {
         if(n<=0) return 0;
