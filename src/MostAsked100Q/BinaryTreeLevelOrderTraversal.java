@@ -46,6 +46,7 @@ public class BinaryTreeLevelOrderTraversal {
 
 //        printTreeNode(root);
         System.out.println(levelOrder2(root));
+
     }
 
     // ***************** 1st Method ******************
@@ -130,30 +131,5 @@ public class BinaryTreeLevelOrderTraversal {
         }
 
         return ansList;
-    }
-
-    public static List<List<Integer>> levelOrder3(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        List<Integer> subList = new ArrayList<>();
-        List<List<Integer>> ansList = new ArrayList<>();
-
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            TreeNode tempNode = queue.poll();
-
-            // Enqueue left child
-            if (tempNode.left != null) {
-                queue.add(tempNode.left);
-            }
-
-            // Enqueue right child
-            if (tempNode.right != null) {
-                queue.add(tempNode.right);
-            }
-
-            ansList.add(new ArrayList<>(subList));
-        }
-
-        return null;
     }
 }
