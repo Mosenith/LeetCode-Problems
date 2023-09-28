@@ -59,9 +59,9 @@ public class PopulatingNextRightPointersInEachNode {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
-        System.out.println(connect(root));
-        Node nd = connect(root);
-        printTreeNode(nd);
+//        System.out.println(connect3(root));
+        Node nd = connect2(root);
+//        printTreeNode(nd);
     }
 
     // ***************** 1st Method ******************
@@ -100,5 +100,52 @@ public class PopulatingNextRightPointersInEachNode {
         return root;
     }
     // ***************** End of 1st Method ******************
+
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Using DFS Recursive - dfs = once go down can't come up
+    // If child(C) Node Exist:
+    // - Set C.Left.Next to C.Right cos perfect binary tree left exist => right exist too
+    // - If C.next exist => Set C.Right.Next = C.Next.Left
+    // If child Node Does Not Exist:
+    // - Return C since we reach last level of Binary Tree
+    // Runtime  : 0ms           -> + 100%
+    // Memory   : 42.98 MB      -> + 77.78%
+    public static Node connect2(Node root) {
+        if(root == null) return null;
+        Node L = root.left, R = root.right, N = root.next;
+        if(L != null) {
+            System.out.println("Left = " + L.val);
+            System.out.println("Right = " + R.val);
+            if(N == null) System.out.println("N is null");
+            L.next = R;
+            if(N != null) {
+                System.out.println("N = " + N.val);
+                R.next = N.left;
+            }
+            connect(L);
+            connect(R);
+        }
+        return root;
+    }
+    // ***************** End of 2nd Method ******************
+
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Using the above approach but optimized space
+    // Runtime  : 0ms           -> + 100.00%
+    // Memory   : 42.77 MB      -> + 93.78%
+    public static Node connect3(Node root) {
+        Node head = root;
+        for(; root != null; root = root.left)
+            for(Node cur = root; cur != null; cur = cur.next)
+                if(cur.left != null) {
+                    cur.left.next = cur.right;
+                    if(cur.next != null) cur.right.next = cur.next.left;
+                } else break;
+
+        return head;
+    }
+    // ***************** End of 3rd Method ******************
 
 }
