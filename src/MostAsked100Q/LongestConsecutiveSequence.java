@@ -87,7 +87,6 @@ public class LongestConsecutiveSequence {
         for (int x : nums) {
             s.add(x);
         }
-        System.out.println(s);
 
         int ans = 0;
         for (int x : nums) {
@@ -101,4 +100,5 @@ public class LongestConsecutiveSequence {
         }
         return ans;
     }
+    // ***************** End of 3rd Method ******************
 }
