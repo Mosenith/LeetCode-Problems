@@ -7,7 +7,7 @@ public class LongestConsecutiveSequence {
         int[] nums = {1,2,0,1};
 
         System.out.println(longestConsecutive(nums));
-        System.out.println(longestConsecutive2(nums));
+        System.out.println(longestConsecutive3(nums));
     }
 
     // ***************** 1st Method ******************
@@ -54,6 +54,7 @@ public class LongestConsecutiveSequence {
     // other than those 2 cases, just set curLen back to 1
     // Runtime  : 14ms           -> + 97.92%
     // Memory   : 56.16 MB      -> + 83.28%
+    // Time : O(nlogn) -> due to sorting array
     public static int longestConsecutive2(int[] nums) {
         Arrays.sort(nums);
 
@@ -74,4 +75,30 @@ public class LongestConsecutiveSequence {
         return maxLen;
     }
     // ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Using HashSet to store elements of array
+    // Loop through num, if set doesn't contain cur-1
+    // Runtime  : 14ms           -> + 97.92%
+    // Memory   : 56.16 MB      -> + 83.28%
+    // Time : O(nlogn) -> due to sorting array
+    public static int longestConsecutive3(int[] nums) {
+        Set<Integer> s = new HashSet<>();
+        for (int x : nums) {
+            s.add(x);
+        }
+        System.out.println(s);
+
+        int ans = 0;
+        for (int x : nums) {
+            if (!s.contains(x - 1)) {
+                int y = x + 1;
+                while (s.contains(y)) {
+                    ++y;
+                }
+                ans = Math.max(ans, y - x);
+            }
+        }
+        return ans;
+    }
 }
