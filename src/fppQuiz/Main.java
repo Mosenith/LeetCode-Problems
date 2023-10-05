@@ -1,5 +1,7 @@
 package fppQuiz;
 
+import java.util.HashSet;
+
 public class Main {
     String managerInfo = (new Employee("Joe", 200000) {
         double bonus; {
@@ -22,5 +24,13 @@ public class Main {
     public static void main(String[] args) {
         Main m = new Main();
         System.out.println(m.managerInfo + "\n\n");
+
+        System.out.println(10 + 20 + "Javapoint");
+        System.out.println("Javapoint" + 10 + 20);
+
+        int[] arr = {1,2,3};
+        HashSet<Integer> set = new HashSet<>();
+
     }
+
 }
