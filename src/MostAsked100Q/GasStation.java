@@ -69,10 +69,13 @@ public class GasStation {
     // ***************** End of 1st Method ******************
 
     // ***************** 2nd Method ******************
-    // Approach 2: Optimized One
-    //
-    // Runtime  : 100ms           -> + 32.64%
-    // Memory   : 59.24 MB      -> + 39.39%
+    // Approach 2: Optimized One => start = 0, curTank = 0
+    // Each iteration totalGas += gas[i], totalCost  += cost[i], curTank += gas[i] - cost[i]
+    // Then, check if curTank<0 => update start=i+1, curTank=0
+    // Finally, check totalGas < totalCost => -1 == not enough gas to Travel back to start
+    // Otherwise return start
+    // Runtime  : 2ms           -> + 92.39%
+    // Memory   : 54.42 MB      -> + 99.32%
     public static int canCompleteCircuit2(int[] gas, int[] cost) {
         int totalGas = 0;
         int totalCost = 0;
@@ -84,15 +87,13 @@ public class GasStation {
             totalCost += cost[i];
             curTank += gas[i] - cost[i];
 
-            System.out.println("i = " + i + ", Start = " + start);
-            System.out.println(totalGas + " : " + totalCost + " : " + curTank);
             if (curTank < 0) {
                 start = i + 1;
                 curTank = 0;
             }
-            System.out.println("******");
         }
 
         return totalGas < totalCost ? -1 : start;
     }
+    // ***************** End of 2nd Method ******************
 }
