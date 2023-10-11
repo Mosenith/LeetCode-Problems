@@ -15,12 +15,12 @@ public class GasStation {
 //        int[] cost = {3,4,3};
 
         // out: 4
-//        int[] gas = {5,1,2,3,4};
-//        int[] cost = {4,4,1,5,1};
+        int[] gas = {5,1,2,3,4};
+        int[] cost = {4,4,1,5,1};
 
-        int[] gas = {3,1,1};
-        int[] cost = {1,2,2};
-        System.out.println(canCompleteCircuit(gas,cost));
+//        int[] gas = {3,1,1};
+//        int[] cost = {1,2,2};
+        System.out.println(canCompleteCircuit2(gas,cost));
     }
 
     // ***************** 1st Method ******************
@@ -67,4 +67,32 @@ public class GasStation {
         return (curTank < cost[index-1] ? -1 : 1);
     }
     // ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Optimized One
+    //
+    // Runtime  : 100ms           -> + 32.64%
+    // Memory   : 59.24 MB      -> + 39.39%
+    public static int canCompleteCircuit2(int[] gas, int[] cost) {
+        int totalGas = 0;
+        int totalCost = 0;
+        int curTank = 0;
+        int start = 0;
+
+        for (int i = 0; i < gas.length; i++) {
+            totalGas += gas[i];
+            totalCost += cost[i];
+            curTank += gas[i] - cost[i];
+
+            System.out.println("i = " + i + ", Start = " + start);
+            System.out.println(totalGas + " : " + totalCost + " : " + curTank);
+            if (curTank < 0) {
+                start = i + 1;
+                curTank = 0;
+            }
+            System.out.println("******");
+        }
+
+        return totalGas < totalCost ? -1 : start;
+    }
 }
