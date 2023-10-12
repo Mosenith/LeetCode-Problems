@@ -14,67 +14,6 @@ public class CopyListWithRandomPointer {
             this.random = null;
         }
     }
-
-    public static void main(String[] args) {
-        Node head = new Node(1);
-        head.next = new Node(2);
-        head.random = head.next;
-        head.next.next = null;
-        head.random = head.next;
-
-        Node ans = copyRandomList(head);
-        printNode(ans);
-    }
-
-    static List<Node> nextList = new ArrayList<>();
-    static List<Node> randList = new ArrayList<>();
-    static int counter = 0;
-
-    public static Node copyRandomList(Node head) {
-        if (head == null) return null;
-
-        Node tmp = head;
-        fillUp(tmp);
-
-        Node ans = nextList.remove(counter);
-        Node curCopy = ans;
-
-        helperNext(curCopy);
-        counter = 0;
-        helperRand(curCopy);
-
-        return ans;
-    }
-
-    private static void helperNext(Node curCopy) {
-        while(!nextList.isEmpty() && counter+1 < nextList.size()) {
-            curCopy.next = nextList.remove(++counter);
-        }
-    }
-
-    private static void helperRand(Node curCopy) {
-        while(!randList.isEmpty() && counter+1 < randList.size()) {
-            curCopy.random = randList.remove(++counter);
-        }
-    }
-    private static void fillUp(Node head) {
-        nextList.add(head);
-        while(head != null) {
-            if(head.next == null) {
-                nextList.add(null);
-            } else {
-                nextList.add(head.next);
-            }
-
-            if(head.random == null) {
-                randList.add(null);
-            } else {
-                randList.add(head.random);
-            }
-            head = head.next;
-        }
-    }
-
     private static void printNode(Node node) {
         while (node != null) {
             System.out.println("Val = " + node.val);
@@ -92,4 +31,56 @@ public class CopyListWithRandomPointer {
             node = node.next;
         }
     }
+    public static void main(String[] args) {
+        Node head = new Node(7);
+        head.next = new Node(13);
+        head.next.next = new Node(11);
+        head.next.next.next = new Node(10);
+        head.next.next.next.next = new Node(1);
+        head.random = null;
+        head.next.random = head;
+        head.next.next.random = head.next.next.next.next;
+        head.next.next.next.random = head.next.next;
+        head.next.next.next.next.random = head;
+
+        Node ans = copyRandomList(head);
+        printNode(ans);
+    }
+
+    static List<Node> nextList = new ArrayList<>();
+    static List<Node> randList = new ArrayList<>();
+    static int counter = 0;
+
+    // ***************** 1st Method ******************
+    // Approach 1: HashMap with k=head(cur in loop), v=tail
+    // Create TempNode and assign val to 0
+    // Create tailNode and assign to TempNode
+    // 1st loop consider head.next & have tailNode.next = head.next
+    // End of loop => tail stores the last node of root(head)
+    // Assign tail = TempNode.next (TempNode=0, TempNode.next = head)
+    // 2nd Loop consider head.random & tail.random = map.get(head.random)
+    // End of loop return TempNode.next
+    // Runtime  : 0ms           -> + 100%
+    // Memory   : 43.28 MB        -> + 39.96%
+    public static Node copyRandomList(Node head) {
+        Map<Node, Node> map = new HashMap<>();
+        Node tmp = new Node(0);
+        Node tail = tmp;
+
+        for(Node cur = head; cur != null; cur = cur.next) {
+            tail.next = new Node(cur.val);
+            tail = tail.next;
+            map.put(cur,tail);
+        }
+
+        tail = tmp.next;
+
+        for(Node cur = head; cur != null; cur = cur.next) {
+            tail.random = map.get(cur.random);
+            tail = tail.next;
+        }
+
+        return tmp.next;
+    }
+    // ***************** End of 1st Method ******************
 }
