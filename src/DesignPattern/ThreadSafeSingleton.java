@@ -4,10 +4,9 @@ public class ThreadSafeSingleton {
     private static ThreadSafeSingleton instance;
 
     private ThreadSafeSingleton() {
-
     }
 
-    // make the global access method synchronized
+    // Make the global access method synchronized
     // so that only one thread can execute this method at a time
     public static synchronized ThreadSafeSingleton getInstance() {
         if(instance == null) {
