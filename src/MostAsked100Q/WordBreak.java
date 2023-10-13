@@ -1,7 +1,9 @@
 package MostAsked100Q;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class WordBreak {
     public static void main(String[] args) {
@@ -11,8 +13,83 @@ public class WordBreak {
 //        String s = "catsandog";
 //        List<String> wordDict = Arrays.asList("cats","dog","sand","and","cat");
 
+//        String s = "aebbbbs";
+//        List<String> wordDict = Arrays.asList("a","aeb","ebbbb","s","eb");
+
         // 3,3,3,4,4
         // 4,3
-        System.out.println(s.length());
+        System.out.println(wordBreak(s, wordDict));
     }
+
+    // ***************** 1st Method ******************
+    // Approach 1:
+    // Runtime  : 7ms           -> + 49.82%
+    // Memory   : 43.79 MB        -> + 19.80%
+    public static boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> wordSet = new HashSet<>(wordDict);
+        int n = s.length();
+        boolean[] dp = new boolean[n + 1];
+        dp[0] = true;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordSet.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+
+        return dp[n];
+    }
+    // ***************** End of 1st Method ******************
+
+    // ***************** Brutal Force Method ******************
+    // Approach : Work but Exceed Time Limit
+    static Integer len;
+    static boolean flag;
+    public static boolean wordBreak2(String s, List<String> wordDict) {
+        HashSet<String> set = new HashSet<>();
+        for(String str : wordDict) {
+            set.add(str);
+        }
+
+        System.out.println(set);
+        len = s.length();
+        flag = false;
+        helper(s,set);
+
+        System.out.println("flag  => " + flag);
+        return flag;
+    }
+    private static void helper(String s, HashSet<String> set) {
+        if(s.length() == 0) {
+            return;
+        }
+
+        for(int i=0; i<s.length(); i++) {
+            String curSubStr = s.substring(0,i+1);
+            String leftOver  = s.substring(i+1, s.length());
+
+            System.out.println("curSubStr = " + curSubStr +
+                    ", leftOver = " + leftOver);
+            System.out.println("current Len = " + len);
+
+            if(set.contains(curSubStr)) {
+                System.out.println("Contain " + curSubStr +
+                        " move to self call! -> i = " + i);
+                len -= curSubStr.length();
+                helper(leftOver, set);
+                if(len == 0) {
+                    flag = true;
+                    return;
+                }
+                len += curSubStr.length();
+            }
+
+            System.out.println("=====");
+        }
+    }
+    // ***************** End Brutal Force Method ******************
+
 }
