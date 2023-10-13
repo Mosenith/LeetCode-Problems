@@ -22,7 +22,15 @@ public class WordBreak {
     }
 
     // ***************** 1st Method ******************
-    // Approach 1:
+    // Approach 1: Utilize a boolean dp[] to mark if a substring up to a certain index
+    // can be segmented using words from the dictionary
+    // Set dp[0] = true to indicate an empty string can be segmented
+    // Iterate through the string and for each position,
+    // check if any prefix can be segmented into words from the dictionary
+    // iterate from 0 to i-1 and check
+    // if the substring from j to i is a valid word in the dictionary.
+    // Update dp[i] based on whether the substring up to index i can be segmented,
+    // considering if previous substrings can be segmented.
     // Runtime  : 7ms           -> + 49.82%
     // Memory   : 43.79 MB        -> + 19.80%
     public static boolean wordBreak(String s, List<String> wordDict) {
