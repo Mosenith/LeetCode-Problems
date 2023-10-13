@@ -7,18 +7,18 @@ import java.util.Set;
 
 public class WordBreak {
     public static void main(String[] args) {
-        String s = "applepenapple";
-        List<String> wordDict = Arrays.asList("apple","pen");
+//        String s = "applepenapple";
+//        List<String> wordDict = Arrays.asList("apple","pen");
 
 //        String s = "catsandog";
 //        List<String> wordDict = Arrays.asList("cats","dog","sand","and","cat");
 
-//        String s = "aebbbbs";
-//        List<String> wordDict = Arrays.asList("a","aeb","ebbbb","s","eb");
+        String s = "aebbbbs";
+        List<String> wordDict = Arrays.asList("a","aeb","ebbbb","s","eb");
 
         // 3,3,3,4,4
         // 4,3
-        System.out.println(wordBreak(s, wordDict));
+        System.out.println(wordBreak2(s, wordDict));
     }
 
     // ***************** 1st Method ******************
@@ -52,11 +52,52 @@ public class WordBreak {
     }
     // ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Dynamic Programming
+    // Init => Boolean dp[s.len+1], with dp[0]=true
+    // Find maxLen among Dict
+    // Outer loop: i=1->s.len, inner loop: j=i-1->max(i-maxLen,0), j--
+    // Within inner: check dp[j] && Dict.contain(subString(j,i)), if so set dp[i]=true & break;
+    // Return dp[n]
+    // Runtime  : 1ms            -> + 99.68%
+    // Memory   : 40.71MB        -> + 89.16%
+    public static boolean wordBreak2(String s, List<String> wordDict) {
+        int n = s.length();
+        boolean[] dp = new boolean[n + 1];
+        dp[0] = true;
+        int max_len = 0;
+
+        for (String word : wordDict) {
+            max_len = Math.max(max_len, word.length());
+        }
+
+        System.out.println("maxLen = " + max_len);
+
+        for (int i = 1; i <= n; i++) {
+            System.out.println("i = " + i);
+            System.out.println("~~~");
+            for (int j = i - 1; j >= Math.max(i - max_len - 1, 0); j--) {
+                System.out.println("j = " + j + " => subStr = " + s.substring(j, i));
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    System.out.println("Set " + dp[i] + " => " + Arrays.toString(dp));
+                    break;
+                }
+                System.out.println("******************");
+            }
+        }
+
+        return dp[n];
+    }
+    // ***************** End of 2nd Method ******************
+    // "aebbbbs"
+    // "a","aeb","ebbbb","s","eb"
+
     // ***************** Brutal Force Method ******************
     // Approach : Work but Exceed Time Limit
     static Integer len;
     static boolean flag;
-    public static boolean wordBreak2(String s, List<String> wordDict) {
+    public static boolean wordBreak3(String s, List<String> wordDict) {
         HashSet<String> set = new HashSet<>();
         for(String str : wordDict) {
             set.add(str);
