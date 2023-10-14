@@ -1,4 +1,4 @@
-package DesignPattern;
+package DesignPattern.SingletonPattern;
 
 public class EagerInitializedSingleton {
     // private static final + init immediately

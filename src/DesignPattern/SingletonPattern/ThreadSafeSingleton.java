@@ -1,4 +1,4 @@
-package DesignPattern;
+package DesignPattern.SingletonPattern;
 
 public class ThreadSafeSingleton {
     private static ThreadSafeSingleton instance;
