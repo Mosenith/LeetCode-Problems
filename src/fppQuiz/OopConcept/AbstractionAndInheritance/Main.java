@@ -1,4 +1,4 @@
-package fppQuiz.OopConcept.Abstraction;
+package fppQuiz.OopConcept.AbstractionAndInheritance;
 
 public class Main {
     public static void main(String[] args) {

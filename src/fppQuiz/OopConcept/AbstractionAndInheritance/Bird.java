@@ -1,4 +1,4 @@
-package fppQuiz.OopConcept.Abstraction;
+package fppQuiz.OopConcept.AbstractionAndInheritance;
 
 public class Bird extends Animal implements Flyable {
     private String name;

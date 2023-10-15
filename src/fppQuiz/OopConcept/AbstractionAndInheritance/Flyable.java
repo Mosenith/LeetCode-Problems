@@ -1,4 +1,4 @@
-package fppQuiz.OopConcept.Abstraction;
+package fppQuiz.OopConcept.AbstractionAndInheritance;
 
 public interface Flyable {
     void fly();
