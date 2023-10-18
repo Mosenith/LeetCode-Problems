@@ -28,7 +28,7 @@ public class WordBreak {
     // Iterate through the string and for each position,
     // check if any prefix can be segmented into words from the dictionary
     // iterate from 0 to i-1 and check
-    // if the substring from j to i is a valid word in the dictionary.
+    // If the substring from j to i is a valid word in the dictionary.
     // Update dp[i] based on whether the substring up to index i can be segmented,
     // considering if previous substrings can be segmented.
     // Runtime  : 7ms           -> + 49.82%
@@ -47,7 +47,6 @@ public class WordBreak {
                 }
             }
         }
-
         return dp[n];
     }
     // ***************** End of 1st Method ******************
@@ -90,8 +89,6 @@ public class WordBreak {
         return dp[n];
     }
     // ***************** End of 2nd Method ******************
-    // "aebbbbs"
-    // "a","aeb","ebbbb","s","eb"
 
     // ***************** Brutal Force Method ******************
     // Approach : Work but Exceed Time Limit
@@ -135,7 +132,6 @@ public class WordBreak {
                 }
                 len += curSubStr.length();
             }
-
             System.out.println("=====");
         }
     }
