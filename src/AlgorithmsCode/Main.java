@@ -1,22 +1,32 @@
 package AlgorithmsCode;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Main {
-    // List<String> ls = {"ad*dsa", "adfhiaf"}
     public static void main(String[] args) {
-        List<String> ls = Arrays.asList("a d*dsa","jfasdf-");
+        int[] arr = {4,2,1,9,9};
 
+//        Arrays.sort(arr);   //1,2,9,9,9
+//
+//        for(int i=arr.length-1; i>0; i--) {
+//            if(arr[i-1] < arr[i]) {
+//                System.out.println(arr[i-1]);
+//                break;
+//            }
+//        }
 
-        for(int i=0; i<ls.size(); i++) {
-            String tmp = ls.get(i);
-            if(tmp.contains("*") || tmp.contains("#")) {
-                System.out.println("True -> " + tmp);
+        int max = (arr[0] < arr[1]) ? arr[1] : arr[0];
+        int secMax = (arr[0] < arr[1]) ? arr[0] : arr[1];
+
+        System.out.println(max + " : " + secMax);
+        for(int i=2; i<arr.length; i++) {
+            if(arr[i] > max) {
+                secMax = max;
+                max = arr[i];
             }
         }
 
-
+        System.out.println(max);
+        System.out.println(secMax);
     }
 }
