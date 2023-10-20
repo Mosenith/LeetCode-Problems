@@ -64,7 +64,6 @@ public class LRUCache {
         System.out.println(lRUCache.get(2));
 
     }
-
 }
 // [[2],[2,1],[1,1],[2,3],[4,1],[1],[2]]
 
