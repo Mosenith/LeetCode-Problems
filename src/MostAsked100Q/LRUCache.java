@@ -1,8 +1,6 @@
 package MostAsked100Q;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.Queue;
+import java.util.*;
 
 // Least Recently Used (LRU) cache
 public class LRUCache {
@@ -14,19 +12,18 @@ public class LRUCache {
     HashMap<Integer, Integer> map;
     Integer maxCap;
     Queue<Integer> queue;
+    Map<Integer,Integer> store;
     // capacity > 0
     public LRUCache(int capacity) {
         map = new HashMap<>(capacity);
         this.maxCap = capacity;
         queue = new ArrayDeque<>();
+        store = new LinkedHashMap<>();
     }
 
     // key.exist => key, otherwise => -1
     public int get(int key) {
-        if(queue.contains(key)) {
-            queue.remove(key);
-            queue.add(key);
-        }
+        store.computeIfPresent(key, (k,v) -> v+1);
         return (map.containsKey(key)) ? map.get(key) : -1;
     }
 
@@ -34,16 +31,18 @@ public class LRUCache {
     // otherwise, key-value => cache
     // num.keys > capacity => key.RemoveLast
     public void put(int key, int value) {
-        if(maxCap == map.size() && !map.containsKey(key)) {
+        if(maxCap == map.size() && !store.containsKey(key)) {
             map.remove(queue.poll());
         }
         map.computeIfPresent(key, (k,v) -> value);
         map.computeIfAbsent(key, v -> value);
-        if(queue.contains(key)) {
-            queue.remove(key);
-        }
-        queue.add(key);
 
+        store.computeIfPresent(key, (k,v) -> v + 1);
+        store.computeIfAbsent(key, v -> 1);
+    }
+
+    private int getLeastUsed() {
+        return 0;
     }
     // ***************** End of 1st Method ******************
 
