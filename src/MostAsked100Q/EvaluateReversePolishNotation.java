@@ -6,10 +6,11 @@ import java.util.Stack;
 
 public class EvaluateReversePolishNotation {
     public static void main(String[] args) {
-        String[] tokens = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
-//        String[] tokens = {"2","1","+","3","*"};
+//        String[] tokens = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
+        String[] tokens = {"4","3","-"};
 
         System.out.println(evalRPN(tokens));
+        System.out.println(evalRPN2(tokens));
     }
 
     // ***************** 1st Method ******************
@@ -55,4 +56,43 @@ public class EvaluateReversePolishNotation {
     }
     // ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Use switch to validate case => +,-,*,/ & number
+    // case - => -(stack.pop - stack.pop)
+    // case / => secPop / firstPop
+    // return stack.pop()
+    // Runtime  : 7ms            -> + 33.22%
+    // Memory   : 42.68MB        -> + 96.67%
+    public static int evalRPN2(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+
+        for(String token : tokens) {
+            int tmp = 0;
+            switch (token) {
+                case "+":
+                    tmp += stack.pop() + stack.pop();
+                    stack.push(tmp);
+                    break;
+                case "-":
+                    tmp += -(stack.pop() - stack.pop());
+                    stack.push(tmp);
+                    break;
+                case "*":
+                    tmp += stack.pop() * stack.pop();
+                    stack.push(tmp);
+                    break;
+                case "/":
+                    int first = stack.pop();
+                    int sec = stack.pop();
+                    tmp += sec / first;
+                    stack.push(tmp);
+                    break;
+                default:
+                    stack.push(Integer.valueOf(token));
+            }
+        }
+
+        return stack.pop();
+    }
+    // ***************** End of 2nd Method ******************
 }
