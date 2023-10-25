@@ -8,8 +8,13 @@ public class MaximumProductSubarray {
         System.out.println(maxProduct(nums));
     }
 
-    // dp helper
+    // ***************** 1st Method ******************
+    // Approach 1: Keep max, min, ans & update max & min every iteration
+    // max = max(max(min * n[i], max * n[i]), n[i])
+    // Runtime  : 1ms            -> + 99.68%
+    // Memory   : 40.71MB        -> + 89.16%
     public static int maxProduct(int[] nums) {
+        if(nums.length == 1) return nums[0];
         int ans = Integer.MIN_VALUE;
 
         for(int i=0, j=1; j<nums.length; i++,j++) {
