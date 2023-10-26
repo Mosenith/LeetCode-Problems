@@ -38,8 +38,32 @@ public class MaximumProductSubarray {
     // ***************** End of 1st Method ******************
 
     // ***************** 2nd Method ******************
-    // Approach 2: Merge Sort on ListNode
-    // Runtime  : 9ms            -> + 89.64%
-    // Memory   : 56.78MB        -> + 9.29%
+    // Approach 2: 2 pointers => left & right
+    // check if left & right = 0, then set to 1. Otherwise, left & right
+    // Left *= nums[i], Right *= nums[len-1-i]
+    // Ans = max(nums[i], max(left,right))
+    // Runtime  : 1ms            -> + 86.72%
+    // Memory   : 43.24MB        -> + 47.55%
+    public static int maxProduct2(int[] nums) {
+        int n = nums.length;
+        int l=1,r=1;
+        int ans=nums[0];
+
+        for(int i=0;i<n;i++){
+
+            //if any of l or r become 0 then update it to 1
+            l = l==0 ? 1 : l;
+            r = r==0 ? 1 : r;
+
+            l *= nums[i];   //prefix product
+            r *= nums[n-1-i];    //suffix product
+
+            ans = Math.max(ans,Math.max(l,r));
+
+        }
+        return ans;
+    }
+    // ***************** End of 2nd Method ******************
+
 
 }
