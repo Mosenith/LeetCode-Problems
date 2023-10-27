@@ -36,8 +36,15 @@ public class PathSum {
 
         System.out.println(hasPathSum(root2,1));
     }
-    public static boolean hasPathSum(TreeNode root, int targetSum) {
 
+    // ***************** 1st Method ******************
+    // Approach 1: Make use of DFS/BFS & target -= root.val
+    // if target=0 && left = null && right = null => true
+    // Otherwise, keep recursive of dfs(root.left) || dfs(root.right)
+    // Base Case, if root = null => false
+    // Runtime  : 0ms            -> + 100.00%
+    // Memory   : 42.91MB        -> + 84.04%
+    public static boolean hasPathSum(TreeNode root, int targetSum) {
         return helper(root, targetSum);
     }
 
@@ -51,6 +58,5 @@ public class PathSum {
 
         return helper(root.left, target) || helper(root.right, target);
     }
-
-
+    // ***************** End of 1st Method ******************
 }
