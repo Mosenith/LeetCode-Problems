@@ -25,6 +25,7 @@ public class PathSumII {
         root.right = new TreeNode(8);
         root.right.left = new TreeNode(13);
         root.right.right = new TreeNode(4);
+        root.right.right.left = new TreeNode(5);
         root.right.right.right = new TreeNode(1);
 
         int target = 22;
@@ -35,6 +36,14 @@ public class PathSumII {
         System.out.println(pathSum(root,22));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Pretty similar to Path Sum Problem, just keep innerList
+    // At each node, add root.val to innerList
+    // Rather than targetSum -= root.val every node, start curSum = 0 & + root.val at each node
+    // If that node adds up > target, curSum -= root.val & remove from innerList
+    // When curSum = target, add inner to Ans
+    // Runtime  : 1ms            -> + 99.91%
+    // Memory   : 43.57MB        -> + 87.76%
     static List<List<Integer>> ans;
     static int target;
     public static List<List<Integer>> pathSum(TreeNode root, int targetSum) {
@@ -42,35 +51,29 @@ public class PathSumII {
         target = targetSum;
         List<Integer> inner = new ArrayList<>();
 
-        dfs(root,targetSum,inner);
+        dfs(root,0,inner);
 
-        System.out.println(ans);
-        return null;
+        return ans;
     }
 
-    private static void dfs(TreeNode root, int targetSum, List<Integer> inner) {
+    private static void dfs(TreeNode root, int curSum, List<Integer> inner) {
         if(root == null) {
             return;
         }
 
-        System.out.println("root => " + root.val);
-
         inner.add(root.val);
-        targetSum -= root.val;
-        if(targetSum == 0 && root.left == null && root.right == null) {
+        curSum += root.val;
+        if(curSum == target && root.left == null && root.right == null) {
             ans.add(new ArrayList<>(inner));
-            inner = new ArrayList<>();
-            targetSum = target;
         }
 
-        dfs(root.left, targetSum, inner);
-        System.out.println("Root after left -- " + root.val);
-        System.out.println("\n****\n");
+        dfs(root.left, curSum, inner);
+        dfs(root.right,curSum, inner);
 
-
-        dfs(root.right,targetSum, inner);
-        System.out.println("Root after right -- " + root.val);
-        System.out.println("\n====\n");
-
+        curSum -= root.val;
+        if(!inner.isEmpty()) {
+            inner.remove(inner.size()-1);
+        }
     }
+    // ***************** End of 1st Method ******************
 }
