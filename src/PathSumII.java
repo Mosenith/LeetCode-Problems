@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class PathSumII {
@@ -31,10 +32,45 @@ public class PathSumII {
         TreeNode root2 = new TreeNode(1);
         root2.left = new TreeNode(2);
 
-        System.out.println(pathSum(root2,1));
+        System.out.println(pathSum(root,22));
     }
 
+    static List<List<Integer>> ans;
+    static int target;
     public static List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        ans = new ArrayList<>();
+        target = targetSum;
+        List<Integer> inner = new ArrayList<>();
+
+        dfs(root,targetSum,inner);
+
+        System.out.println(ans);
+        return null;
+    }
+
+    private static void dfs(TreeNode root, int targetSum, List<Integer> inner) {
+        if(root == null) {
+            return;
+        }
+
+        System.out.println("root => " + root.val);
+
+        inner.add(root.val);
+        targetSum -= root.val;
+        if(targetSum == 0 && root.left == null && root.right == null) {
+            ans.add(new ArrayList<>(inner));
+            inner = new ArrayList<>();
+            targetSum = target;
+        }
+
+        dfs(root.left, targetSum, inner);
+        System.out.println("Root after left -- " + root.val);
+        System.out.println("\n****\n");
+
+
+        dfs(root.right,targetSum, inner);
+        System.out.println("Root after right -- " + root.val);
+        System.out.println("\n====\n");
 
     }
 }
