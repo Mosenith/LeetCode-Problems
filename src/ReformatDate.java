@@ -1,0 +1,61 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class ReformatDate {
+    public static void main(String[] args) {
+        String date = "26th May 1960";  // "2052-10-20"
+
+//        System.out.println(date.substring());
+        System.out.println(reformatDate(date));
+    }
+
+    // ***************** 1st Method ******************
+    // Approach 1: Use StringBuilder to store date, month, year
+    // if date.len == 1, add 0 in the front
+    // Use map to store month (Jan 01 - Dec 12), map key to value
+    // Before return ans, add '-' in the between
+    // Runtime  : 1ms            -> + 94.94%
+    // Memory   : 40.74MB        -> + 59.52%
+    public static String reformatDate(String date) {
+        Map<String, String> month = new HashMap<>();
+        month.put("Jan", "01");
+        month.put("Feb", "02");
+        month.put("Mar", "03");
+        month.put("Apr", "04");
+        month.put("May", "05");
+        month.put("Jun", "06");
+        month.put("Jul", "07");
+        month.put("Aug", "08");
+        month.put("Sep", "09");
+        month.put("Oct", "10");
+        month.put("Nov", "11");
+        month.put("Dec", "12");
+
+        StringBuilder dateForm = new StringBuilder();
+        StringBuilder monthForm = new StringBuilder();
+        StringBuilder yearForm = new StringBuilder();
+
+        StringBuilder ans = new StringBuilder();
+        int index = 0;
+
+        while(date.charAt(index) != ' ' && !Character.isLetter(date.charAt(index))) {
+            dateForm.append(date.charAt(index++));
+        }
+
+        if(dateForm.length() == 1) {
+            StringBuilder tmp = dateForm;
+            dateForm = new StringBuilder("0");
+            dateForm.append(tmp);
+        }
+
+        index += 3;
+        monthForm.append(month.get(date.substring(index, index+3)));
+        index += 3;
+        yearForm.append(date.substring(index+1, date.length()));
+
+        ans.append(yearForm + "-").append(monthForm + "-").append(dateForm);
+        return ans.toString();
+    }
+    // ***************** End of 1st Method ******************
+
+}
