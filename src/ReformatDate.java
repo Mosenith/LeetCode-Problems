@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,7 +7,7 @@ public class ReformatDate {
         String date = "26th May 1960";  // "2052-10-20"
 
 //        System.out.println(date.substring());
-        System.out.println(reformatDate(date));
+        System.out.println(reformatDate2(date));
     }
 
     // ***************** 1st Method ******************
@@ -57,5 +58,28 @@ public class ReformatDate {
         return ans.toString();
     }
     // ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Split given string upon encounter ' ' => var
+    // Date -> substring(s[0], s[0].len-2) cos date is either len 3 or 4
+    // All months are stored in a string begin with space at 0 and proceed with all months
+    // s[1] will return 3 chars month & /3 will give a corresponding position in the list
+    // Adjusts it to a 1-based month value (+1) i.e. Jan 1, Feb 2, Mar 3
+    // Runtime  : 1ms            -> + 94.94%
+    // Memory   : 40.74MB        -> + 59.52%
+    public static String reformatDate2(String date) {
+        var s = date.split(" ");
+
+        System.out.println(Arrays.toString(s));
+
+        String months = " JanFebMarAprMayJunJulAugSepOctNovDec";
+        int day = Integer.parseInt(s[0].substring(0, s[0].length() - 2));
+
+        System.out.println(months.indexOf(s[1])/3 + 1);
+
+        int month = months.indexOf(s[1]) / 3 + 1;
+        return String.format("%s-%02d-%02d", s[2], month, day);
+    }
+    // ***************** End of 2nd Method ******************
 
 }
