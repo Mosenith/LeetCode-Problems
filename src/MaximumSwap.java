@@ -6,7 +6,7 @@ public class MaximumSwap {
         int num2 = 9973; // 9973
 
 
-        System.out.println(maximumSwap2(num2));
+        System.out.println(maximumSwap(num));
         System.out.println("****");
 //        maximumSwap(num2);
     }
@@ -24,13 +24,13 @@ public class MaximumSwap {
 
         int[] buckets = new int[10];
         for (int i = 0; i < digits.length; i++) {
-            buckets[digits[i] - '0'] = i;
+            buckets[digits[i] - '0'] = i;   // arr[i] - '0' converts char to num
         }
 
         for(int i=0; i<digits.length; i++) {
             for(int j=9; j>digits[i]-'0'; j--) {
-                if(buckets[j] > i) {
-                    // swap
+                if(buckets[j] > i) {    // if j exists in digit, buckets[j] > i
+                    // swap & return
                     char tmp = digits[i];
                     digits[i] = digits[buckets[j]];
                     digits[buckets[j]] = tmp;
