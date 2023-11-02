@@ -8,7 +8,7 @@ public class CourseSchedule {
 
         // {{0,1},{1,0}} - [[1,0],[0,1]] => false
         int numCourses2= 3;
-        int[][] prerequisites2 = {{0,1},{0,2},{2,1}};
+        int[][] prerequisites2 = {{0,1},{0,2},{2,1}}; // true
 
         // true
 //        int numCourses2= 5;
@@ -16,45 +16,66 @@ public class CourseSchedule {
         // 4,1,2
         // 1,2,3
 
-//        System.out.println(prerequisites2[3][0]);
-        System.out.println(canFinish2(numCourses2, prerequisites2));
+        System.out.println(canFinish(numCourses2, prerequisites2));
+//        System.out.println(canFinish2(numCourses2, prerequisites2));
     }
 
-    // false
-    // 3
-    // [[1,0],[0,2],[2,1]]
-    // must -> 0-1-2-0-2
-    // then -> 1,0,2
+    // ***************** 1st Method ******************
+    // Approach 1: Basically check if there's a cycle, if so false, otherwise true
+    // Create an empty adjacency list (graph), each node = course, edges = prerequisites
+    // indegree -> keep track of the num of course can take after preReq
+    // Use Queue to store visited Node => Performing Topological Sort using Kahn's Algorithm
+    // Runtime  : 4ms            -> + 80.05%
+    // Memory   : 43.35MB        -> + 95.28%
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
-        List<Integer>[] g = new List[numCourses];
-        Arrays.setAll(g, k -> new ArrayList<>());
+        List<Integer>[] adj = new List[numCourses];
+        int[] indegree = new int[numCourses];
+        List<Integer> ans = new ArrayList<>();
 
-        int[] indeg = new int[numCourses];
-        for (var p : prerequisites) {
-            int a = p[0], b = p[1];
-            g[b].add(a);
-            ++indeg[a];
+        for (int[] pair : prerequisites) {
+            int course = pair[0];
+            int prerequisite = pair[1];
+            if (adj[prerequisite] == null) {
+                adj[prerequisite] = new ArrayList<>();
+            }
+            adj[prerequisite].add(course);
+            indegree[course]++;
         }
 
-        Deque<Integer> q = new ArrayDeque<>();
-        for (int i = 0; i < numCourses; ++i) {
-            if (indeg[i] == 0) {
-                q.offer(i);
+        System.out.println(Arrays.toString(adj));
+        System.out.println(Arrays.toString(indegree));
+
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                queue.offer(i);
             }
         }
-        int cnt = 0;
-        while (!q.isEmpty()) {
-            int i = q.poll();
-            ++cnt;
-            for (int j : g[i]) {
-                if (--indeg[j] == 0) {
-                    q.offer(j);
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            ans.add(current);
+
+            if (adj[current] != null) {
+                for (int next : adj[current]) {
+                    indegree[next]--;
+                    if (indegree[next] == 0) {
+                        queue.offer(next);
+                    }
                 }
             }
         }
-        return cnt == numCourses;
+
+        return ans.size() == numCourses;
     }
 
+    // ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Use DFS
+    // Runtime  : 6ms            -> + 47.41%
+    // Memory   : 44.67MB        -> + 13.87%%
     public static boolean canFinish2(int numCourses, int[][] prerequisites) {
         // key - must take course, value - course to take after prerequisite
         Map<Integer, List<Integer>> preMap = new HashMap<>();
@@ -65,36 +86,36 @@ public class CourseSchedule {
         }
 
         for(int i=0; i<prerequisites.length; i++) {
-            System.out.println(Arrays.toString(prerequisites[i]));
             int preReqCourse = prerequisites[i][1];
-
             preMap.get(preReqCourse).add(prerequisites[i][0]);
-            System.out.println("#####\n");
         }
 
         System.out.println(preMap);
 
         // loop from i=0 to numCourses-1
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> visitedSet = new HashSet<>();
         for(int i=0; i<numCourses; i++) {
-            if(!dfs(i,preMap,set))
+            if(!dfs(i,preMap,visitedSet))
                 return false;
         }
 
         return true;
     }
 
-    private static boolean dfs(int key, Map<Integer, List<Integer>> preMap, Set<Integer> set) {
-        if(set.contains(key)) return false;
+    private static boolean dfs(int key, Map<Integer, List<Integer>> preMap, Set<Integer> visitedSet) {
+        if(visitedSet.contains(key)) return false;
         if(preMap.get(key).isEmpty()) return true;
 
-        set.add(key);
+        // add current key to visitedSet
+        visitedSet.add(key);
         for(int course : preMap.get(key)) {
-            if(!dfs(course,preMap,set))
+            if(!dfs(course,preMap,visitedSet))
                 return false;
         }
-        set.remove(key);
+        visitedSet.remove(key);
+        // set value to empty arrayList for next check (return true anyway - no need to check again)
         preMap.put(key,new ArrayList<>());
         return true;
     }
+    // ***************** End of 2nd Method ******************
 }
