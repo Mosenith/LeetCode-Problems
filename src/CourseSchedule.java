@@ -17,7 +17,7 @@ public class CourseSchedule {
         // 1,2,3
 
 //        System.out.println(prerequisites2[3][0]);
-        System.out.println(canFinish(numCourses2, prerequisites2));
+        System.out.println(canFinish2(numCourses2, prerequisites2));
     }
 
     // false
@@ -26,54 +26,16 @@ public class CourseSchedule {
     // must -> 0-1-2-0-2
     // then -> 1,0,2
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
-        List<List<Integer>> adj = new ArrayList<>(numCourses);
-        for(int i=0;i<numCourses;i++){
-            adj.add(new ArrayList<>());
-        }
-
-        System.out.println(adj);
-
-        int[] preReqRequired = new int[numCourses];
-        for(int i=0;i<prerequisites.length;i++){
-            int preReq = prerequisites[i][1];
-            adj.get(preReq).add(prerequisites[i][0]);
-            preReqRequired[prerequisites[i][0]]++;
-        }
-        System.out.println(Arrays.toString(preReqRequired));
-        System.out.println("current adj -> " + adj);
-
-        Queue<Integer> queue = new LinkedList<>();
-        for(int i=0;i<numCourses;i++){
-            if(preReqRequired[i]==0){
-                queue.add(i);
-            }
-        }
-
-        System.out.println("queue -> " + queue);
-        List<Integer> topoOrder = new ArrayList<>();
-        while(!queue.isEmpty()){
-            int curr = queue.poll();
-            topoOrder.add(curr);
-            for(int i=0;i<adj.get(curr).size();i++){
-                preReqRequired[adj.get(curr).get(i)]--;
-                if(preReqRequired[adj.get(curr).get(i)]==0){
-                    queue.add(adj.get(curr).get(i));
-                }
-            }
-        }
-        if(topoOrder.size() == numCourses) return true;
-        return false;
-    }
-
-    public static boolean canFinish2(int numCourses, int[][] prerequisites) {
         List<Integer>[] g = new List[numCourses];
         Arrays.setAll(g, k -> new ArrayList<>());
+
         int[] indeg = new int[numCourses];
         for (var p : prerequisites) {
             int a = p[0], b = p[1];
             g[b].add(a);
             ++indeg[a];
         }
+
         Deque<Integer> q = new ArrayDeque<>();
         for (int i = 0; i < numCourses; ++i) {
             if (indeg[i] == 0) {
@@ -91,5 +53,48 @@ public class CourseSchedule {
             }
         }
         return cnt == numCourses;
+    }
+
+    public static boolean canFinish2(int numCourses, int[][] prerequisites) {
+        // key - must take course, value - course to take after prerequisite
+        Map<Integer, List<Integer>> preMap = new HashMap<>();
+
+        // Create a map with key from 0 to numCourses & Value = empty arraylist
+        for(int i=0; i<numCourses; i++) {
+            preMap.put(i, new ArrayList<>());
+        }
+
+        for(int i=0; i<prerequisites.length; i++) {
+            System.out.println(Arrays.toString(prerequisites[i]));
+            int preReqCourse = prerequisites[i][1];
+
+            preMap.get(preReqCourse).add(prerequisites[i][0]);
+            System.out.println("#####\n");
+        }
+
+        System.out.println(preMap);
+
+        // loop from i=0 to numCourses-1
+        Set<Integer> set = new HashSet<>();
+        for(int i=0; i<numCourses; i++) {
+            if(!dfs(i,preMap,set))
+                return false;
+        }
+
+        return true;
+    }
+
+    private static boolean dfs(int key, Map<Integer, List<Integer>> preMap, Set<Integer> set) {
+        if(set.contains(key)) return false;
+        if(preMap.get(key).isEmpty()) return true;
+
+        set.add(key);
+        for(int course : preMap.get(key)) {
+            if(!dfs(course,preMap,set))
+                return false;
+        }
+        set.remove(key);
+        preMap.put(key,new ArrayList<>());
+        return true;
     }
 }
