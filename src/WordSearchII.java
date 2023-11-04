@@ -19,7 +19,6 @@ public class WordSearchII {
     }
 
     public static void main(String[] args) {
-        //
         char[][] board = {{'o', 'a', 'a', 'n'},
                 {'e', 't', 'a', 'e'},
                 {'i', 'h', 'k', 'r'},
