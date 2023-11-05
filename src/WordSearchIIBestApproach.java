@@ -28,6 +28,10 @@ public class WordSearchIIBestApproach {
         System.out.println(ans.findWords(board, words));
     }
 
+    // ***************** 3rd Method ******************
+    // Approach 1: Use Trie and dfs
+    // Runtime  : 126ms            -> + 76.97%
+    // Memory   : 43.78MB        -> + 81.69%
     public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
         TrieNode root = buildTrie(words);
