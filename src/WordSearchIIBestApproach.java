@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class WordSearchIIBestApproach {
@@ -30,6 +31,8 @@ public class WordSearchIIBestApproach {
     public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
         TrieNode root = buildTrie(words);
+
+        printTrie(root);
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 dfs (board, i, j, root, res);
@@ -72,6 +75,28 @@ public class WordSearchIIBestApproach {
     class TrieNode {
         TrieNode[] next = new TrieNode[26];
         String word;
+    }
+
+    public void printTrie(TrieNode node, String prefix) {
+        if (node == null) {
+            return;
+        }
+
+        if (node.word != null) {
+            System.out.println(prefix + node.word);
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (node.next[i] != null) {
+                char c = (char) ('a' + i);
+                printTrie(node.next[i], prefix + c);
+            }
+        }
+    }
+
+    // To print the entire trie, call this method with the root node.
+    public void printTrie(TrieNode root) {
+        printTrie(root, "");
     }
 
 }
