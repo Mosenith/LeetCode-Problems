@@ -23,3 +23,11 @@ FROM (
     GROUP BY email
 ) AS email_counts
 WHERE count > 1;
+
+
+Sol2: Less complicated
+
+SELECT Email
+FROM Person
+GROUP BY Email
+HAVING count(Id) > 1;
