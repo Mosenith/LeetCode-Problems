@@ -41,6 +41,7 @@ public class ExpressiveWords {
             dup = 0;
         }
 
+        // s = heeelllooo
         System.out.println(set);
         System.out.println(map);
 
