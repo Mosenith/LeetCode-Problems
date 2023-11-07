@@ -8,8 +8,11 @@ public class ExpressiveWords {
 //        String s = "zzzzzyyyyy";
 //        String[] words = {"zzyy","zy","zyy"};
 
-        String s = "heeellooo"; // s > words
-        String[] words = {"hello", "hi", "helo"};
+//        String s = "heeellooo"; // s > words
+//        String[] words = {"hello", "hi", "helo"};
+
+        String s = "heeelllooo";  // <= i
+        String[] words = {"hellllo"};
 
         System.out.println(expressiveWords(s,words));
     }
@@ -20,55 +23,71 @@ public class ExpressiveWords {
     public static int expressiveWords(String s, String[] words) {
         int count = 0;
         Map<Character, Integer> map = new HashMap<>();
-        Map<Character, Integer> stretchy = new HashMap<>();
+        Set<Character> set = new HashSet<>();
+        int dup = 0;
 
-
-        for(int i=0; i<s.length(); i++) {
-            Character c = s.charAt(i);
-            map.computeIfPresent(c, (k,v) -> v+1);
-            map.computeIfAbsent(c, v -> 1);
-
-            if(map.get(c) >= 3) {
-                stretchy.put(c, map.get(c));
+        for(int i=0; i<s.length()-1; i++) {
+            while (i < s.length() -1 && s.charAt(i) == s.charAt(i+1)) {
+                dup++;
+                i++;
             }
+
+            if(dup <= 1) {
+                set.add(s.charAt(i));
+            } else {
+                map.put(s.charAt(i), dup+1);
+            }
+
+            dup = 0;
         }
 
-        System.out.println("Overall map = " + map);
-        System.out.println("stretchy = " + stretchy);
+        System.out.println(set);
+        System.out.println(map);
 
         for(String str : words) {
-            Map<Character, Integer> wMap = new HashMap<>();
-            Set<Character> store = new HashSet<>();
-            char[] wordArray = str.toCharArray();
-            boolean flag = false;
+            if(str.length() > s.length()) continue;
+            int i = 0; // s
+            int j = 0; // str
+            System.out.println(str + " vs " + s);
+            for(; j<str.length(); j++) {
+                System.out.println("---" + str.charAt(j) + "---");
+                System.out.println("Start j = " + j + " and i = " + i);
+                if(set.contains(str.charAt(j))) {
+                    if(str.charAt(j) != s.charAt(i)) {
+                        break;
+                    } else {
+                        i++;
+                    }
+                } else {
+                    int prev = i;
+                    while(i < s.length() && str.charAt(j) == s.charAt(i)) {
+                        i++;
+                    }
+                    System.out.println("j=" + j + " && prev=" + prev);
+                    System.out.println(i-prev + " vs " + map.get(s.charAt(prev)));
 
-            System.out.println("word = " + str);
-            for(char c : wordArray) {
-                System.out.println("char = " + c);
-//                wMap.computeIfPresent(c, (k,v) -> v+1);
-//                wMap.computeIfAbsent(c, v -> 1);
+                    int tmp = j;
+                    while(j< str.length() && str.charAt(j) == s.charAt(prev)) {
+                        j++;
+                    }
 
-                if(!stretchy.containsKey(c)) {
-                    wMap.computeIfPresent(c, (k,v) -> v+1);
-                    wMap.computeIfAbsent(c, v -> 1);
-                    store.add(c);
+                    System.out.println("\n===== tmp = " + tmp + ", j = " + j);
+                    System.out.println("===== j - tmp = " + (j-tmp));
+                    if((j-prev) > map.get(s.charAt(prev))) {
+                        break;
+                    }
+                    i++;
+                    System.out.println(i + " : " + j);
+                    System.out.println("#ocurrance of " + str.charAt(j) + " = " + (i-prev));
                 }
-
-//                if(!map.containsKey(c) || wMap.get(c) > map.get(c)) {
-//                    System.out.println("Set flag ===> true");
-//                    System.out.println(map.containsKey(c));
-//                    System.out.println(wMap.get(c) + " vs " + map.get(c));
-//                    flag = true;
-//                    System.out.println("++++++\n");
-//                }
+                System.out.println("End j = " + j);
+                System.out.println("~~~~~~~\n");
             }
 
-            System.out.println(str + " => " + wMap);
-
-
-            if(wMap.size() <= map.size() && !flag)
+            if(j >= str.length() && i >= s.length()) {
                 count++;
-            System.out.println("***********");
+            }
+            System.out.println("======\n");
         }
 
         return count;
