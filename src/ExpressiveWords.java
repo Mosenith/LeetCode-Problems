@@ -5,92 +5,82 @@ import java.util.Set;
 
 public class ExpressiveWords {
     public static void main(String[] args) {
+        // 3
 //        String s = "zzzzzyyyyy";
 //        String[] words = {"zzyy","zy","zyy"};
 
-//        String s = "heeellooo"; // s > words
-//        String[] words = {"hello", "hi", "helo"};
+        // 1
+        String s = "heeellooo"; // s > words
+        String[] words = {"hello", "hi", "helo"};
 
-        String s = "heeelllooo";  // <= i
-        String[] words = {"hellllo"};
+        // 0
+//        String s = "heeelllooo";  // <= i
+//        String[] words = {"hellllo"};
 
         System.out.println(expressiveWords(s,words));
     }
 
-    // try 2 pointers -> i for s, j for words[i]
-    // when s[i] != w[j], move j++. Otherwise, move i++;
-    // keep track of dup cos if i moves & j moves but dup < 3 => no count
+    // ***************** 1st Method ******************
+    // Approach 1: Check every str in words[] with s
+    // Let i -> s, j -> str
+    // While Loop until either i > s.len or j > str.len
+    // In Loop, check s.at(i) == str.at(j) -> if not return false
+    // Else - countS = consecutive characters in s
+    // countStr = consecutive characters in str
+    // Compare both => countS < countStr || (countS > countStr && countS < 3) return false ****
+    // Then, next i & j until out of loop return i == s.length() && j == str.length()
+    // Runtime  : 2ms          -> + 63.37%
+    // Memory   : 40.52MB      -> + 79.87%
     public static int expressiveWords(String s, String[] words) {
         int count = 0;
-        Map<Character, Integer> map = new HashMap<>();
-        Set<Character> set = new HashSet<>();
-        int dup = 0;
 
-        for(int i=0; i<s.length()-1; i++) {
-            while (i < s.length() -1 && s.charAt(i) == s.charAt(i+1)) {
-                dup++;
-                i++;
-            }
-
-            if(dup <= 1) {
-                set.add(s.charAt(i));
-            } else {
-                map.put(s.charAt(i), dup+1);
-            }
-
-            dup = 0;
-        }
-
-        // s = heeelllooo
-        System.out.println(set);
-        System.out.println(map);
-
-        for(String str : words) {
-            if(str.length() > s.length()) continue;
-            int i = 0; // s
-            int j = 0; // str
-            System.out.println(str + " vs " + s);
-            for(; j<str.length(); j++) {
-                System.out.println("---" + str.charAt(j) + "---");
-                System.out.println("Start j = " + j + " and i = " + i);
-                if(set.contains(str.charAt(j))) {
-                    if(str.charAt(j) != s.charAt(i)) {
-                        break;
-                    } else {
-                        i++;
-                    }
-                } else {
-                    int prev = i;
-                    while(i < s.length() && str.charAt(j) == s.charAt(i)) {
-                        i++;
-                    }
-                    System.out.println("j=" + j + " && prev=" + prev);
-                    System.out.println(i-prev + " vs " + map.get(s.charAt(prev)));
-
-                    int tmp = j;
-                    while(j< str.length() && str.charAt(j) == s.charAt(prev)) {
-                        j++;
-                    }
-
-                    System.out.println("\n===== tmp = " + tmp + ", j = " + j);
-                    System.out.println("===== j - tmp = " + (j-tmp));
-                    if((j-prev) > map.get(s.charAt(prev))) {
-                        break;
-                    }
-                    i++;
-                    System.out.println(i + " : " + j);
-                    System.out.println("#ocurrance of " + str.charAt(j) + " = " + (i-prev));
-                }
-                System.out.println("End j = " + j);
-                System.out.println("~~~~~~~\n");
-            }
-
-            if(j >= str.length() && i >= s.length()) {
+        for (String str : words) {
+            if (isExpressive(s, str)) {
                 count++;
             }
-            System.out.println("======\n");
         }
 
         return count;
     }
+
+    private static boolean isExpressive(String s, String str) {
+        int i = 0; // s
+        int j = 0; // str
+
+        while (i < s.length() && j < str.length()) {
+            if (s.charAt(i) == str.charAt(j)) {
+                int countS = 1;
+                int countStr = 1;
+
+                // Count consecutive characters in s
+                while (i + 1 < s.length() && s.charAt(i) == s.charAt(i + 1)) {
+                    i++;
+                    countS++;
+                }
+
+                // Count consecutive characters in str
+                while (j + 1 < str.length() && str.charAt(j) == str.charAt(j + 1)) {
+                    j++;
+                    countStr++;
+                }
+
+                // s > Str cos s is the stretchy version of Str
+                // s is stretchy unless #RepeatCharacter > 2
+                if (countS < countStr || (countS > countStr && countS < 3)) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+
+            i++;
+            j++;
+        }
+
+        // Expressive word if both i & j reach the len of s & str(words[i]) respectively
+        return i == s.length() && j == str.length();
+    }
+    //  ***************** End of 1st Method ******************
+
+
 }
