@@ -28,8 +28,18 @@ public class Main {
         System.out.println(10 + 20 + "Javapoint");
         System.out.println("Javapoint" + 10 + 20);
 
-        int[] arr = {1,2,3};
-        HashSet<Integer> set = new HashSet<>();
+        int y = 10 / 0;
+
+        try {
+            System.out.println(y);
+        } catch (ArithmeticException e) {
+            // Handle ArithmeticException
+            System.out.println("Cannot divide by zero!");
+//            throw new ArithmeticException("")
+        } catch (Exception e) {
+            // Handle all other exceptions
+            System.out.println("An unexpected error occurred.");
+        }
 
     }
 
