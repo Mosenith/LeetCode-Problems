@@ -11,6 +11,8 @@ public class Practice {
         // 3 -> (3,..), 2 ->
 
         System.out.println(Arrays.toString(twoSum(numbers,target)));
+
+        System.out.println(getSum(2,3));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -25,5 +27,11 @@ public class Practice {
         }
 
         return new int[]{};
+    }
+
+    public static int getSum(int a, int b) {
+        int n = Math.addExact(a,b);
+        System.out.println(n);
+        return 0;
     }
 }
