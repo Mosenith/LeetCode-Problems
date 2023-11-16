@@ -39,13 +39,15 @@ public class ZigzagConversion {
         if(numRows <= 1 || numRows >= s.length())
             return s;
 
+        // i tracks s, j tracks output[]
         for(int i=0, j=0; i<s.length(); i++){
-
+            System.out.println("i = " + i + ", j = " + j);
             if(output [j] == null){
                 output [j] = "";
             }
 
             if(j==(numRows-1)){
+                // work from down to upper
                 output [j] = output[j].concat(String.valueOf(s.charAt(i)));
                 j--;
                 while(j!=0){
@@ -62,6 +64,8 @@ public class ZigzagConversion {
                 j++;
             }
 
+            System.out.println(Arrays.toString(output));
+            System.out.println("******");
         }
 
         String str = String.join("",output);
@@ -95,12 +99,56 @@ public class ZigzagConversion {
 
     public static void main(String[] args) {
         String s = "PAYPALISHIRING";
-        int numRows = 3;
+        int numRows = 4;
 
         //System.out.println(convert2("ABCDE",4));
         //System.out.println(convert2(s,numRows));
         //System.out.println(s.length());
         System.out.println(convert2(s,numRows));
+        System.out.println(convert4(s,numRows));
 
+
+    }
+
+    // ***************** 1st Method ******************
+    // Approach 4: Calculate step = 2 * numRows - 2;
+    // at first row (i=0) & last row (i=numRows-1), every char at i & i+step
+    // in middle row, s1 = 2 * (numRows - 1 - i), s2 = step - s1
+    // downward => copyI += s1, upward => copyI += s2;
+    // Runtime  : 2ms           -> + 99.74%
+    // Memory   : 44.40 MB      -> + 33.89%
+    public static String convert4(String s, int numRows) {
+        if (numRows == 1)
+            return s;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        int step = 2 * numRows - 2;
+
+        for(int i=0; i<numRows; i++) {
+            if(i == 0 || i == numRows-1) {
+                int start = i;
+                while(start < s.length()) {
+                    stringBuilder.append(s.charAt(start));
+                    start += step;
+                }
+            } else {
+                boolean downward = true;
+                int step1 = 2 * (numRows - 1 - i);
+                int step2 = step - step1;
+                int start = i;
+
+                while(start < s.length()) {
+                    stringBuilder.append(s.charAt(start));
+                    if(downward) {
+                        start += step1;
+                    } else {
+                        start += step2;
+                    }
+                    downward = !downward;
+                }
+            }
+        }
+
+        return stringBuilder.toString();
     }
 }
