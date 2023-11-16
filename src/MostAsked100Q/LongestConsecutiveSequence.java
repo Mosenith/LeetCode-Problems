@@ -101,4 +101,36 @@ public class LongestConsecutiveSequence {
         return ans;
     }
     // ***************** End of 3rd Method ******************
+
+    public static int longestConsecutive4(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        Set<Integer> s = new HashSet<>();
+        for (int x : nums) {
+            s.add(x);
+        }
+        int ans = 1;
+        for (int x : nums) {
+            int left = x-1;
+            int right = x+1;
+            int count = 1;
+
+            while(s.contains(left)) {
+                count++;
+                s.remove(left);
+                left--;
+            }
+
+            while(s.contains(right)) {
+                count++;
+                s.remove(right);
+                right++;
+            }
+
+            ans = Math.max(ans,count);
+        }
+
+        return ans;
+    }
 }
