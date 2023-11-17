@@ -65,15 +65,30 @@ public class MaximumSubarray {
     //  ***************** End of 3rd Method ******************
     public static void main(String[] args) {
         // out : 6
-        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+//        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
 
         // out : 23
-//        int[] nums = {5,4,-1,7,8};
+        int[] nums = {5,4,-1,7,8};
 
         // out : 1
 //        int[] nums = {1};
 
-        System.out.println(maxSubArray3(nums));
+        System.out.println(maxSubArray(nums));
+    }
+
+
+    public static int maxSubArray4(int[] nums) {
+        if(nums.length==1) return nums[0];
+
+        int curMax = nums[0];
+        int finalMax = nums[0];
+
+        for(int i=1; i<nums.length; i++) {
+            curMax = Math.max(nums[i], curMax+nums[i]);
+            finalMax = Math.max(curMax,finalMax);
+        }
+
+        return finalMax;
     }
 
 }
