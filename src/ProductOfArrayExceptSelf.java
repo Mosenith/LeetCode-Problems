@@ -10,7 +10,7 @@ public class ProductOfArrayExceptSelf {
         System.out.println(Arrays.toString(productExceptSelf(nums1)));
     }
 
-    // ***************** 3rd Method ******************
+    // ***************** 1st Method ******************
     // Approach 1: There are 3 special case
     // 1: No zero, calculate the total product in 1st loop, then 2nd, total/nums[i] -> ans[i]
     // 2: 1 zero, keep zeroIndex & cal total product without zero, ans all zero except at zeroIndex=total
