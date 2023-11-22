@@ -1,4 +1,4 @@
-package Blind75;
+package Blind75.Array;
 
 public class PracticeProb121 {
     public static void main(String[] args) {
