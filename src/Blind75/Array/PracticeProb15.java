@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PracticeProb15 {
     public static void main(String[] args) {
-        int[] nums = {0,0,0,0};
+        int[] nums = {-0,1,1};
 
         System.out.println(threeSum(nums));
     }
@@ -24,6 +24,20 @@ public class PracticeProb15 {
             int k=nums.length-1;
             while(k > j) {
                 int curSum = nums[i] + nums[j] + nums[k];
+                if(curSum == 0) {
+                    ans.add(Arrays.asList(nums[i], nums[j++], nums[k--]));
+                    // get rid of dups
+                    while(j<nums.length && nums[j] == nums[j-1]) {
+                        j++;
+                    }
+                    while(k>=0 && nums[k] == nums[k+1]) {
+                        k--;
+                    }
+                } else if(curSum > 0) {
+                    k--;
+                } else {
+                    j++;
+                }
             }
         }
 
