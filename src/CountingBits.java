@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class CountingBits {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(countBits(5)));
+        System.out.println(Arrays.toString(countBits2(5)));
     }
     public static int[] countBits(int n) {
         int[] arr = new int[n+1];
@@ -26,5 +26,18 @@ public class CountingBits {
         }
 
         return zero;
+    }
+
+    public static int[] countBits2(int n) {
+        // [0, 1, 1, 2, 1, 2, 2, 3]
+        int[] ans = new int[n + 1];
+        for (int i = 0; i <= n; i++) {
+            if (i % 2 == 0) {
+                ans[i] = ans[i / 2];
+            } else {
+                ans[i] = ans[i / 2] + 1;
+            }
+        }
+        return ans;
     }
 }
