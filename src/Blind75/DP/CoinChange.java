@@ -1,31 +1,46 @@
 package Blind75.DP;
 
+import java.util.Arrays;
+
 public class CoinChange {
     public static void main(String[] args) {
-        int[] coins = {1,2,5};
-        int amount = 11;
+        int[] coins = {186,419,83,408};
+        int amount = 6249;
+
+        System.out.println(coinChange(coins,amount));
     }
 
     static int count = 0;
-    public int coinChange(int[] coins, int amount) {
-        if(coins[0] > amount) return 0;
+    static int curSum = 0;
+    public static int coinChange(int[] coins, int amount) {
+        if(coins[0] > amount) return -1;
+        Arrays.sort(coins);
+        System.out.println(Arrays.toString(coins));
 
-        helper(coins,amount,0, coins.length-1);
+        helper(coins, amount, coins.length-1);
 
-        return count;
+        return -1;
     }
 
-    private void helper(int[] coins, int amount, int curSum, int start) {
-        if(start < 0) return;
+    private static void helper(int[] coins, int amount, int start) {
+        if(start < 0 || curSum == amount) return;
+
+        if(curSum > amount) {
+            if(count > 0)
+                --count;
+            else
+                --start;
+        }
 
         int tmp = amount / coins[start];
         curSum += tmp * coins[start];
+        count = tmp;
 
         if(curSum > amount) {
             curSum -= tmp * coins[start];
         }
 
-        helper(coins, amount, curSum, start-1);
+        helper(coins, amount, start-1);
 
 
     }
