@@ -10,24 +10,21 @@ public class CoinChange {
         System.out.println(coinChange(coins,amount));
     }
 
-    static int count = 0;
-    static int curSum = 0;
     public static int coinChange(int[] coins, int amount) {
-        int len = coins.length;
-        int[] dp = new int[len+1];
+        int[] dp = new int[amount+1];
 
-        // base case
-        dp[0] = 1;
-//        for(int i=1; i<len; i++) {
-//            dp[i] = dp[i-coins[i]] + dp[i-coins[]]
-//        }
-
-
-        return dp[coins.length];
+        for (int i=1; i<=amount; i++) {
+            int min = Integer.MAX_VALUE;
+            for (int j=0; j<coins.length; j++) {
+                if (i>=coins[j] && dp[i-coins[j]] != -1) {
+                    min = Math.min(min,dp[i-coins[j]]);
+                }
+            }
+            dp[i] =  (min == Integer.MAX_VALUE) ? -1 : 1+min;
+        }
+        return dp[amount];
     }
 
-    // coins = [2], amount = 3 => -1
-    // coins = [1], amount = 0 => 0
 
 
 }
