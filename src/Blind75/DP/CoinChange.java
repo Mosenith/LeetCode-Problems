@@ -13,37 +13,21 @@ public class CoinChange {
     static int count = 0;
     static int curSum = 0;
     public static int coinChange(int[] coins, int amount) {
-        if(coins[0] > amount) return -1;
-        Arrays.sort(coins);
-        System.out.println(Arrays.toString(coins));
+        int len = coins.length;
+        int[] dp = new int[len+1];
 
-        helper(coins, amount, coins.length-1);
+        // base case
+        dp[0] = 1;
+//        for(int i=1; i<len; i++) {
+//            dp[i] = dp[i-coins[i]] + dp[i-coins[]]
+//        }
 
-        return -1;
+
+        return dp[coins.length];
     }
 
-    private static void helper(int[] coins, int amount, int start) {
-        if(start < 0 || curSum == amount) return;
-
-        if(curSum > amount) {
-            if(count > 0)
-                --count;
-            else
-                --start;
-        }
-
-        int tmp = amount / coins[start];
-        curSum += tmp * coins[start];
-        count = tmp;
-
-        if(curSum > amount) {
-            curSum -= tmp * coins[start];
-        }
-
-        helper(coins, amount, start-1);
-
-
-    }
+    // coins = [2], amount = 3 => -1
+    // coins = [1], amount = 0 => 0
 
 
 }
