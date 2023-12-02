@@ -1,8 +1,8 @@
 public class IsSubsequence {
     public static void main(String[] args) {
 //        String  s = "aaaaaa", t = "bbaaaa";
-        String s = "axc", t = "ahbgdc";
-        System.out.println(isSubsequence(s,t));
+        String s = "abc", t = "ahbgdc";
+        System.out.println(isSubsequence2(s,t));
     }
 
     // ***************** 1st Method ******************
@@ -40,5 +40,34 @@ public class IsSubsequence {
         return i == s.length();
     }
     // ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Using Recursion - start from both 0
+    // If sI matched tI, increment both indices. If sI = s.len-1 => true
+    // Otherwise, increment tI
+    // Base case, check sI >= s.len || tI >= t.len => false
+    // Runtime  : 1ms           -> + 91.88%
+    // Memory   : 42.33 MB      -> + 5.21%
+
+    public static boolean isSubsequence2(String s, String t) {
+        if(s.isEmpty()) return true;
+
+        return helper(s,t,0,0);
+    }
+
+    private static boolean helper(String s, String t, int sIndex, int tIndex) {
+        if(sIndex >= s.length() || tIndex >= t.length())
+            return  false;
+
+        if(s.charAt(sIndex) == t.charAt(tIndex)) {
+            if(sIndex == s.length()-1) {
+                return true;
+            }
+            sIndex++;
+        }
+
+        return helper(s,t,sIndex,tIndex+1);
+    }
+    // ***************** End of 2nd Method ******************
 
 }
