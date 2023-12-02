@@ -4,7 +4,20 @@ public class IsSubsequence {
         String s = "axc", t = "ahbgdc";
         System.out.println(isSubsequence(s,t));
     }
+
+    // ***************** 1st Method ******************
+    // Approach : Init index of s & t to 0
+    // Start working from left to right by securing the curInd of t whenever it matches curInd of s
+    // if curInd of t (prev), matched with s.at(i) at j(prev->t.len) => set prev=j+1 & break;
+    // If j == t.len-1 within the 2nd loop return false => curChar doesn't exist in the t
+    // Within 1st loop, prev == t.length() && i != s.length()-1 => it's reached the end of t
+    // while there are/is character(s) in s to be examined
+    // If t.length() < s.length() => false immediately
+    // Runtime  : 1ms           -> + 91.88%
+    // Memory   : 40.30 MB      -> + 74.11%
     public static boolean isSubsequence(String s, String t) {
+        if(t.length() < s.length()) return false; // might consume more memory
+
         int i=0;
         int prev = 0;
 
@@ -26,4 +39,6 @@ public class IsSubsequence {
 
         return i == s.length();
     }
+    // ***************** End of 1st Method ******************
+
 }
