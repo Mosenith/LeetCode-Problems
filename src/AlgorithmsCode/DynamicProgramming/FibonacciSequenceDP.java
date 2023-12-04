@@ -1,4 +1,4 @@
-package AlgorithmsCode;
+package AlgorithmsCode.DynamicProgramming;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
