@@ -16,16 +16,13 @@ public class HouseRobberII {
     }
 
     private static int rob(int[] nums, int left, int right) {
-        System.out.println(left + " : " + right);
         int cur = 0, prev = 0;
 
         for(; left<=right; left++) {
             int tmp = Math.max(cur,prev);
             cur = prev + nums[left];
             prev = tmp;
-            System.out.println(cur + " * " + prev);
         }
-        System.out.println("-----\n");
         return Math.max(cur,prev);
     }
 }
