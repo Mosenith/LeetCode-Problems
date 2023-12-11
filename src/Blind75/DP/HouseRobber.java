@@ -12,7 +12,7 @@ public class HouseRobber {
     }
 
     // ***************** 1st Method ******************
-    // Approach : Dynamic Programming
+    // Approach 1: Dynamic Programming
     // Runtime  : 1ms        -> + 100.00%
     // Memory   : 39.77MB    -> + 61.89%
     public static int rob(int[] nums) {
@@ -26,4 +26,21 @@ public class HouseRobber {
         return dp[nums.length];
     }
     // ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Dynamic Programming
+    // Runtime  : 1ms        -> + 100.00%
+    // Memory   : 40.08MB    -> + 37.16%
+    public static int rob2(int[] nums) {
+        int cur = 0, prev = 0;
+
+        for(int n : nums) {
+            int tmp = Math.max(cur,prev);
+            cur = prev + n;
+            prev = tmp;
+        }
+
+        return Math.max(cur,prev);
+    }
+    // ***************** End of 2nd Method ******************
 }
