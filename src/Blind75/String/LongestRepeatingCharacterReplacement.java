@@ -1,5 +1,6 @@
 package Blind75.String;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,4 +41,21 @@ public class LongestRepeatingCharacterReplacement {
     }
     // ***************** End of 1st Method ******************
 
+    public static int characterReplacement2(String s, int k) {
+        int[] counter = new int[26];
+        int i = 0;
+        int j = 0;
+        for (int maxCnt = 0; i < s.length(); ++i) {
+            char c = s.charAt(i);
+            ++counter[c - 'A'];
+            maxCnt = Math.max(maxCnt, counter[c - 'A']);
+            if (i - j + 1 - maxCnt > k) {
+                --counter[s.charAt(j) - 'A'];
+                ++j;
+            }
+
+            System.out.println(Arrays.toString(counter));
+        }
+        return i - j;
+    }
 }
