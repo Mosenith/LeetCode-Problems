@@ -9,7 +9,7 @@ public class LongestRepeatingCharacterReplacement {
         String s = "AABABBA";
         int k = 1;
 
-        System.out.println(characterReplacement(s,k));
+        System.out.println(characterReplacement2(s,k));
     }
 
     // ***************** 1st Method ******************
@@ -41,21 +41,27 @@ public class LongestRepeatingCharacterReplacement {
     }
     // ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Similar approach as the 1st but used array[26] - optimized method
+    // Runtime  : 8ms         -> + 75.93%
+    // Memory   : 41.66MB     -> + 59.16%
     public static int characterReplacement2(String s, int k) {
         int[] counter = new int[26];
         int i = 0;
         int j = 0;
         for (int maxCnt = 0; i < s.length(); ++i) {
             char c = s.charAt(i);
+
             ++counter[c - 'A'];
             maxCnt = Math.max(maxCnt, counter[c - 'A']);
+
             if (i - j + 1 - maxCnt > k) {
                 --counter[s.charAt(j) - 'A'];
                 ++j;
             }
-
-            System.out.println(Arrays.toString(counter));
         }
+
         return i - j;
     }
+    // ***************** End of 2nd Method ******************
 }
