@@ -32,7 +32,7 @@ public class RemoveDuplicatesFromSortedList {
     }
 
     // ***************** 1st Method ******************
-    // Approach 1:
+    // Approach 1: If detect dup, skip till no-dup & assign next to it
     // Runtime  : 0ms         -> + 100.00%
     // Memory   : 43.32MB     -> + 31.29%
     public static ListNode deleteDuplicates(ListNode head) {
@@ -48,13 +48,16 @@ public class RemoveDuplicatesFromSortedList {
 
             cur.next = next;
             cur = next;
-
-            printList(cur);
-            System.out.println("====\n");
         }
+        return head;
+    }
+    // ***************** End of 1st Method ******************
 
-        printList(head);
-        printList(pre);
+    // ***************** 2nd Method ******************
+    // Approach 2: Optimized above approach
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 43.24MB     -> + 40.84%
+    public static ListNode deleteDuplicates2(ListNode head) {
 
         return head;
     }
