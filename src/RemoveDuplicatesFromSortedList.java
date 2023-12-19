@@ -27,8 +27,7 @@ public class RemoveDuplicatesFromSortedList {
         head.next.next.next = new ListNode(3);
         head.next.next.next.next = new ListNode(3);
 
-
-        System.out.println(deleteDuplicates(head));
+        printList(deleteDuplicates2(head));
     }
 
     // ***************** 1st Method ******************
@@ -56,9 +55,17 @@ public class RemoveDuplicatesFromSortedList {
     // ***************** 2nd Method ******************
     // Approach 2: Optimized above approach
     // Runtime  : 0ms         -> + 100.00%
-    // Memory   : 43.24MB     -> + 40.84%
+    // Memory   : 43.324MB    -> + 31.94%
     public static ListNode deleteDuplicates2(ListNode head) {
-
+        ListNode dummy = head;
+        while(dummy != null && dummy.next != null) {
+            if(dummy.val == dummy.next.val) {
+                dummy.next = dummy.next.next;
+            } else {
+                dummy = dummy.next;
+            }
+        }
         return head;
     }
+    // ***************** End of 2nd Method ******************
 }
