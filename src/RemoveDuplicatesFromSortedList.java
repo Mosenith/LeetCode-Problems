@@ -8,9 +8,7 @@ public class RemoveDuplicatesFromSortedList {
             this.val = val; this.next = next;
         }
     }
-
-    public static void printList(ListNode node)
-    {
+    public static void printList(ListNode node) {
         while (node != null)
         {
             System.out.print(node.val + " —> ");
@@ -44,7 +42,6 @@ public class RemoveDuplicatesFromSortedList {
             while(next != null && next.val == pre.val) {
                 next = next.next;
             }
-
             cur.next = next;
             cur = next;
         }
