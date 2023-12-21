@@ -1,5 +1,5 @@
-import com.sun.source.tree.Tree;
-
+// A height-balanced binary tree is a binary tree
+// in which the depth of the two subtrees of every node never differs by more than one.
 public class BalancedBinaryTree {
     public static class TreeNode {
         int val;
@@ -27,31 +27,36 @@ public class BalancedBinaryTree {
         TreeNode root1 = new TreeNode(2);
         root1.left = new TreeNode(1);
         root1.right = new TreeNode(4);
-        root1.right.left = new TreeNode(3);
-        root1.right.right = new TreeNode(6);
-        root1.right.right.left = new TreeNode(5);
-
-        printTreeNode(root1);
+//        root1.right.left = new TreeNode(3);
+//        root1.right.right = new TreeNode(6);
+//        root1.right.right.left = new TreeNode(5);
 
         System.out.println(isBalanced(root1));
     }
 
-// A height-balanced binary tree is a binary tree
-// in which the depth of the two subtrees of every node never differs by more than one.
-
+    // ***************** 1st Method ******************
+    // Approach 1: countHeight() ==> Cal height of root to the left & right
+    // If the diff is >1 => return -1
+    // If subTree is imbalance, either h1 or h2 will return -1
+    // Therefore, check if abs(h1-h2)>1 || h1==-1 || h2==-1 => -1
+    // Base method return countHeight(root) >= 0;
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 44.48MB     -> + 6.01%
     public static boolean isBalanced(TreeNode root) {
-        return countHeight(root) <= 1;
+        return countHeight(root) >= 0;
     }
     public static int countHeight(TreeNode root) {
         if(root == null) return 0;
 
-
-        System.out.println("root => " + root.val);
         int h1 = countHeight(root.left);
-        System.out.println("");
         int h2 = countHeight(root.right);
 
-
+        // when dif of height >=2 => false = -1
+        // some sub-tree might be imbalance and return -1
+        // so check if h1 || h2 = -1 => return -1
+        if(Math.abs(h1-h2) > 1 || h1 == -1 || h2 == -1) {
+            return -1;
+        }
 
         return Math.max(h1,h2) + 1;
     }
