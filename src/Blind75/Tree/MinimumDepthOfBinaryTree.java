@@ -21,7 +21,10 @@ public class MinimumDepthOfBinaryTree {
             return;
         }
         System.out.println(root.val);
+        System.out.println("Left ==> ");
         printTreeNode(root.left);
+
+        System.out.println("Right ==> ");
         printTreeNode(root.right);
     }
 
@@ -39,7 +42,7 @@ public class MinimumDepthOfBinaryTree {
 //        root1.right.right.left = new TreeNode(5);
 
 //        printTreeNode(root1);
-        System.out.println(minDepth(root1));
+        System.out.println(minDepth2(root1));
     }
 
 
@@ -64,21 +67,30 @@ public class MinimumDepthOfBinaryTree {
     }
     // ***************** End of 1st Method ******************
 
-    public int minDepth(TreeNode root) {
+    // ***************** 2nd Method ******************
+    // Approach 2: Use Queue to store the root at each level start from root
+    // With the loop, have another loop from 0 to origin size
+    // Within inner loop, remove the treenode from queue and check 3 condition
+    // 1: Both left & right node are null => return level
+    // 2: Left != null => add root.left to queue
+    // 3: Right != null=> add root.right to queue
+    // Out of inner loop, increment level
+    // Runtime  : 2ms         -> + 87.24%
+    // Memory   : 62.82MB     -> + 12.51%
+    public static int minDepth2(TreeNode root) {
         if(root== null) return 0;
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int level=1;
-        while(!queue.isEmpty())
-        {
+
+        while(!queue.isEmpty()) {
             int size = queue.size();
-            for(int i=0;i<size;i++){
+            for(int i=0; i<size; i++){
                 TreeNode current = queue.remove();
-                if(current.left == null && current.right == null){
+                if(current.left == null && current.right == null) {
                     return level;
                 }
-                if(current.left!=null)
-                {
+                if(current.left!=null) {
                     queue.add(current.left);
                 }
 
@@ -90,5 +102,5 @@ public class MinimumDepthOfBinaryTree {
         }
         return level;
     }
-
+    // ***************** End of 1st Method ******************
 }
