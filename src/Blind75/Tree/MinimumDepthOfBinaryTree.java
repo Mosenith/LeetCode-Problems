@@ -70,7 +70,7 @@ public class MinimumDepthOfBinaryTree {
     // ***************** 2nd Method ******************
     // Approach 2: Use Queue to store the root at each level start from root
     // With the loop, have another loop from 0 to origin size
-    // Within inner loop, remove the treenode from queue and check 3 condition
+    // Within inner loop, remove the treeNode from queue and check 3 condition
     // 1: Both left & right node are null => return level
     // 2: Left != null => add root.left to queue
     // 3: Right != null=> add root.right to queue
@@ -102,5 +102,24 @@ public class MinimumDepthOfBinaryTree {
         }
         return level;
     }
-    // ***************** End of 1st Method ******************
+    // ***************** End of 2nd Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Most balance & short code
+    // Runtime  : 3ms         -> + 77.69%
+    // Memory   : 62.58MB     -> + 28.70%
+    public static int minDepth3(TreeNode root) {
+        if(root == null) return 0;
+        if(root.left == null && root.right == null) return 1;
+
+        int left = Integer.MAX_VALUE , right = Integer.MAX_VALUE;
+        if(root.left != null)
+            left = minDepth(root.left);
+        if(root.right != null)
+            right = minDepth(root.right);
+
+        return Math.min(left,right) + 1;
+    }
+    // ***************** End of 3rd Method ******************
+
 }
