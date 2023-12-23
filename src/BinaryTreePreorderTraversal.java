@@ -37,6 +37,8 @@ public class BinaryTreePreorderTraversal {
         root.right.right = new TreeNode(6);
 
         System.out.println(preorderTraversal(root));
+        System.out.println(preorderTraversal2(root));
+
     }
 
     // ***************** 1st Method ******************
@@ -60,16 +62,32 @@ public class BinaryTreePreorderTraversal {
 
     // ***************** 2nd Method ******************
     // Approach 2: Use Stack to store the whole tree
-    // Loop until stack is empty
+    // Loop until stack is empty and add root.val to list
+    // each iteration check root.right & root.left
+    // if not null add each of them to the stack (check right first)
     // Runtime  : 0ms         -> + 100.00%
-    // Memory   : 41.93MB     -> + 10.42%
-    public List<Integer> preorderTraversal2(TreeNode root) {
+    // Memory   : 41.72MB     -> + 10.42%
+    public static List<Integer> preorderTraversal2(TreeNode root) {
         if (root == null)
             return new ArrayList<>();
 
         List<Integer> ls = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
+
+        while(!stack.isEmpty()) {
+            TreeNode cur = stack.pop();
+            ls.add(cur.val);
+
+            if(cur.right != null) {
+                stack.add(cur.right);
+            }
+
+            if(cur.left != null) {
+                stack.add(cur.left);
+            }
+        }
+
         return ls;
     }
     // ***************** End of 2nd Method ******************
