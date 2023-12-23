@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class BinaryTreePreorderTraversal {
     public static class TreeNode {
@@ -56,5 +57,21 @@ public class BinaryTreePreorderTraversal {
         preorder(root.right, ls);
     }
     // ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Use Stack to store the whole tree
+    // Loop until stack is empty
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 41.93MB     -> + 10.42%
+    public List<Integer> preorderTraversal2(TreeNode root) {
+        if (root == null)
+            return new ArrayList<>();
+
+        List<Integer> ls = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        return ls;
+    }
+    // ***************** End of 2nd Method ******************
 
 }
