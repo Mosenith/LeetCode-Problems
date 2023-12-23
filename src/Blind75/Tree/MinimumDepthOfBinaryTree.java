@@ -104,8 +104,8 @@ public class MinimumDepthOfBinaryTree {
     }
     // ***************** End of 2nd Method ******************
 
-    // ***************** 2nd Method ******************
-    // Approach 2: Most balance & short code
+    // ***************** 3rd Method ******************
+    // Approach 3: Most balance & short code
     // Runtime  : 3ms         -> + 77.69%
     // Memory   : 62.58MB     -> + 28.70%
     public static int minDepth3(TreeNode root) {
