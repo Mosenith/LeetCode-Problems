@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.sun.source.tree.Tree;
+
+import java.util.*;
 
 public class BinaryTreePostorderTraversal {
     public static class TreeNode {
@@ -59,8 +60,22 @@ public class BinaryTreePostorderTraversal {
     // ***************** End of 1st Method ******************
 
     public List<Integer> postorderTraversal2(TreeNode root) {
-        List<Integer> ls = new ArrayList<>();
-
-        return ls;
+        LinkedList<Integer> ans = new LinkedList<>();
+        if (root == null) {
+            return ans;
+        }
+        Deque<TreeNode> stk = new ArrayDeque<>();
+        stk.push(root);
+        while (!stk.isEmpty()) {
+            TreeNode node = stk.pop();
+            ans.addFirst(node.val);
+            if (node.left != null) {
+                stk.push(node.left);
+            }
+            if (node.right != null) {
+                stk.push(node.right);
+            }
+        }
+        return ans;
     }
 }
