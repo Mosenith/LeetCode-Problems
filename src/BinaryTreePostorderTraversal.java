@@ -58,4 +58,9 @@ public class BinaryTreePostorderTraversal {
     }
     // ***************** End of 1st Method ******************
 
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        List<Integer> ls = new ArrayList<>();
+
+        return ls;
+    }
 }
