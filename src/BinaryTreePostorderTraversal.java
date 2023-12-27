@@ -59,6 +59,10 @@ public class BinaryTreePostorderTraversal {
     }
     // ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 1: Use Deque-ArrayDeque -> root-left-right
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 41.64MB     -> + 6.80%
     public List<Integer> postorderTraversal2(TreeNode root) {
         LinkedList<Integer> ans = new LinkedList<>();
         if (root == null) {
@@ -78,4 +82,5 @@ public class BinaryTreePostorderTraversal {
         }
         return ans;
     }
+    // ***************** End of 2nd Method ******************
 }
