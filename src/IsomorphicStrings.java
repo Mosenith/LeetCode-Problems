@@ -1,16 +1,13 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class IsomorphicStrings {
     public static void main(String[] args) {
 //        String s = "bbbaaaba", t = "aaabbbba";
-        String s = "badc", t = "baba";
-//        String s = "papap", t = "titii";
+//        String s = "badc", t = "baba";
+        String s = "papap", t = "titii";
 
         System.out.println(isIsomorphic(s,t));
-        System.out.println(isIsomorphic3(s,t));
+        System.out.println(isIsomorphic4(s,t));
     }
     // ***************** 1st Method ******************
     // Approach 1:
@@ -88,4 +85,31 @@ public class IsomorphicStrings {
         return t.equals(str.toString());
     }
     // ***************** End of 3rd Method ******************
+
+    // ***************** 4th Method ******************
+    // Approach 4: Use 2 arrays with len 256 to keep track of s & t
+    // Since s & t consist of any valid ascii character => 256
+    // Each iteration if d1[a] != d2[b] => false
+    // Otherwise, update d1[a] & d2[b] = i+1 (not i cos i can be 0)
+    // Runtime  : 5ms        -> + 96.98%
+    // Memory   : 42.50MB    -> + 14.20%
+    public static boolean isIsomorphic4(String s, String t) {
+        // s & t => consist of any valid ascii character
+        int[] d1 = new int[256];
+        int[] d2 = new int[256];
+        int n = s.length();
+
+        for (int i = 0; i < n; ++i) {
+            char a = s.charAt(i), b = t.charAt(i);
+
+            if (d1[a] != d2[b]) {
+                return false;
+            }
+            d1[a] = i + 1; // +1 not to overlap with i=0
+            d2[b] = i + 1;
+        }
+        return true;
+    }
+    // ***************** End of 4th Method ******************
+
 }
