@@ -10,9 +10,13 @@ public class IsomorphicStrings {
         System.out.println(isIsomorphic4(s,t));
     }
     // ***************** 1st Method ******************
-    // Approach 1:
-    // Runtime  : 22ms        -> + 12.97%
-    // Memory   : 42.47MB     -> + 13.59%
+    // Approach 1: Use 2 maps to keep track char in s & t
+    // If mapST.containsKey(curS) && mapST.get(curS) != curT => false
+    // If mapTS.containsKey(curT) && mapTS.get(curT) != curS => false
+    // Otherwise, put (curS, curT) to mapST & (curT, curS) to mapTS
+    // Return true
+    // Runtime  : 25ms        -> + 8.49%
+    // Memory   : 42.68MB     -> + 11.88%
     public static boolean isIsomorphic(String s, String t) {
         // (k,v) -> (s,t)
         Map<Character, Character> mapST = new HashMap<>();
@@ -22,19 +26,16 @@ public class IsomorphicStrings {
             char curS = s.charAt(i);
             char curT = t.charAt(i);
 
-            if (mapST.containsKey(curS) && !mapTS.containsKey(curT) ||
-                    !mapST.containsKey(curS) && mapTS.containsKey(curT)) {
+            if (mapST.containsKey(curS) && mapST.get(curS) != curT) {
                 return false;
             }
 
-            if(mapST.containsKey(curS) && mapTS.containsKey(curT)) {
-                if(mapST.get(curS) != curT || mapTS.get(curT) != curS) {
-                    return false;
-                }
-            } else {
-                mapST.put(curS,curT);
-                mapTS.put(curT,curS);
+            if(mapTS.containsKey(curT) && mapTS.get(curT) != curS) {
+                return false;
             }
+
+            mapST.put(curS,curT);
+            mapTS.put(curT,curS);
         }
         return true;
     }
@@ -52,7 +53,8 @@ public class IsomorphicStrings {
             char curS = s.charAt(i);
             char curT = t.charAt(i);
 
-            if ((map.containsKey(curS) && map.get(curS) != curT) || (map.containsValue(curT) && !map.containsKey(curS))) {
+            if ((map.containsKey(curS) && map.get(curS) != curT)
+                    || (map.containsValue(curT) && !map.containsKey(curS))) {
                 return false;
             }
 
