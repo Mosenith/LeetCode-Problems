@@ -8,7 +8,7 @@ public class ContainsDuplicateII {
         int[] nums = {1,2,3,1,2,3};
         int k = 2;
 
-        System.out.println(containsNearbyDuplicate(nums,k));
+        System.out.println(containsNearbyDuplicate3(nums,k));
     }
     // ***************** 1st Method ******************
     // Approach 1: Nested loop & inner loop from i+1 to i+k
@@ -32,8 +32,8 @@ public class ContainsDuplicateII {
     // Approach 2: Use map to store nums[i] as key, values don't matter
     // Since key is unique, if curElement exists in map, we can call map.getOrDefault()
     // Use i - map.getOrDefault(curElement, -1111) <= k => true (value doesn't matter)
-    // Runtime  : 47ms        -> + 10.29%
-    // Memory   : 60.04MB     -> + 5.67%
+    // Runtime  : 27ms        -> + 14.77%
+    // Memory   : 57.95MB     -> + 7.60%
     public static boolean containsNearbyDuplicate2(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         for(int i=0; i<nums.length; i++) {
@@ -46,4 +46,23 @@ public class ContainsDuplicateII {
     }
     // ***************** End of 2nd Method ******************
 
+    // ***************** 3rd Method ******************
+    // Approach 3: Use map to store nums[i] as key, loc as value
+    // Get prev value of nums[i] by Integer cur = map.put(nums[i],i) & add new value (dup)
+    // Check if cur!=null && cur!=i && Math.abs(i-cur)<=k => true
+    // Runtime  : 18ms        -> + 52.68%
+    // Memory   : 57.58MB     -> + 14.07%
+    public static boolean containsNearbyDuplicate3(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for(int i=0; i<nums.length; i++) {
+            // store prev value of key=nums[i]
+            // if not exists => null
+            Integer cur = map.put(nums[i],i);
+            if(cur != null && cur != i && Math.abs(i-cur) <= k) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // ***************** End of 3rd Method ******************
 }
