@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class CountCompleteTreeNodes {
     public static class TreeNode {
         int val;
@@ -30,6 +33,8 @@ public class CountCompleteTreeNodes {
         root1.right.right.left = new TreeNode(5);
 
         System.out.println(countNodes(root1));
+        System.out.println(countNodes2(root1));
+
     }
 
     // ***************** 1st Method ******************
@@ -43,4 +48,36 @@ public class CountCompleteTreeNodes {
     }
     // ***************** End of 1st Method ******************
 
+    static int count;
+    public static int countNodes2(TreeNode root) {
+        count = 0;
+        helper(root);
+
+        return count;
+    }
+
+    private static void helper(TreeNode root) {
+        if(root == null) return;
+
+        count++;
+        helper(root.left);
+        helper(root.right);
+    }
+
+    public static int countNodes3(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root == null) return 0;
+        queue.offer(root);
+        int count = 0;
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            count += levelSize;
+            while (levelSize-- > 0) {
+                TreeNode node = queue.poll();
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+            }
+        }
+        return count;
+    }
 }
