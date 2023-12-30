@@ -1,32 +1,44 @@
 package AlgorithmsCode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {4,2,1,9,9};
-
-//        Arrays.sort(arr);   //1,2,9,9,9
+//       Find subarrays with given sum in an array.
 //
-//        for(int i=arr.length-1; i>0; i--) {
-//            if(arr[i-1] < arr[i]) {
-//                System.out.println(arr[i-1]);
-//                break;
-//            }
-//        }
+//Input :
+//Input-int[] arr = {2, 3, 6, 4, 9, 0, 11};
+//int num = 9
+//
+//Output-
+//starting index : 1, Ending index : 2
+//starting index : 4, Ending index : 4
+//starting index : 4, Ending index : 5
 
-        int max = (arr[0] < arr[1]) ? arr[1] : arr[0];
-        int secMax = (arr[0] < arr[1]) ? arr[0] : arr[1];
+        int[] arr = {2, 3, 6, 4, 9, 0, 11};
+        int sum = 9;
 
-        System.out.println(max + " : " + secMax);
-        for(int i=2; i<arr.length; i++) {
-            if(arr[i] > max) {
-                secMax = max;
-                max = arr[i];
+        for(int i=0; i<arr.length; i++) {
+            for(int j=i; j<arr.length; j++) {
+                int curSum = calSum(arr, i, j);
+                if(curSum == sum) {
+                    System.out.println("starting index : " + i + ", Ending index : " + j);
+                }
             }
         }
 
-        System.out.println(max);
-        System.out.println(secMax);
+
+    }
+
+    private static int calSum(int[] arr, int start, int end) {
+        int s = 0;
+
+        for(int i=start; i<=end; i++) {
+            s += arr[i];
+        }
+
+        return s;
     }
 }
