@@ -48,6 +48,10 @@ public class CountCompleteTreeNodes {
     }
     // ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Recursion using helper method
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 47.62MB     -> + 8.01%
     static int count;
     public static int countNodes2(TreeNode root) {
         count = 0;
@@ -63,7 +67,12 @@ public class CountCompleteTreeNodes {
         helper(root.left);
         helper(root.right);
     }
+    // ***************** End of 2nd Method ******************
 
+    // ***************** 3rd Method ******************
+    // Approach 3: Using Queue
+    // Runtime  : 9ms         -> + 5.27%
+    // Memory   : 47.41MB     -> + 11.43%
     public static int countNodes3(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
         if (root == null) return 0;
@@ -80,4 +89,5 @@ public class CountCompleteTreeNodes {
         }
         return count;
     }
+    // ***************** End of 3rd Method ******************
 }
