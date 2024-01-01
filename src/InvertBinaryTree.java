@@ -1,3 +1,6 @@
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class InvertBinaryTree {
     public static class TreeNode {
         int val;
@@ -32,10 +35,30 @@ public class InvertBinaryTree {
         root.left.left = new TreeNode(1);
         root.left.right = new TreeNode(3);
 
-        System.out.println();
+        System.out.println(invertTree(root));
     }
 
-    public TreeNode invertTree(TreeNode root) {
+    static Queue<Integer> q;
+    public static TreeNode invertTree(TreeNode root) {
+        q = new ArrayDeque<>();
+
+        invertUtil(root);
+
+        TreeNode res = new TreeNode();
+
+        while (!q.isEmpty()) {
+            res.val = q.poll();
+            res.left = new TreeNode(q.poll());
+            res.right = new TreeNode(q.poll());
+        }
         return null;
+    }
+
+    private static void invertUtil(TreeNode root) {
+        if(root == null) return;
+
+        q.add(root.val);
+        invertTree(root.right);
+        invertTree(root.left);
     }
 }
