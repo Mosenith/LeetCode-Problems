@@ -40,40 +40,26 @@ public class InvertBinaryTree {
         System.out.println(invertTree(root));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Recursion - Use tmpTree to swap left & right
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 40.63MB     -> + 25.98%
     public static TreeNode invertTree(TreeNode root) {
-        TreeNode dummy = root;
+        invertUtil(root);
 
-        invertUtil(dummy);
-
-        printTreeNode(root);
-        return null;
+        return root;
     }
 
-    private static void invertUtil(TreeNode dummy) {
-        if(dummy.left == null || dummy.right == null) return;
+    private static void invertUtil(TreeNode root) {
+        if (root == null) return;
 
-        invertTree(dummy.left);
-        util(dummy.left);
-        invertTree(dummy.right);
-        util(dummy.right);
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
 
+        invertTree(root.left);
+        invertTree(root.right);
     }
+    // ***************** End of 1st Method ******************
 
-    private static void util(TreeNode dummy) {
-        while(dummy != null) {
-            TreeNode left = new TreeNode();
-            TreeNode right = new TreeNode();
-
-            if(dummy.left != null) {
-                left = dummy.left;
-            }
-
-            if(dummy.right != null) {
-                right = dummy.right;
-            }
-
-            dummy.left = right;
-            dummy.right = left;
-        }
-    }
 }
