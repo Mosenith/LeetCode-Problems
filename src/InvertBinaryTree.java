@@ -1,8 +1,3 @@
-import com.sun.source.tree.Tree;
-
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class InvertBinaryTree {
     public static class TreeNode {
         int val;
@@ -61,5 +56,4 @@ public class InvertBinaryTree {
         invertTree(root.right);
     }
     // ***************** End of 1st Method ******************
-
 }
