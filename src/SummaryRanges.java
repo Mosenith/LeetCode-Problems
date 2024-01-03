@@ -2,9 +2,9 @@ import java.util.*;
 
 public class SummaryRanges {
     public static void main(String[] args) {
-        int[] nums = {0,1,2,4,5,7}; // ["0->2","4->5","7"]
+        int[] nums = {0,2,3,4,6,8,9}; // ["0->2","4->5","7"]
 
-        System.out.println(summaryRanges(nums));
+        System.out.println(summaryRanges2(nums));
     }
 
     // ***************** 1st Method ******************
@@ -45,16 +45,28 @@ public class SummaryRanges {
     }
     // ***************** End of 1st Method ******************
 
-    public List<String> summaryRanges2(int[] nums) {
+    public static List<String> summaryRanges2(int[] nums) {
         List<String> res = new ArrayList<>();
 
         if(nums.length == 0) return res;
 
-        Queue<Integer> queue = new ArrayDeque<>();
-        queue.add(nums[0]);
-        for(int i=0; i<nums.length; i++) {
-            if(nums[i] - queue.peek() != 1);
-        }
+       List<Integer> ls = new ArrayList<>();
+       int curSum = nums[0];
+
+       for(int i=1; i<nums.length; i++) {
+           if(curSum == nums[i]) {
+               ls.add(curSum);
+               curSum = nums[i];
+           } else if(curSum+1 != nums[i]) {
+               ls.add(curSum);
+               ls.add(nums[i]);
+               curSum = nums[i];
+           } else {
+               curSum++;
+           }
+       }
+
+        System.out.println(ls);
 
         return res;
     }
