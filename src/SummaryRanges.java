@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class SummaryRanges {
     public static void main(String[] args) {
@@ -42,6 +39,21 @@ public class SummaryRanges {
 
         if(nums.length == 1 && start == cur) {
             res.add(Integer.toString(start));
+        }
+
+        return res;
+    }
+    // ***************** End of 1st Method ******************
+
+    public List<String> summaryRanges2(int[] nums) {
+        List<String> res = new ArrayList<>();
+
+        if(nums.length == 0) return res;
+
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(nums[0]);
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] - queue.peek() != 1);
         }
 
         return res;
