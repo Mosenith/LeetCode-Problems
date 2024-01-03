@@ -46,7 +46,10 @@ public class SummaryRanges {
     // ***************** End of 1st Method ******************
 
     // ***************** 2nd Method ******************
-    // Approach 1: Brute Force
+    // Approach 2: Use 2 Pointers - i->outerLoop & j->innerLoop
+    // Let j=i and loop j++ until n[j+1]!=n[j]+1 (j+1<n.len)
+    // Then, out of innerLoop, if i==j => add n[i] to resList
+    // Otherwise, "n[i]"->"n[j]" to resList
     // Runtime  : 2ms         -> + 90.49%
     // Memory   : 41.78MB     -> + 10.90%
     public static List<String> summaryRanges2(int[] nums) {
