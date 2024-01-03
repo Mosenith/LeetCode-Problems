@@ -45,29 +45,26 @@ public class SummaryRanges {
     }
     // ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 1: Brute Force
+    // Runtime  : 2ms         -> + 90.49%
+    // Memory   : 41.78MB     -> + 10.90%
     public static List<String> summaryRanges2(int[] nums) {
         List<String> res = new ArrayList<>();
 
-        if(nums.length == 0) return res;
-
-       List<Integer> ls = new ArrayList<>();
-       int curSum = nums[0];
-
-       for(int i=1; i<nums.length; i++) {
-           if(curSum == nums[i]) {
-               ls.add(curSum);
-               curSum = nums[i];
-           } else if(curSum+1 != nums[i]) {
-               ls.add(curSum);
-               ls.add(nums[i]);
-               curSum = nums[i];
-           } else {
-               curSum++;
-           }
-       }
-
-        System.out.println(ls);
+        for(int i=0,j; i<nums.length; i=j+1) {
+            j = i;
+            while(j+1 < nums.length && nums[j+1] == nums[j]+1) {
+                j++;
+            }
+            res.add(summaryUtils(nums,i,j));
+        }
 
         return res;
     }
+
+    private static String summaryUtils(int[] nums, int i, int j) {
+        return (i == j) ? nums[i] + "" : String.format("%d->%d", nums[i], nums[j]);
+    }
+    // ***************** End of 2nd Method ******************
 }
