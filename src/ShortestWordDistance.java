@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ShortestWordDistance {
     public static void main(String[] args) {
@@ -10,24 +8,30 @@ public class ShortestWordDistance {
         System.out.println(shortestDistance(words, "makes", "coding"));
     }
 
+    // ***************** 1st Method : Locked Prob ******************
+    // Approach 1: Using 2 index to keep track of word1 & word2 location
+    // By letting w1 = -1, w2 = -1 and within iteration if both change,
+    // Calculate minDis = Math.min(minDis, Math.abs(w1-w2))
+    // Initial minDis = MAX_VALUE
     public static int shortestDistance(String[] words, String word1, String word2) {
-        List<Integer> l1 = new ArrayList<>();
-        List<Integer> l2 = new ArrayList<>();
-
+        int minDis = Integer.MAX_VALUE;
+        int w1 = -1, w2 = -1;
 
         for(int i=0; i<words.length; i++) {
             if(word1.equals(words[i])) {
-                l1.add(i);
+                w1 = i;
             }
 
             if(word2.equals(words[i])) {
-                l2.add(i);
+                w2 = i;
+            }
+
+            if(w1 != -1 && w2 != -1) {
+                minDis = Math.min(minDis, Math.abs(w1-w2));
             }
         }
 
-        System.out.println(l1);
-        System.out.println(l2);
-
-        return 0;
+        return minDis;
     }
+    // ***************** End of 1st Method ******************
 }
