@@ -30,7 +30,7 @@ public class BinaryTreePaths {
         root.right = new TreeNode(3);
         root.left.right = new TreeNode(5);
 
-        System.out.println(binaryTreePaths(root));
+        System.out.println(binaryTreePaths2(root));
     }
 
     // ***************** 1st Method ******************
@@ -75,4 +75,33 @@ public class BinaryTreePaths {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Use StringBuilder to add to list<String> when both side of root = null
+    // Otherwise, append ("->") and recursion of root.left, then root.right
+    // Runtime  : 1ms         -> + 99.86%
+    // Memory   : 42.20MB     -> + 33.19%
+    public static List<String> binaryTreePaths2(TreeNode root) {
+        List<String> ans = new ArrayList<>();
+        StringBuilder s = new StringBuilder();
+        preorder(root, ans, s);
+
+        return ans;
+    }
+
+    private static void preorder(TreeNode root, List<String> ans, StringBuilder s) {
+        if(root == null) {
+            return;
+        }
+
+        s.append(root.val);
+        if(root.left == null && root.right == null) {
+            ans.add(s.toString());
+        } else {
+            s.append("->");
+
+            preorder(root.left,ans,new StringBuilder(s));
+            preorder(root.right,ans,new StringBuilder(s));
+        }
+    }
+    //  ***************** End of 2nd Method ******************
 }
