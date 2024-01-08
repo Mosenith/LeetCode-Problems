@@ -1,8 +1,4 @@
 public class PowerOfFour {
-    public static void main(String[] args) {
-
-    }
-
     // ***************** 1st Method ******************
     // Approach 1: Base condition if n<=0 => false
     // Loop with each iteration check if n % 4 != 0 => false
@@ -23,7 +19,7 @@ public class PowerOfFour {
     }
     //  ***************** End of 1st Method ******************
 
-    // ***************** 1st Method ******************
+    // ***************** 2nd Method ******************
     // Approach 2: Use recursion of given method
     // Base case, n=0 -> false, n=1 true
     // Recursion with n%4=0 && isPowerOfFour(n/4)
