@@ -23,4 +23,17 @@ public class PowerOfFour {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 1st Method ******************
+    // Approach 2: Use recursion of given method
+    // Base case, n=0 -> false, n=1 true
+    // Recursion with n%4=0 && isPowerOfFour(n/4)
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 40.72MB     -> + 17.69%
+    public boolean isPowerOfFour2(int n) {
+        if(n==0) return false;
+        if(n==1) return true;
+        return (n%4 ==0) && isPowerOfFour(n/4);
+    }
+    //  ***************** End of 2nd Method ******************
+
 }
