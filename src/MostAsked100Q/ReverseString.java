@@ -11,7 +11,7 @@ public class ReverseString {
     }
 
     // ***************** 1st Method ******************
-    // Approach : Use left & right indices to swap
+    // Approach 1: Use left & right indices to swap
     // Runtime  : 1ms        -> + 84.63%
     // Memory   : 50.7MB      -> + 65.28%
     public static void reverseString(char[] s) {
@@ -29,10 +29,11 @@ public class ReverseString {
 
     //  ***************** End of 1st Method ******************
 
-    // ***************** 1st Method ******************
-    // Approach : Use for-loop and index i&j to track element & swap
-    // Runtime  : 0ms        -> + 100%
-    // Memory   : 51MB      -> + 28.54%
+    // ***************** 2nd Method ******************
+    // Approach 2: Use for-loop and index i&j to track element & swap
+    // Condition - i < j
+    // Runtime  : 0ms          -> + 100.00%
+    // Memory   : 49.13MB      -> + 80.98%
     public static void reverseString2(char[] s) {
         for (int i = 0, j = s.length - 1; i < j; ++i, --j) {
             char t = s[i];
@@ -40,4 +41,5 @@ public class ReverseString {
             s[j] = t;
         }
     }
+    //  ***************** End of 2nd Method ******************
 }
