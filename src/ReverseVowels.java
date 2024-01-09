@@ -45,6 +45,15 @@ public class ReverseVowels {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Use boolean vowel[] array of 128 to store all ASCII characters
+    // Set char c : "aeiouAEIOU".toCharArray() & check vowel[] to true at each char
+    // Index i=0, j=len-1, Loop with i<j, 1st inner loop -> increment i till vowels[cs[i]] is vowel
+    // 2nd inner loop -> decrement j till vowels[cs[j]] is vowel
+    // Check if i<j => swap location in cs[] & i++, j--
+    // Out of loop, return String.valueOf(cs)
+    // Runtime  : 2ms          -> + 99.32%
+    // Memory   : 45.21MB      -> + 15.38%
     public static String reverseVowels2(String s) {
         boolean[] vowels = new boolean[128];
         for (char c : "aeiouAEIOU".toCharArray()) {
@@ -55,10 +64,27 @@ public class ReverseVowels {
         char[] cs = s.toCharArray();
         int i = 0, j = cs.length - 1;
         while(i < j) {
+            // increment i till s.at(i) is vowel
+            while(i<j && !vowels[cs[i]]) {
+                ++i;
+            }
 
+            // decrement j till s.at(j) is vowel
+            while(i<j && !vowels[cs[j]]) {
+                --j;
+            }
+
+            // check & swap
+            if(i < j) {
+                char tmp = s.charAt(i);
+                cs[i] = s.charAt(j);
+                cs[j] = tmp;
+                i++; j--;
+            }
         }
 
-        System.out.println(Arrays.toString(cs));
-        return "";
+        return String.valueOf(cs);
     }
+    //  ***************** End of 2nd Method ******************
+
 }
