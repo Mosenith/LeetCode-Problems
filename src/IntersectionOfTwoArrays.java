@@ -4,7 +4,7 @@ public class IntersectionOfTwoArrays {
     public static void main(String[] args) {
         int[] nums1 = {1,2,2,1}, nums2 = {2,2};
 
-        System.out.println(Arrays.toString(intersection2(nums1,nums2)));
+        System.out.println(Arrays.toString(intersection3(nums1,nums2)));
     }
 
     // ***************** 1st Method ******************
@@ -47,12 +47,13 @@ public class IntersectionOfTwoArrays {
         Arrays.sort(nums1);
         Arrays.sort(nums2);
 
-        for(int i=0, j=0; i<nums1.length && j<nums2.length;) {
-            if(nums1[i] == nums2[j]) {
-                if(ls.isEmpty() || ls.get(ls.size()-1) != nums1[i])
+        for (int i = 0, j = 0; i < nums1.length && j < nums2.length; ) {
+            if (nums1[i] == nums2[j]) {
+                if (ls.isEmpty() || ls.get(ls.size() - 1) != nums1[i])
                     ls.add(nums1[i]);
-                i++; j++;
-            } else if(nums1[i] > nums2[j]) {
+                i++;
+                j++;
+            } else if (nums1[i] > nums2[j]) {
                 j++;
             } else {
                 i++;
@@ -60,7 +61,34 @@ public class IntersectionOfTwoArrays {
         }
 
         return ls.stream().mapToInt(Integer::intValue).toArray();
-        //  ***************** End of 2nd Method ******************
-
     }
+    //  ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Since we know, arrays.length & elements >=1 && <=1000
+    // We can use boolean[] numsb1 with len = 1001 & set  numsb1[n]=true, n in nums1
+    // In another loop of nums2, if numsb1[n], add n to ls & set numsb1[n]=false
+    // Return ls.stream().mapToInt(Integer::intValue).toArray()
+    // Runtime  : 2ms          -> + 96.41%
+    // Memory   : 42.96MB      -> + 78.77%
+    public static int[] intersection3(int[] nums1, int[] nums2) {
+        boolean[] numsb1 = new boolean[1001];
+
+        for(int n : nums1) {
+            numsb1[n] = true;
+        }
+
+        List<Integer> ls = new ArrayList<>();
+        for(int n : nums2) {
+            if(numsb1[n]) {
+                ls.add(n);
+                numsb1[n] = false;
+            }
+        }
+
+        return ls.stream().mapToInt(Integer::intValue).toArray();
+    }
+    //  ***************** End of 3rd Method ******************
+
+
 }
