@@ -8,8 +8,7 @@ public class GuessNumberHigherOrLower {
     }
 
     // ***************** 1st Method ******************
-    // Approach 1: Use built-in Math.sqrt() to get square of num in int -> cur
-    // If cur * cur == num => true, otherwise false
+    // Approach 1: Binary Search - mid = left + (right - left) / 2;
     // Runtime  : 0ms          -> + 100.00%
     // Memory   : 40.72MB      -> + 6.43%
     public int guessNumber(int n) {
