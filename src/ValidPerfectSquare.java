@@ -36,4 +36,17 @@ public class ValidPerfectSquare {
     }
     //  ***************** End of 2nd Method ******************
 
+    // ***************** 3rd Method ******************
+    // Approach 3: Optimized of 2nd method
+    // Runtime  : 2ms       -> + 13.20%
+    // Memory   : 40.37MB   -> + 17.51%
+    public boolean isPerfectSquare3(int num) {
+        for (int i = 1; i <= Math.sqrt(num); i++) {
+            if (i * i == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //  ***************** End of 3rd Method ******************
 }
