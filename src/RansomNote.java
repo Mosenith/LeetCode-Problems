@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -5,8 +6,34 @@ public class RansomNote {
     public static void main(String[] args) {
         String ransomNote = "aa", magazine = "ab";
 
-        System.out.println(canConstruct2(ransomNote, magazine));
+        System.out.println(canConstruct(ransomNote, magazine));
     }
+
+    // ***************** 1st Method ******************
+    // Approach 1: Convert both strings to charArray & have an m=int[26] (store magazine)
+    // Check each char in ransomNote with m
+    // If m[c-97] <= 0 => false, otherwise true
+    // Runtime  : 1ms          -> + 99.21%
+    // Memory   : 40.80MB      -> + 23.64%
+    public static boolean canConstruct(String ransomNote, String magazine) {
+        int[] m = new int[26];
+        char[] magazineChar = magazine.toCharArray();
+        char[] ransomNoteChar = ransomNote.toCharArray();
+
+        for(char c : magazineChar) {
+            m[c-97] += 1;
+        }
+
+        // OR char c : ransomNote.toCharArray()
+        for(char c : ransomNoteChar) {
+            if(m[c-97] <= 0) {
+                return false;
+            }
+            m[c-97] -= 1;
+        }
+        return true;
+    }
+    //  ***************** End of 1st Method ******************
 
     // ***************** 2nd Method ******************
     // Approach 2: Use HashMap to store char in magazine
