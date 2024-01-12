@@ -27,4 +27,13 @@ public class ConvertANumberToHexadecimal {
         return sb.reverse().toString();
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Use Built-in method Integer.toHexString(num);
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 40.85MB     -> + 24.41%
+    public static String toHex2(int num) {
+        return Integer.toHexString(num);
+    }
+    //  ***************** End of 2nd Method ******************
 }
