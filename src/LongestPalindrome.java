@@ -7,7 +7,13 @@ public class LongestPalindrome {
 
         System.out.println(longestPalindrome(s));
     }
-
+    // ***************** 1st Method ******************
+    // Approach 1: Get map to store all the chars in s - k=char, v-#occurances
+    // If value of char %2==0, add to len
+    // Otherwise, add all when flag=1, then set flag to 0 and add map.get(c)-1 to len
+    // At each iteration, remove(c) from char[] & finally return len
+    // Runtime  : 8ms         -> + 30.36%
+    // Memory   : 41.94MB     -> + 15.89%
     public static int longestPalindrome(String s) {
         Map<Character,Integer> map = new HashMap<>();
         char[] sChar = s.toCharArray();
@@ -38,4 +44,6 @@ public class LongestPalindrome {
         }
         return len;
     }
+    //  ***************** End of 1st Method ******************
+
 }
