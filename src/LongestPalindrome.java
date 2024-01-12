@@ -3,9 +3,9 @@ import java.util.Map;
 
 public class LongestPalindrome {
     public static void main(String[] args) {
-        String s = "a";
+        String s = "abccccdde";
 
-        System.out.println(longestPalindrome(s));
+        System.out.println(longestPalindrome2(s));
     }
     // ***************** 1st Method ******************
     // Approach 1: Get map to store all the chars in s - k=char, v-#occurances
@@ -46,4 +46,28 @@ public class LongestPalindrome {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: The main idea is to count the odd occurrence of char in s
+    // If oddCount > 1 => s.length() - oddCount + 1 cos we can have 1 odd char in the middle
+    // Otherwise, return s.len
+    // Runtime  : 2ms         -> + 85.20%
+    // Memory   : 41.92MB     -> + 16.55%
+    public static int longestPalindrome2(String s) {
+        int oddCount = 0;
+        int[] freq = new int[128];
+
+        for (char ch : s.toCharArray()) {
+            freq[ch]++;
+            if (freq[ch] % 2 == 1)
+                oddCount++;
+            else
+                oddCount--;
+        }
+
+        System.out.println(oddCount);
+        if (oddCount > 1)
+            return s.length() - oddCount + 1;
+        return s.length();
+    }
+    //  ***************** End of 2nd Method ******************
 }
