@@ -35,6 +35,15 @@ public class ThirdMaximumNumber {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 1st Method ******************
+    // Approach 1: Assign 3 long val to Long.MIN_VALUE
+    // Loop through each element in nums[] and skip elements =m1 or =m2 or =m3
+    // If element > m1, update m3-> m2, m2-> m1, m1->num
+    // Else if element > m2, update m3-> m2, m2->num
+    // Else if element > m3, update m3-> num
+    // Return m3 but if m3=Long.MIN_VALUE, return m1
+    // Runtime  : 1ms         -> + 93.00%
+    // Memory   : 42.81MB     -> + 86.02%
     public static int thirdMax2(int[] nums) {
         long m1 = Long.MIN_VALUE;
         long m2 = Long.MIN_VALUE;
@@ -57,4 +66,5 @@ public class ThirdMaximumNumber {
         }
         return (int) (m3 != Long.MIN_VALUE ? m3 : m1);
     }
+    //  ***************** End of 2nd Method ******************
 }
