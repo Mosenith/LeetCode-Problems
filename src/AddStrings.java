@@ -5,6 +5,13 @@ public class AddStrings {
         System.out.println(addStrings("237", "284"));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Convert String num to char[] and calculate digit by digit from right to left
+    // In case num1.len != num2.len, check if i & j >= 0, if not add the leftover char in the string
+    // Check if remain == 1, add remain to the (leftest) digit
+    // Return String.valueOf(res).replace("\0", "") cos res is char[] so we ignore null value
+    // Runtime  : 2ms         -> + 72.76%
+    // Memory   : 42.88MB     -> + 46.07%
     public static String addStrings(String num1, String num2) {
         char[] n1 = num1.toCharArray();
         char[] n2 = num2.toCharArray();
@@ -41,4 +48,5 @@ public class AddStrings {
         }
         return String.valueOf(res).replace("\0", "");
     }
+    //  ***************** End of 1st Method ******************
 }
