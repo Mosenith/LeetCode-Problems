@@ -49,4 +49,27 @@ public class AddStrings {
         return String.valueOf(res).replace("\0", "");
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Start from n1 & n2 rightest and loop with this condition i>=0 || j>=0 || carry == 1
+    // Let x = i < 0 ? 0 : num1.charAt(i) - '0' & y = j < 0 ? 0 : num2.charAt(j) - '0'
+    // Append (x+y+carry) % 10 to ans and cal carry by  (x + y + carry) / 10
+    // Return ans.reverse().toString()
+    // Runtime  : 1ms         -> + 100.00%
+    // Memory   : 42.43MB     -> + 55.98%
+    public static String addStrings2(String num1, String num2) {
+        StringBuilder ans = new StringBuilder();
+        int carry = 0;
+
+        for(int i=num1.length()-1, j=num2.length()-1; i>=0 || j>=0 || carry == 1; i--, j--){
+            int x = i < 0 ? 0 : num1.charAt(i) - '0';
+            int y = j < 0 ? 0 : num2.charAt(j) - '0';
+
+            ans.append((x+y+carry) % 10);
+            carry = (x + y + carry) / 10;
+        }
+
+        return ans.reverse().toString();
+    }
+    //  ***************** End of 2nd Method ******************
 }
