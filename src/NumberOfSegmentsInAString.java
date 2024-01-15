@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class NumberOfSegmentsInAString {
     public static void main(String[] args) {
-        System.out.println(countSegments2("Hello"));
+        System.out.println(countSegments3("Hello, my name is John"));
     }
 
     // ***************** 1st Method ******************
@@ -53,4 +54,20 @@ public class NumberOfSegmentsInAString {
         return ls.size();
     }
     //  ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Using s.split(" ") and loop through the array of it
+    // When !"".equals(curString), increment the answer
+    // Runtime  : 1ms         -> + 31.89%
+    // Memory   : 41.25MB     -> + 21.88%
+    public static int countSegments3(String s) {
+        int ans = 0;
+        for (String t : s.split(" ")) {
+            if (!"".equals(t)) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+    //  ***************** End of 3rd Method ******************
 }
