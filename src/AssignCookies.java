@@ -25,7 +25,6 @@ public class AssignCookies {
                 contentChild++;
                 i++;
             }
-
             j++;
         }
 
