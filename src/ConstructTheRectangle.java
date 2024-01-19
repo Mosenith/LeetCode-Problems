@@ -5,9 +5,21 @@ public class ConstructTheRectangle {
         System.out.println(Arrays.toString(constructRectangle(37)));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Start with initial width = sqrt(area)
+    // Loop until area % width = 0 with each iteration decrement width
+    // Return with 0th index = area/width, 1st index=width
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 40.99MB     -> + 21.92%
     public static int[] constructRectangle(int area) {
-
+        int w = (int) Math.sqrt(area);
+        while (area % w != 0) {
+            --w;
+        }
+        return new int[] {area / w, w};
     }
+    //  ***************** End of 1st Method ******************
+
     // ***************** 2nd Method ******************
     // Approach 2: Check base case area=1 => [1,1]
     // Start with i=1 till area/2, check if area%i compare (area/i-i) with previous dis
