@@ -9,7 +9,7 @@ public class NextGreaterElementI {
 
         NextGreaterElementI nge = new NextGreaterElementI();
 
-        System.out.println(Arrays.toString(nge.nextGreaterElement(n1,n2)));
+        System.out.println(Arrays.toString(nge.nextGreaterElement2(n1,n2)));
     }
 
     // ***************** 1st Method ******************
@@ -50,4 +50,37 @@ public class NextGreaterElementI {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Use a map to store key as nums2[i], v as elements to the right > nums2[i]
+    // If that element doesn't exist, put -1
+    // In another loop for nums1, ans[i] = map.get(nums1[i])
+    // Runtime  : 2ms       -> + 98.87%
+    // Memory   : 43.58MB   -> + 60.49%
+    public int[] nextGreaterElement2(int[] nums1, int[] nums2) {
+        int[] ans = new int[nums1.length];
+        Map<Integer,Integer> map = new HashMap<>(); // k-nums[i], v-i
+
+        for(int i=0; i<nums2.length; i++) {
+            int cur = nums2[i];
+            int j=i+1;
+            while(j < nums2.length) {
+                if(nums2[j] > cur) {
+                    break;
+                }
+                j++;
+            }
+            if(j < nums2.length) {
+                map.put(cur,nums2[j]);
+            } else {
+                map.put(cur,-1);
+            }
+        }
+
+        for(int i=0; i<nums1.length; i++) {
+            ans[i] = map.get(nums1[i]);
+        }
+
+        return ans;
+    }
+    //  ***************** End of 2nd Method ******************
 }
