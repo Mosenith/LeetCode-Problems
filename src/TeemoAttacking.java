@@ -8,11 +8,11 @@ public class TeemoAttacking {
         TeemoAttacking ta = new TeemoAttacking();
         System.out.println(ta.findPoisonedDuration(timeSeries,duration));
     }
-    // 1, 1+5-1 = 5
-    // 2, 2+5-1 = 6
-    // 3, 3+5-1 = 7
-    // 4, 4+5-1 = 8
-    // 5, 5+5-1 = 9
+
+    // ***************** 1st Method ******************
+    // Approach 1: Find min of duration & timeSeries[i] - timeSeries[i - 1] => += ans
+    // Runtime  : 2ms         -> + 98.89%
+    // Memory   : 44.86MB     -> + 68.66%
     public int findPoisonedDuration(int[] timeSeries, int duration) {
         int n = timeSeries.length;
         int ans = duration;
@@ -21,4 +21,6 @@ public class TeemoAttacking {
         }
         return ans;
     }
+    //  ***************** End of 1st Method ******************
+
 }
