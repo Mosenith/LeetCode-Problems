@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class NextGreaterElementI {
     public static void main(String[] args) {
@@ -9,7 +7,7 @@ public class NextGreaterElementI {
 
         NextGreaterElementI nge = new NextGreaterElementI();
 
-        System.out.println(Arrays.toString(nge.nextGreaterElement2(n1,n2)));
+        System.out.println(Arrays.toString(nge.nextGreaterElement3(n1,n2)));
     }
 
     // ***************** 1st Method ******************
@@ -83,4 +81,29 @@ public class NextGreaterElementI {
         return ans;
     }
     //  ***************** End of 2nd Method ******************
+
+    // ***************** 3nd Method ******************
+    // Approach 3: Use ArrayDeque & Map
+    // ArrayDeque (=Stack) -> stores nums2 elements (big->low) = stk.peek() > v
+    // If not m.put(stk.pop(), v) and in another loop just transfer map to ans[] with m.getOrDefault(nums1[i], -1)
+    // Runtime  : 3ms       -> + 89.23%
+    // Memory   : 43.67MB   -> + 54.10%
+    public int[] nextGreaterElement3(int[] nums1, int[] nums2) {
+        Deque<Integer> stk = new ArrayDeque<>();
+        Map<Integer, Integer> m = new HashMap<>();
+        for (int v : nums2) {
+            while (!stk.isEmpty() && stk.peek() < v) {
+                m.put(stk.pop(), v);
+            }
+            stk.push(v);
+        }
+
+        int n = nums1.length;
+        int[] ans = new int[n];
+        for (int i = 0; i < n; ++i) {
+            ans[i] = m.getOrDefault(nums1[i], -1);
+        }
+        return ans;
+    }
+    //  ***************** End of 3rd Method ******************
 }
