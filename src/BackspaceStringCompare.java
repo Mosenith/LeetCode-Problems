@@ -5,6 +5,11 @@ public class BackspaceStringCompare {
         System.out.println(backspaceCompare("ab#c","ad#c"));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Use Stack to store chars of s & t
+    // Pop when encounter # & then compare both stacks by popping char one by one
+    // Runtime  : 1ms         -> + 80.63%%
+    // Memory   : 41.33MB     -> + 54.71%
     public static boolean backspaceCompare(String s, String t) {
         Stack<Character> stk1 = new Stack<>();
         Stack<Character> stk2 = new Stack<>();
@@ -37,5 +42,5 @@ public class BackspaceStringCompare {
             }
         }
     }
-
+    //  ***************** End of 1st Method ******************
 }
