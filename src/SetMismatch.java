@@ -40,8 +40,8 @@ public class SetMismatch {
     // Approach 2: Use sum of arithmetics numbers - s,s1,s2
     // s-All sum in nums, s1-Well organized arithmetics nums(1-n), s2-Sums in nums without dup elements
     // return array of {s - s2,s1 - s2} with s-s2 => Get repeated number & s2-s1 => find missing number
-    // Runtime  : 0ms       -> + 100.00%
-    // Memory   : 41.25MB    -> + 21.88%
+    // Runtime  : 9ms       -> + 25.54%
+    // Memory   : 45.68MB   -> + 24.23%
     public static int[] findErrorNums2(int[] nums) {
         int n = nums.length;
         int s1 = (1 + n) * n / 2;
