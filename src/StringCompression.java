@@ -9,39 +9,34 @@ public class StringCompression {
         System.out.println(sc.compress(c));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Use 2 Pointers & reset chars[] by using index from 0
+    // In loop, find repeated char by checking chars[i] == chars[j]
+    // Reset chars[index++] = chars[i] and getNum by String.valueOf(j-i)
+    // Convert to charArray and add to chars[index++], then set i = j
+    // Runtime  : 1ms         -> + 99.48%
+    // Memory   : 44.28MB     -> + 19.41%
     public int compress(char[] chars) {
-        int countDigits = 0;
+        int len = chars.length;
+        int index = 0;
 
-        for(int i=0; i<chars.length;) {
-            char curChar = chars[i];
-            int next = i+1, count = 1;
-
-            System.out.println("curChar ==> " + curChar + " at i = " + i);
-            while(next < chars.length && chars[next] == curChar) {
-                count++;
-                next++;
+        for(int i=0,j=i+1; i<len;) {
+            while(j<len && chars[i] == chars[j]) {
+                j++;
             }
+            chars[index++] = chars[i];  // redefine chars
 
-            System.out.println("# of count = " + count);
-            int startIndex = i+1;
-            i += count;
-            if(count == 1) continue;
-            System.out.println("startIndex = " + startIndex);
-            while(count >= 10) {
-                chars[startIndex++] = (char) ((count / 10) + '0');
-                count /= 10;
+            // has repeated chars
+            if(j-i>1) {
+                String cnt = String.valueOf(j-i); // convert to string & use charArray
+                for(char c : cnt.toCharArray()) {   // if 12 => ['1','2']
+                    chars[index++] = c;
+                }
             }
-            countDigits = startIndex;
-            chars[startIndex] = (char) (count + '0');
-            System.out.println("***********");
+            i = j; // continue from the non-repeated index
         }
-
-        System.out.println(countDigits);
-
-        char[] copy = Arrays.copyOf(chars,countDigits+1);
-        chars = Arrays.copyOf(copy,copy.length);
-        System.out.println(Arrays.toString(chars));
-
-        return countDigits+1;
+        return index;
     }
+    //  ***************** End of 1st Method ******************
+
 }
