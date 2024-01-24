@@ -5,6 +5,9 @@ public class RemoveDuplicateLetters {
         String s = "bcabc"; // abc
 
         System.out.println(removeDuplicateLetters(s));
+        System.out.println(String.("abc",2));
+        System.out.println(String.valueOf("abd"));
+
     }
 
     public static String removeDuplicateLetters(String s) {
