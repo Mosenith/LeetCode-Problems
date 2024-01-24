@@ -10,6 +10,10 @@ public class RemoveDuplicateLetters {
         System.out.println(removeDuplicateLetters(s));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1:
+    // Runtime  : 2ms         -> + 97.29%
+    // Memory   : 42.22MB     -> + 41.56%
     public static String removeDuplicateLetters(String s) {
         int[] lastIndex = new int[26];
 
@@ -21,9 +25,7 @@ public class RemoveDuplicateLetters {
         }
 
         boolean[] present = new boolean[26];
-
         Stack<Character> st = new Stack<>();
-
         for(int i=0; i<s.length(); i++){
             char ch = s.charAt(i);
             int idx = (int)(ch-'a');
@@ -33,18 +35,17 @@ public class RemoveDuplicateLetters {
                     present[(int)(st.peek()-'a')] = false;
                     st.pop();
                 }
-
                 st.push(ch);
                 present[idx] = true;
             }
         }
 
         StringBuilder sb = new StringBuilder("");
-
         while(st.size()>0){
             sb.append(st.pop());
         }
 
         return sb.reverse().toString();
     }
+    //  ***************** End of 1st Method ******************
 }
