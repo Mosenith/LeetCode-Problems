@@ -1,32 +1,50 @@
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.Stack;
 
 public class RemoveDuplicateLetters {
     public static void main(String[] args) {
-        String s = "bcabc"; // abc
+        String s = "cbacdcbc"; // abc
 
         System.out.println(removeDuplicateLetters(s));
-        System.out.println(String.("abc",2));
-        System.out.println(String.valueOf("abd"));
-
     }
 
     public static String removeDuplicateLetters(String s) {
-        boolean[] alpha = new boolean[26];
+        int[] lastIndex = new int[26];
 
-        for(char c : s.toCharArray()) {
-            if(!alpha[c - 97]) {
-                alpha[c-97] = true;
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            int idx = (int)(ch-'a');
+
+            lastIndex[idx] = i;
+        }
+
+        boolean[] present = new boolean[26];
+
+        Stack<Character> st = new Stack<>();
+
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            int idx = (int)(ch-'a');
+
+            if(present[idx] == false){
+                while(st.size()>0 && st.peek()>ch &&lastIndex[(int)(st.peek()-'a')]>i){
+                    present[(int)(st.peek()-'a')] = false;
+                    st.pop();
+                }
+
+                st.push(ch);
+                present[idx] = true;
             }
         }
 
-        StringBuilder strb = new StringBuilder();
-        for(int i=0; i<alpha.length; i++) {
-            if(alpha[i]) {
-                strb.append((char) ('a' + i));
-            }
+        StringBuilder sb = new StringBuilder("");
+
+        while(st.size()>0){
+            sb.append(st.pop());
         }
 
-        System.out.println(Arrays.toString(alpha));
-        return strb.toString();
+        return sb.reverse().toString();
     }
 }
