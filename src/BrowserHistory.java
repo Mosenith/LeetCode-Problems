@@ -1,30 +1,30 @@
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
-public class BrowserHistory {
+class BrowserHistory {
+
     List<String> sites;
     int cur = 0;
     public BrowserHistory(String homepage) {
-        BrowserHistory bh = new BrowserHistory(homepage);
         sites = new ArrayList<>();
+        sites.add(homepage);
     }
 
     public void visit(String url) {
-        int prevSize = sites.size();
-        while(cur < prevSize-1) {
-            sites.remove(cur++);
+        int lastest = sites.size()-1;
+        while(cur < lastest) {
+            sites.remove(lastest);
+            lastest = sites.size()-1;
         }
 
         cur = sites.size();
         sites.add(url);
-        cur++;
+
     }
 
     public String back(int steps) {
         // move back over Home
-        if(cur - steps < 0) {
+        if(cur - steps <= 0) {
             // return home
             return sites.get(0);
         }
@@ -35,7 +35,7 @@ public class BrowserHistory {
 
     public String forward(int steps) {
         // can't move forward return cur
-        if(cur + steps > sites.size()) {
+        if(cur + steps >= sites.size()) {
             return sites.get(cur);
         }
 
@@ -43,3 +43,11 @@ public class BrowserHistory {
         return sites.get(cur);
     }
 }
+
+/**
+ * Your BrowserHistory object will be instantiated and called as such:
+ * BrowserHistory obj = new BrowserHistory(homepage);
+ * obj.visit(url);
+ * String param_2 = obj.back(steps);
+ * String param_3 = obj.forward(steps);
+ */
