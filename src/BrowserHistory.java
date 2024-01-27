@@ -1,46 +1,25 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.List;
-
+import java.util.Deque;
 class BrowserHistory {
 
-    List<String> sites;
-    int cur = 0;
+    private Deque<String> stk1 = new ArrayDeque<>();
+    private Deque<String> stk2 = new ArrayDeque<>();
     public BrowserHistory(String homepage) {
-        sites = new ArrayList<>();
-        sites.add(homepage);
+        visit(homepage);
     }
 
     public void visit(String url) {
-        int lastest = sites.size()-1;
-        while(cur < lastest) {
-            sites.remove(lastest);
-            lastest = sites.size()-1;
-        }
-
-        cur = sites.size();
-        sites.add(url);
-
+        stk1.push(url);
     }
 
     public String back(int steps) {
-        // move back over Home
-        if(cur - steps <= 0) {
-            // return home
-            return sites.get(0);
-        }
 
-        cur -= steps;
-        return sites.get(cur);
     }
 
     public String forward(int steps) {
         // can't move forward return cur
-        if(cur + steps >= sites.size()) {
-            return sites.get(cur);
-        }
 
-        cur += steps;
-        return sites.get(cur);
     }
 }
 
