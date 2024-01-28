@@ -5,8 +5,8 @@ public class BrowserHistoryIII {
     // maxPage - update to curPage every visit(), is used to set the maxLen of steps we can go forward()
     // So in forward() => min(maxPage, curPage+steps)
     // In back() => max(0,curPage-steps)
-    // Runtime  : 53ms         -> + 53.42%
-    // Memory   : 50.56MB      -> + 43.81%
+    // Runtime  : 49ms         -> + 81.81%
+    // Memory   : 51.70MB      -> + 16.35%
     String[] history;
     int curPage;
     int maxPage;
