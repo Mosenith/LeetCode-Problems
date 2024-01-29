@@ -1,15 +1,20 @@
 public class MinimumFallingPathSum {
     public static void main(String[] args) {
         int[][] matrix = {{2,1,3},{6,5,4},{7,8,9}};
+
+        System.out.println(minFallingPathSum(matrix));
     }
 
     // straight below row : i+1 & j, i<matrix.length
     // diagonally : i+1, j-1/j+1
-    public int minFallingPathSum(int[][] matrix) {
-        int curSum = Integer.MAX_VALUE;
+    public static int minFallingPathSum(int[][] matrix) {
+        int len = matrix.length;
+        var f = new int[len];
 
-        for(int i=0; i<matrix[0].length; i++) {
-            for(int j=i+1; )
+        for(var row : matrix) {
+            System.out.println(row);
         }
+
+        return 0;
     }
 }
