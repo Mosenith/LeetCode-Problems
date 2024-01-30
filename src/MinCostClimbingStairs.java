@@ -78,4 +78,25 @@ public class MinCostClimbingStairs {
     }
     //  ***************** End of 2nd Method ******************
 
+    // ***************** 3rd Method ******************
+    // Approach 3: Use int[] for memoization without helper method
+    // Basically, start from i=2 & continue filling minimumCost[i]
+    // By find min(cost[i-1] + minimumCost[i-1],cost[i-2] + minimumCost[i-2])
+    // Return the minimumCost[cost.length]
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 43.09MB     -> + 58.39%
+    public int minCostClimbingStairs3(int[] cost) {
+        int minimumCost[]  = new int[cost.length + 1];
+
+        minimumCost[0] = 0;
+        minimumCost[1] = 0;
+
+        for(int i = 2; i < minimumCost.length; i++) {
+            minimumCost[i] = Math.min(cost[i-1] + minimumCost[i-1],
+                    cost[i-2] + minimumCost[i-2]);
+        }
+
+        return minimumCost[cost.length];
+    }
+    //  ***************** End of 3rd Method ******************
 }
