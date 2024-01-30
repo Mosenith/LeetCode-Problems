@@ -48,4 +48,22 @@ public class BestTimeToBuyAndSellStockWithTransactionFee {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Get max profit by find max profit after buy & sell
+    // When buy, it is max(buy,sell-price)
+    // When sell, it is max(sell, buy+price-fee)
+    // Runtime  : 4ms        -> + 99.03%
+    // Memory   : 55.16MB    -> + 55.11%
+    public int maxProfit2(int[] prices, int fee) {
+        int buy = Integer.MIN_VALUE;
+        int sell = 0;
+
+        for (int price : prices) {
+            buy = Math.max(buy, sell - price);//  max profit after buy
+            sell = Math.max(sell, buy + price - fee);// max profit after selling
+        }
+
+        return sell;
+    }
+    //  ***************** End of 2nd Method ******************
 }
