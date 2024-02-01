@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class DivideArrayIntoArraysWithMaxDifference {
     public static void main(String[] args) {
@@ -45,4 +43,26 @@ public class DivideArrayIntoArraysWithMaxDifference {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Optimized version of 1st method
+    // Sort given array and init int[][] ans = new int[n / 3][]
+    // Loop from i=0 and copy array from i to i+3 -> t[]
+    // Check if t[2]-t[0] > k, return new int[][] {}
+    // Otherwise, have ans[i / 3] = t;
+    // Runtime  : 21ms        -> + 97.20%
+    // Memory   : 59.42MB     -> + 10.03%
+    public int[][] divideArray2(int[] nums, int k) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        int[][] ans = new int[n / 3][];
+        for (int i = 0; i < n; i += 3) {
+            int[] t = Arrays.copyOfRange(nums, i, i + 3);
+            if (t[2] - t[0] > k) {
+                return new int[][] {};
+            }
+            ans[i / 3] = t;
+        }
+        return ans;
+    }
+    //  ***************** End of 2nd Method ******************
 }
