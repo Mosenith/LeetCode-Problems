@@ -5,7 +5,7 @@ public class NumberOfMatchingSubsequences {
         String s = "abcde";
         String[] words = {"a","bb","acd","ace"};
 
-        System.out.println(numMatchingSubseq(s,words));
+        System.out.println(numMatchingSubseq2(s,words));
     }
 
     // ***************** 1st Method ******************
@@ -42,4 +42,36 @@ public class NumberOfMatchingSubsequences {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Use HashMap to map all words in words[] to #occurance
+    // Get that map keyset, each string to verify with s
+    // Runtime  : 36ms       -> + 93.37%
+    // Memory   : 45.54MB    -> + 70.43%
+    public static int numMatchingSubseq2(String s, String[] words) {
+        Map<String,Integer> map = new HashMap<>();
+
+        for(String word : words) {
+            map.put(word, map.getOrDefault(word,0)+1);
+        }
+
+        char[] sChar = s.toCharArray();
+        int ans = 0;
+        for(String keySet : map.keySet()) {
+            char[] keyChar = keySet.toCharArray();
+            int i=0, j=0;
+            // check key with s
+            while(i<keyChar.length && j<sChar.length) {
+                if(keyChar[i] == sChar[j]) {
+                    i++;
+                }
+                j++;
+            }
+            if(i == keyChar.length) {
+                // All matched => add all the #occurance
+                ans += map.get(keySet);
+            }
+        }
+        return ans;
+    }
+    //  ***************** End of 2nd Method ******************
 }
