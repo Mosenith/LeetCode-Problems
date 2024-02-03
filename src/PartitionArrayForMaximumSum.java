@@ -5,7 +5,7 @@ public class PartitionArrayForMaximumSum {
         int[]  arr = {1,4,1,5,7,3,6,1,9,9,3};
         int k = 4;
 
-        System.out.println(maxSumAfterPartitioning2(arr,k));
+        System.out.println(maxSumAfterPartitioning3(arr,k));
     }
 
     // ***************** 1st Method ******************
@@ -37,7 +37,6 @@ public class PartitionArrayForMaximumSum {
         return maxSum;
     }
     //  ***************** End of 1st Method ******************
-
 
     // ***************** 2nd Method ******************
     // Approach 2: DP with memoization using dp[arr.len]
@@ -75,6 +74,33 @@ public class PartitionArrayForMaximumSum {
     }
     //  ***************** End of 2nd Method ******************
 
+    // ***************** 3rd Method ******************
+    // Approach 3: Shorten the 2nd Method into 1 function starting from i=arr.len to 0
+    // Instead of call dfs(), we can use dp[j+1]
+    // Runtime  : 7ms        -> + 58.65%
+    // Memory   : 42.14MB    -> + 39.27%
+    public static int maxSumAfterPartitioning3(int[] arr, int k) {
+        int[] dp = new int[arr.length+1];
+
+        // each partition size is max k
+        for(int i=arr.length-1; i>=0; i--) {
+            int len = 0;
+            int maxElement = Integer.MIN_VALUE; // find max element in arr
+            int maxSum = Integer.MIN_VALUE;
+
+            // each partition size is max k
+            for(int j=i; j<Math.min(i+k, arr.length); j++) {
+                len++;
+                maxElement = Math.max(maxElement, arr[j]);
+                // find current max sum & find the next maxSum
+                int curSum = (len * maxElement) + dp[j+1];
+                maxSum = Math.max(maxSum, curSum);
+            }
+            dp[i] = maxSum;
+        }
+        return dp[0];
+    }
+    //  ***************** End of 3rd Method ******************
 }
 
 
