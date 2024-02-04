@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SubdomainVisitCount {
     public static void main(String[] args) {
@@ -10,16 +9,24 @@ public class SubdomainVisitCount {
 
     public static List<String> subdomainVisits(String[] cpdomains) {
         List<String> ls = new ArrayList<>();
+        Map<String,Integer> map = new HashMap<>();
 
         for(String s : cpdomains) {
             System.out.println("Curr => " + s);
-            StringBuilder sb = new StringBuilder();
-            for(char c : s.toCharArray()) {
-                if(c == ' ')
-                    break;
-                sb.append(c);
+            String[] sb = s.split("\\s|\\.");
+            System.out.println(Arrays.toString(sb));
+
+            StringBuilder tmp = new StringBuilder();
+            for(int i=1; i<sb.length; i++) {
+                if(i > 1) {
+                    map.computeIfPresent(sb[i], (k,v) -> v + Integer.valueOf(sb[0]));
+                    map.computeIfAbsent(sb[i], v -> Integer.valueOf(sb[0]));
+                }
+                tmp.append(sb[i] + ".");
             }
-            System.out.println(sb);
+
+            System.out.println(tmp);
+            System.out.println(map);
             System.out.println("*********\n");
         }
         return ls;
