@@ -50,8 +50,8 @@ public class SubdomainVisitCount {
     // Approach 2: Loop each string s in String[] cpdomains
     // Get index i of " " and use s.substring(0, i) => number
     // Inner Loop from i to s.len, if at i = ' ' or '.', get subString(i+1) => add to map
-    // Runtime  : 6ms        -> + 93.17%
-    // Memory   : 42.18MB    -> + 39.03%
+    // Runtime  : 17ms        -> + 70.87%
+    // Memory   : 45.17MB     -> + 76.20%
     public static List<String> subdomainVisits2(String[] cpdomains) {
         Map<String, Integer> map = new HashMap<>();
         for (String s : cpdomains) {
