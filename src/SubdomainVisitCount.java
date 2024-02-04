@@ -4,7 +4,7 @@ public class SubdomainVisitCount {
     public static void main(String[] args) {
         String[] domains = {"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"};
 
-        System.out.println(subdomainVisits(domains));
+        System.out.println(subdomainVisits2(domains));
     }
 
     // ***************** 1st Method ******************
@@ -21,37 +21,54 @@ public class SubdomainVisitCount {
 
         for(String s : cpdomains) {
             String[] sb = s.split("\\s|\\.");
+            int n = Integer.valueOf(sb[0]);
 
             if(sb.length == 4) {
-                map.computeIfPresent(sb[3], (k,v) -> v + Integer.valueOf(sb[0]));
-                map.computeIfAbsent(sb[3], v -> Integer.valueOf(sb[0]));
-
-                map.computeIfPresent(sb[2] + "." + sb[3], (k,v) -> v + Integer.valueOf(sb[0]));
-                map.computeIfAbsent(sb[2] + "." + sb[3], v -> Integer.valueOf(sb[0]));
-
-                map.computeIfPresent(sb[1] + "." + sb[2] + "." + sb[3], (k,v) -> v + Integer.valueOf(sb[0]));
-                map.computeIfAbsent(sb[1] + "." + sb[2] + "." + sb[3], v -> Integer.valueOf(sb[0]));
+                map.put(sb[3], map.getOrDefault(sb[3], 0) + n);
+                map.put(sb[2] + "." + sb[3], map.getOrDefault(sb[2] + "." + sb[3], 0) + n);
+                map.put(sb[1] + "." + sb[2] + "." + sb[3], map.getOrDefault(sb[1] + "." + sb[2] + "." + sb[3], 0) + n);
             } else {
                 // last element: i.e com
-                map.computeIfPresent(sb[2], (k,v) -> v + Integer.valueOf(sb[0]));
-                map.computeIfAbsent(sb[2], v -> Integer.valueOf(sb[0]));
+                map.put(sb[2], map.getOrDefault(sb[2], 0) + n);
 
                 // all combine
-                map.computeIfPresent(sb[1] + "." + sb[2], (k,v) -> v + Integer.valueOf(sb[0]));
-                map.computeIfAbsent(sb[1] + "." + sb[2], v -> Integer.valueOf(sb[0]));
+                map.put(sb[1] + "." + sb[2], map.getOrDefault(sb[1] + "." + sb[2], 0) + n);
             }
         }
 
         // Iterate over the entries of the map
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+        for (var entry : map.entrySet()) {
             // Concatenate key and value into a string
-            String combined = entry.getValue() + " " + entry.getKey();
-
             // Add the combined string to the list
-            ls.add(combined);
+            ls.add(entry.getValue() + " " + entry.getKey());
         }
         return ls;
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Loop each string s in String[] cpdomains
+    // Get index i of " " and use s.substring(0, i) => number
+    // Inner Loop from i to s.len, if at i = ' ' or '.', get subString(i+1) => add to map
+    // Runtime  : 6ms        -> + 93.17%
+    // Memory   : 42.18MB    -> + 39.03%
+    public static List<String> subdomainVisits2(String[] cpdomains) {
+        Map<String, Integer> map = new HashMap<>();
+        for (String s : cpdomains) {
+            int i = s.indexOf(" ");
+            int v = Integer.parseInt(s.substring(0, i));
+            for (; i < s.length(); ++i) {
+                if (s.charAt(i) == ' ' || s.charAt(i) == '.') {
+                    String t = s.substring(i + 1); // get the rest of s after ' ' or '.'
+                    map.put(t, map.getOrDefault(t, 0) + v);
+                }
+            }
+        }
+        List<String> ans = new ArrayList<>();
+        for (var e : map.entrySet()) {
+            ans.add(e.getValue() + " " + e.getKey());
+        }
+        return ans;
+    }
+    //  ***************** End of 2nd Method ******************
 }
