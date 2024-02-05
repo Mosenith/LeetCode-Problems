@@ -7,11 +7,11 @@ import java.util.*;
 
 public class FirstUniqueCharacterInAString {
     public static void main(String[] args) {
-        String s = "dacca"; // 0
-//        String s = "loveleetcode";
+//        String s = "leetcode"; // 0
+        String s = "loveleetcode"; // 2
 
         System.out.println(firstUniqChar(s));
-        System.out.println(firstUniqChar2(s));
+        System.out.println(firstUniqChar3(s));
 
     }
 
@@ -64,4 +64,32 @@ public class FirstUniqueCharacterInAString {
         return -1;
     }
     // ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Similar to 2nd method but use queue to store & scan each char
+    // So that we don't need to scan from 0 to 25
+    // Runtime  : 15ms        -> + 62.38%
+    // Memory   : 44.77 MB    -> + 53.31%
+    public static int firstUniqChar3(String s) {
+        int[] occurrence = new int[26];
+        Queue<Character> queue = new ArrayDeque<>();
+
+        for(char c : s.toCharArray()) {
+            ++occurrence[c - 'a'];
+            queue.add(c);
+        }
+
+        // pop from queue and scan in occurrence[]
+        int index = 0;
+        while(!queue.isEmpty()) {
+            char c = queue.poll();
+            if(occurrence[c - 'a'] == 1) {
+                return index;
+            }
+            index++;
+        }
+
+        return -1;
+    }
+    // ***************** End of 3rd Method ******************
 }
