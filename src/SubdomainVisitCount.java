@@ -71,4 +71,43 @@ public class SubdomainVisitCount {
         return ans;
     }
     //  ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Optimized of 1st method by spliting cpd in cpdomains when meets ' '
+    // So split[0] -> number, split[1] -> the rest of domains, which should be added to list
+    // Then split the full domains by '.', then add subString(i+1) -> main domain (mail.com)
+    // If there is another '.', then similarly add subString(i+1) -> top-level domain (.com)
+    // Runtime  : 11ms        -> + 96.62%
+    // Memory   : 45.51MB     -> + 32.12%
+    public static List<String> subdomainVisits3(String[] cpdomains) {
+        Map<String,Integer> countMap = new HashMap();
+        for(String cpd: cpdomains) {
+            String[] splits = cpd.split(" ");
+            int num = Integer.parseInt(splits[0]);
+            String domain = splits[1];
+
+            int count = countMap.getOrDefault(domain, 0);
+            count += num;
+            countMap.put(domain, count);
+
+            int i = 0;
+            while(i < domain.length()) {
+                if(domain.charAt(i) == '.') {
+                    String parentDomain = domain.substring(i+1);
+                    count = countMap.getOrDefault(parentDomain, 0);
+                    count += num;
+                    countMap.put(parentDomain, count);
+                }
+                i++;
+            }
+        }
+        List<String> result = new ArrayList();
+        for(Map.Entry<String,Integer> entry: countMap.entrySet()) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(entry.getValue()).append(" ").append(entry.getKey());
+            result.add(sb.toString());
+        }
+        return result;
+    }
+    //  ***************** End of 3rd Method ******************
 }
