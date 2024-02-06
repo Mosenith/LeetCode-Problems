@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class BreakAPalindrome {
     public static void main(String[] args) {
-        String palindrome = "abcdcba";
+        String palindrome = "a";
 
         System.out.println(breakPalindrome(palindrome));
     }
@@ -38,7 +38,7 @@ public class BreakAPalindrome {
     public static boolean isPalindrome (String str) {
         char[] c = str.toCharArray();
         System.out.println("check => " + Arrays.toString(c));
-        for(int i=0,j=str.length()-1; i>j; i++,j--) {
+        for(int i=0,j=str.length()-1; i<j; i++,j--) {
             if(c[i] != c[j]) {
                 System.out.println("Is Not A Palindrome");
                 return false;
