@@ -8,7 +8,7 @@ public class BreakAPalindrome {
     }
 
     // ***************** 1st Method ******************
-    // Approach : Base check if s.len = 1, it's always a palindrome so return ""
+    // Approach 1: Base check if s.len = 1, it's always a palindrome so return ""
     // Iterate from i=0, if s[i] != 'a' or i=s.len-1, change s[i] to 'a' or 'b' (if s[i]='a')
     // Check if the new s after changed is not a palindrome, return the new s
     // otherwise rechange it, continue the next iteration
@@ -44,7 +44,12 @@ public class BreakAPalindrome {
     }
     // ***************** End of 1st Method ******************
 
-
+    // ***************** 2nd Method ******************
+    // Approach 2: Base case when s.len = 1 => return ""
+    // From i=0, iterate till s[i] != 'a' && i<s.len/2
+    // If i=s.len/2, replace s[i] to 'b', otherwise replace s[i] to 'a'
+    // Runtime  : 0ms        -> + 100.0%
+    // Memory   : 41.62MB    -> + 22.53%
     public static String breakPalindrome2(String palindrome) {
         int n = palindrome.length();
         if (n == 1) {
@@ -62,4 +67,5 @@ public class BreakAPalindrome {
         }
         return String.valueOf(cs);
     }
+    // ***************** End of 2nd Method ******************
 }
