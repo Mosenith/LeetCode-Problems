@@ -11,6 +11,7 @@ public class SortCharactersByFrequency {
         Map<Integer,List<Character>> map = new HashMap<>();
         List<Integer> countList = new ArrayList<>();
 
+        // count char and store in int[] alpha
         for(char c : s.toCharArray()) {
             System.out.println(c);
             ++alpha[c - 'A'];
