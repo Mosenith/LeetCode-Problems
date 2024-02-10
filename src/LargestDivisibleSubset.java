@@ -10,9 +10,12 @@ public class LargestDivisibleSubset {
         System.out.println(largestDivisibleSubset(nums));
     }
 
-    // 2 - 4,6,24
-    // 3 - 6,24
-    // 4 - 24
+    // 1 - 1,2,3,4,6,24
+    // 2 - 2,4,6,24
+    // 3 - 3,6,24
+    // 4 - 4,24
+    // 6 - 6,24
+    // 24- 24
     public static List<Integer> largestDivisibleSubset(int[] nums) {
         if(nums.length == 1) return List.of(nums[0]);
 
