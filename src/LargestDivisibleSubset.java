@@ -5,11 +5,13 @@ import java.util.List;
 
 public class LargestDivisibleSubset {
     public static void main(String[] args) {
-        int[] nums = {1,2,3,4,6,24};
+        int[] nums = {1,2,3,4,6,24}; //1,2,4,24
 
         System.out.println(largestDivisibleSubset(nums));
     }
 
+    // find this and get the base that has most number except 1: in this case it's 2
+    // check if each number is divisible with each other. if not remove
     // 1 - 1,2,3,4,6,24
     // 2 - 2,4,6,24
     // 3 - 3,6,24
