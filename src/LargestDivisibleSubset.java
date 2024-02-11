@@ -4,7 +4,7 @@ public class LargestDivisibleSubset {
     public static void main(String[] args) {
         int[] nums = {1,2,3,4,6,24}; //1,2,4,24
 
-        System.out.println(largestDivisibleSubset(nums));
+        System.out.println(largestDivisibleSubset2(nums));
     }
 
     // ***************** 1st Method ******************
@@ -63,4 +63,49 @@ public class LargestDivisibleSubset {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Sort given array & DP with memoization using dp[nums.len]
+    // Runtime  : 14ms       -> + 61.45%
+    // Memory   : 42.54MB    -> + 95.87%
+    public static List<Integer> largestDivisibleSubset2(int[] nums) {
+        List<Integer> largestSubset = new ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return largestSubset;
+        }
+
+        // Sort the input array
+        Arrays.sort(nums);
+
+        // Initialize dynamic programming arrays
+        int n = nums.length;
+        int[] dp = new int[n];
+        int[] prevIndex = new int[n];
+        Arrays.fill(dp, 1);
+        Arrays.fill(prevIndex, -1);
+
+        // Dynamic programming to find the largest divisible subset
+        int maxSize = 1;
+        int maxIndex = 0;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] % nums[j] == 0 && dp[j] + 1 > dp[i]) {
+                    dp[i] = dp[j] + 1;
+                    prevIndex[i] = j;
+                    if (dp[i] > maxSize) {
+                        maxSize = dp[i];
+                        maxIndex = i;
+                    }
+                }
+            }
+        }
+
+        // Reconstruct the largest divisible subset
+        while (maxIndex != -1) {
+            largestSubset.add(nums[maxIndex]);
+            maxIndex = prevIndex[maxIndex];
+        }
+
+        return largestSubset;
+    }
+    //  ***************** End of 2nd Method ******************
 }
