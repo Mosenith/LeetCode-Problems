@@ -19,8 +19,6 @@ public class LargestDivisibleSubset {
     // 6 - 6,24
     // 24- 24
     public static List<Integer> largestDivisibleSubset(int[] nums) {
-        if(nums.length == 1) return List.of(nums[0]);
-
         Arrays.sort(nums);
         List<Integer> ans = new ArrayList<>();
 
