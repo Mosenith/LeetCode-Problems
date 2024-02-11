@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LargestDivisibleSubset {
     public static void main(String[] args) {
@@ -10,46 +7,60 @@ public class LargestDivisibleSubset {
         System.out.println(largestDivisibleSubset(nums));
     }
 
-    // find this and get the base that has most number except 1: in this case it's 2
-    // check if each number is divisible with each other. if not remove
-    // 1 - 1,2,3,4,6,24
-    // 2 - 2,4,6,24
-    // 3 - 3,6,24
-    // 4 - 4,24
-    // 6 - 6,24
-    // 24- 24
+    // ***************** 1st Method ******************
+    // Approach 1: Brute Force
+    // Find all possible subset of nums[] and check each subset if they all divisible with each other
+    // If it is, check size if bigger than curlargestSubset, update largestSubset & maxSize
+    // Exceed time limit
     public static List<Integer> largestDivisibleSubset(int[] nums) {
-        Arrays.sort(nums);
-        List<Integer> ans = new ArrayList<>();
+        List<Integer> largestSubset = new ArrayList<>();
+        int maxSize = 0;
 
-        for(int i=0; i<nums.length; i++) {
-            if(nums[i] == 1) {
-                continue;
-            }
-            List<Integer> tmp = new ArrayList<>();
-            int cur = nums[i];
-            tmp.add(nums[i]);
-            for(int j=0; j<nums.length; j++) {
-                if(j == i) continue;
-                if(cur > nums[j] && cur % nums[j] == 0
-                        || cur < nums[j] && nums[j] % cur == 0) {
-                    cur *= nums[j];
-                    tmp.add(nums[j]);
+        // Generate all possible subsets of nums
+        List<List<Integer>> subsets = generateSubsets(nums);
+
+        System.out.println(subsets);
+        // Check each subset if it satisfies the conditions
+        for (List<Integer> subset : subsets) {
+            if (isDivisibleSubset(subset)) {
+                // Update largestSubset and maxSize if the current subset is larger
+                if (subset.size() > maxSize) {
+                    largestSubset = subset;
+                    maxSize = subset.size();
                 }
             }
-
-            System.out.println(ans);
-            System.out.println(tmp);
-            if(ans.size() < tmp.size()) {
-                System.out.println("Change ans list");
-                ans = new ArrayList<>();
-                ans = tmp;
-            }
-
-            System.out.println("*******\n");
         }
-
-        Collections.sort(ans);
-        return ans;
+        return largestSubset;
     }
+
+    // Function to generate all possible subsets of nums
+    private static List<List<Integer>> generateSubsets(int[] nums) {
+        List<List<Integer>> subsets = new ArrayList<>();
+        subsets.add(new ArrayList<>()); // Add an empty subset
+        for (int num : nums) {
+            int size = subsets.size();
+            for (int i = 0; i < size; i++) {
+                List<Integer> subset = new ArrayList<>(subsets.get(i));
+                subset.add(num);
+                subsets.add(subset);
+            }
+        }
+        return subsets;
+    }
+
+    // Function to check if every pair of elements in the subset satisfies the conditions
+    private static boolean isDivisibleSubset(List<Integer> subset) {
+        for (int i = 0; i < subset.size(); i++) {
+            for (int j = i + 1; j < subset.size(); j++) {
+                int a = subset.get(i);
+                int b = subset.get(j);
+                if (a % b != 0 && b % a != 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    //  ***************** End of 1st Method ******************
+
 }
