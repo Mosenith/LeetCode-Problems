@@ -108,4 +108,36 @@ public class LargestDivisibleSubset {
         return largestSubset;
     }
     //  ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Sort given array & DP with memoization using dp[nums.len]
+    // Runtime  : 14ms       -> + 61.45%
+    // Memory   : 42.54MB    -> + 95.87%
+    public static List<Integer> largestDivisibleSubset3(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        int[] f = new int[n];
+        Arrays.fill(f, 1);
+        int k = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                if (nums[i] % nums[j] == 0) {
+                    f[i] = Math.max(f[i], f[j] + 1);
+                }
+            }
+            if (f[k] < f[i]) {
+                k = i;
+            }
+        }
+        int m = f[k];
+        List<Integer> ans = new ArrayList<>();
+        for (int i = k; m > 0; --i) {
+            if (nums[k] % nums[i] == 0 && f[i] == m) {
+                ans.add(nums[i]);
+                k = i;
+                --m;
+            }
+        }
+        return ans;
+    }
 }
