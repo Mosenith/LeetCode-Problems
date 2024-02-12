@@ -4,7 +4,7 @@ public class LargestDivisibleSubset {
     public static void main(String[] args) {
         int[] nums = {1,2,3,4,6,24}; //1,2,4,24
 
-        System.out.println(largestDivisibleSubset2(nums));
+        System.out.println(largestDivisibleSubset3(nums));
     }
 
     // ***************** 1st Method ******************
@@ -110,9 +110,9 @@ public class LargestDivisibleSubset {
     //  ***************** End of 2nd Method ******************
 
     // ***************** 3rd Method ******************
-    // Approach 3: Sort given array & DP with memoization using dp[nums.len]
-    // Runtime  : 14ms       -> + 61.45%
-    // Memory   : 42.54MB    -> + 95.87%
+    // Approach 3: Optimized 2nd Method
+    // Runtime  : 13ms       -> + 99.85%
+    // Memory   : 42.93MB    -> + 58.34%
     public static List<Integer> largestDivisibleSubset3(int[] nums) {
         Arrays.sort(nums);
         int n = nums.length;
@@ -129,6 +129,7 @@ public class LargestDivisibleSubset {
                 k = i;
             }
         }
+
         int m = f[k];
         List<Integer> ans = new ArrayList<>();
         for (int i = k; m > 0; --i) {
@@ -140,4 +141,5 @@ public class LargestDivisibleSubset {
         }
         return ans;
     }
+    //  ***************** End of 3rd Method ******************
 }
