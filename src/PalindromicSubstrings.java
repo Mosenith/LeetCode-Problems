@@ -1,9 +1,9 @@
 public class PalindromicSubstrings {
     public static void main(String[] args) {
         // 6 - "a", "a", "a", "aa", "aa", "aaa"
-        String s = "aaa";
+        String s = "abc";
 
-        System.out.println(countSubstrings(s));
+        System.out.println(countSubstrings2(s));
     }
     // ***************** 1st Method ******************
     // Approach 1: DP before optimization & no memoization
@@ -37,5 +37,31 @@ public class PalindromicSubstrings {
 
 
     public static int countSubstrings2(String s) {
+        int count = 0;
+
+        for(int i=0; i<s.length(); i++) {
+            int l = i, r = s.length()-1;
+            int index = 0;
+            boolean isPalin = true;
+            System.out.println("at i = " + i + " => " + l + " : " + r);
+            while(i <= r) {
+                if(s.charAt(l) != s.charAt(r)) {
+                    r--;
+                }
+                if(l >= r) {
+                    count++;
+                    l = i;
+                    r = s.length()-1-(++index);
+                    System.out.println("reset r = " + r);
+                }
+            }
+            if(isPalin) {
+                count++;
+            }
+            System.out.println(count);
+            System.out.println("*******\n");
+        }
+
+        return count;
     }
 }
