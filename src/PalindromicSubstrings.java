@@ -36,32 +36,18 @@ public class PalindromicSubstrings {
     //  ***************** End of 1st Method ******************
 
 
+    // expanding around the center
     public static int countSubstrings2(String s) {
-        int count = 0;
-
-        for(int i=0; i<s.length(); i++) {
-            int l = i, r = s.length()-1;
-            int index = 0;
-            boolean isPalin = true;
-            System.out.println("at i = " + i + " => " + l + " : " + r);
-            while(i <= r) {
-                if(s.charAt(l) != s.charAt(r)) {
-                    r--;
-                }
-                if(l >= r) {
-                    count++;
-                    l = i;
-                    r = s.length()-1-(++index);
-                    System.out.println("reset r = " + r);
-                }
+        int ans = 0;
+        int n = s.length();
+        for (int k = 0; k < n * 2 - 1; ++k) {
+            int i = k / 2, j = (k + 1) / 2;
+            while (i >= 0 && j < n && s.charAt(i) == s.charAt(j)) {
+                ++ans;
+                --i;
+                ++j;
             }
-            if(isPalin) {
-                count++;
-            }
-            System.out.println(count);
-            System.out.println("*******\n");
         }
-
-        return count;
+        return ans;
     }
 }
