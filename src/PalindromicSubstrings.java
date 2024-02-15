@@ -1,7 +1,7 @@
 public class PalindromicSubstrings {
     public static void main(String[] args) {
         // 6 - "a", "a", "a", "aa", "aa", "aaa"
-        String s = "abc";
+        String s = "aba";
 
         System.out.println(countSubstrings2(s));
     }
@@ -35,13 +35,19 @@ public class PalindromicSubstrings {
     }
     //  ***************** End of 1st Method ******************
 
-
-    // expanding around the center
+    // ***************** 2nd Method ******************
+    // Approach 2: Expand from the center by start from 0 to s.len*2-1
+    // Within loop, set i=k/2, j=(k+1)/2, if s.at(i)=s.at(j)
+    // Have count++ and --i,j++, since at match point is the center
+    // Runtime  : 2ms        -> + 95.85%
+    // Memory   : 41.52MB    -> + 55.37%
     public static int countSubstrings2(String s) {
         int ans = 0;
         int n = s.length();
         for (int k = 0; k < n * 2 - 1; ++k) {
             int i = k / 2, j = (k + 1) / 2;
+            // when detect the same char at i & j, that's the center
+            // expand from center to i-- and j++
             while (i >= 0 && j < n && s.charAt(i) == s.charAt(j)) {
                 ++ans;
                 --i;
@@ -50,4 +56,5 @@ public class PalindromicSubstrings {
         }
         return ans;
     }
+    //  ***************** End of 1st Method ******************
 }
