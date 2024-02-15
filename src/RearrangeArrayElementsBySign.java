@@ -6,7 +6,7 @@ public class RearrangeArrayElementsBySign {
     public static void main(String[] args) {
         int[] nums = {3,1,-2,-5,2,-4};
 
-        System.out.println(Arrays.toString(rearrangeArray(nums)));
+        System.out.println(Arrays.toString(rearrangeArray2(nums)));
     }
 
     // ***************** 1st Method ******************
@@ -47,8 +47,10 @@ public class RearrangeArrayElementsBySign {
         for(int n : nums) {
             if(index%2==0 && n<0) {
                 negative.add(n);
+                continue;
             } else if(index%2!=0 && n>0) {
                 positive.add(n);
+                continue;
             }
 
             if(n>0 && positive.isEmpty()) {
@@ -56,16 +58,23 @@ public class RearrangeArrayElementsBySign {
             } else if(n>0 && !positive.isEmpty()){
                 positive.add(n);
                 ans[index] = positive.poll();
-            } else if(n )
+            } else if(n<0 && negative.isEmpty()) {
+                ans[index] = n;
+            } else {
+                negative.add(n);
+                ans[index] = negative.poll();
+            }
+            index++;
         }
 
-        for(int i=0; i<ans.length; i++) {
-            if(i % 2 == 0) {
-                ans[i] = positive.poll();
+        while(index < ans.length) {
+            if(index % 2 == 0) {
+                ans[index++] = positive.poll();
             } else {
-                ans[i] = negative.poll();
+                ans[index++] = negative.poll();
             }
         }
+
         return ans;
     }
 }
