@@ -42,4 +42,8 @@ public class LeastNumberOfUniqueIntegersAfterKRemovals {
     }
     //  ***************** End of 1st Method ******************
 
+    public static int findLeastNumOfUniqueInts2(int[] arr, int k) {
+
+    }
+
 }
