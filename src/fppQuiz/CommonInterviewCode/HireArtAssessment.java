@@ -25,7 +25,20 @@ public class HireArtAssessment {
                 {"58", "Software Design"}
         };
 
-        System.out.println(findPairs(enrollments1));
+        String[][] enrollments2 = {
+                {"0", "Advanced Mechanics"},
+                {"0", "Art History"},
+                {"1", "Course 1"},
+                {"1", "Course 2"},
+                {"2", "Computer Architecture"},
+                {"3", "Course 1"},
+                {"3", "Course 2"},
+                {"4", "Algorithms"}
+        };
+
+//        System.out.println(findPairs(enrollments1));
+        System.out.println(findPairs2(enrollments1));
+
     }
 
     // 2,3,4,5,1
@@ -59,8 +72,8 @@ public class HireArtAssessment {
             map.put(id, map.getOrDefault(id, new ArrayList<>()));
             map.get(id).add(enrollments[i][1]);
         }
-        System.out.println(studentId);
-        System.out.println(map);
+//        System.out.println(studentId);
+//        System.out.println(map);
 
         for(int i=0; i<studentId.size(); i++) {
             String std1 = studentId.get(i);
@@ -76,8 +89,8 @@ public class HireArtAssessment {
 
     private static List<String> findMatchMajor(List<String> std1, List<String> std2) {
         List<String> ans = new ArrayList<>();
-        Collections.sort(std1);
-        Collections.sort(std2);
+//        Collections.sort(std1);
+//        Collections.sort(std2);
 
         for(int i=0; i<std1.size(); i++) {
             String major1 = std1.get(i);
@@ -89,5 +102,34 @@ public class HireArtAssessment {
             }
         }
         return ans;
+    }
+
+    public static Map<String,List<String>> findPairs2(String[][] enrollments) {
+        Map<String, List<String>> coursesByStudent = new HashMap<>();
+        for (String[] enrollment : enrollments) {
+            String studentId = enrollment[0];
+            String course = enrollment[1];
+            coursesByStudent.putIfAbsent(studentId, new ArrayList<>());
+            coursesByStudent.get(studentId).add(course);
+        }
+
+        System.out.println(coursesByStudent);
+
+        Map<String, List<String>> sharedCourses = new HashMap<>();
+        for (String student1 : coursesByStudent.keySet()) {
+            List<String> courses1 = coursesByStudent.get(student1);
+            for (String student2 : coursesByStudent.keySet()) {
+                // Ensure student1 < student2 for unique key
+                if (student1.compareTo(student2) < 0) {
+                    List<String> courses2 = coursesByStudent.get(student2);
+                    List<String> shared = new ArrayList<>(courses1);
+                    System.out.println(shared);
+                    // common element of shared & course2 will be retained in shared
+                    shared.retainAll(courses2);
+                    sharedCourses.put(student1 + "," + student2, shared);
+                }
+            }
+        }
+        return sharedCourses;
     }
 }
