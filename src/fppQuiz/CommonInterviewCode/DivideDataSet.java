@@ -22,7 +22,7 @@ public class DivideDataSet {
                 {"CONNECT","Charlie","Bob"}
         };
 
-        List<List<String>> ans = divide(events, 1);
+        List<List<String>> ans = divide(events, 3);
         System.out.println(ans);
     }
 
