@@ -8,9 +8,9 @@ public class HireArtAssessment {
         // rotateArray
         int[] arr = {8,9,10};
         int n = 3, k = 1;
-
 //        System.out.println(Arrays.toString(rotateArray(arr,n,k)));
 
+        // Shared course of Students
         String[][] enrollments1 = {
                 {"58", "Linear Algebra"},
                 {"94", "Art History"},
@@ -35,10 +35,16 @@ public class HireArtAssessment {
                 {"3", "Course 2"},
                 {"4", "Algorithms"}
         };
-
 //        System.out.println(findPairs(enrollments1));
-        System.out.println(findPairs2(enrollments1));
+//        System.out.println(findPairs2(enrollments1));
 
+        // word-wrap
+        List<String> words = Arrays.asList("The", "day", "began", "as", "still", "as", "the",
+                "night", "abruptly", "lighted", "with", "brilliant",
+                "flame");
+        int len = 13;
+
+        System.out.println(wordWrap(words,12));
     }
 
     // 2,3,4,5,1
@@ -113,8 +119,6 @@ public class HireArtAssessment {
             coursesByStudent.get(studentId).add(course);
         }
 
-        System.out.println(coursesByStudent);
-
         Map<String, List<String>> sharedCourses = new HashMap<>();
         for (String student1 : coursesByStudent.keySet()) {
             List<String> courses1 = coursesByStudent.get(student1);
@@ -123,7 +127,6 @@ public class HireArtAssessment {
                 if (student1.compareTo(student2) < 0) {
                     List<String> courses2 = coursesByStudent.get(student2);
                     List<String> shared = new ArrayList<>(courses1);
-                    System.out.println(shared);
                     // common element of shared & course2 will be retained in shared
                     shared.retainAll(courses2);
                     sharedCourses.put(student1 + "," + student2, shared);
@@ -131,5 +134,44 @@ public class HireArtAssessment {
             }
         }
         return sharedCourses;
+    }
+
+    public static List<String> wordWrap(List<String> words, int len) {
+        List<String> ans = new ArrayList<>();
+        StringBuilder curWord = new StringBuilder();
+        int curLen = 0;
+
+        for(String word : words) {
+            System.out.println(word);
+            System.out.println("cur word = " + curWord);
+
+            int wordLen = word.toCharArray().length;
+            if(curLen + wordLen == len) {
+                System.out.println("==13");
+                curWord.append(word);
+                ans.add(curWord.toString());
+                curWord = new StringBuilder();
+            } else if(curLen + wordLen > len){
+                System.out.println(">13");
+                if(curWord.charAt(curLen-1) == '-') {
+                    ans.add(curWord.substring(0,curLen-1));
+                } else {
+                    ans.add(curWord.toString());
+                }
+                curWord = new StringBuilder();
+                curWord.append(word+"-");
+            } else {
+                System.out.println("<13");
+                curWord.append(word+"-");
+            }
+            curLen = curWord.length();
+            System.out.println(curLen);
+            System.out.println("******\n");
+        }
+
+        if(!curWord.isEmpty()) {
+            ans.add(curWord.substring(0,curLen-1));
+        }
+        return ans;
     }
 }
