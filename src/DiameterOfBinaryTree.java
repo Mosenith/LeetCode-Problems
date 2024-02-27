@@ -27,19 +27,30 @@ public class DiameterOfBinaryTree {
         root1.right = new TreeNode(3);
         root1.left.left = new TreeNode(4);
         root1.left.right = new TreeNode(5);
+
+        System.out.println(diameterOfBinaryTree(root1));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Use DFS recursive - find dfs of root.left & root.right
+    // In dfs, ans = max(ans, left+right) and return 1+max(left+right)
+    // Runtime  : 0ms           -> + 100.00%
+    // Memory   : 42.96MB       -> + 27.80%
     static int ans;
-    public int diameterOfBinaryTree(TreeNode root) {
-        this.ans = 0;
-        return countNode(root);
+    public static int diameterOfBinaryTree(TreeNode root) {
+        ans = 0;
+        countNode(root);
+        return ans;
     }
 
-    private int countNode(TreeNode root) {
+    private static int countNode(TreeNode root) {
         if(root == null) return 0;
 
         int left = countNode(root.left);
         int right = countNode(root.right);
         ans = Math.max(ans, left + right);
+
+        return 1 + Math.max(left,right);
     }
+    //  ***************** End of 1st Method ******************
 }
