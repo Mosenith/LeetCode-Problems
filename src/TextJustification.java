@@ -15,6 +15,12 @@ public class TextJustification {
 
         System.out.println(fullJustify(words, maxWidth));
     }
+
+    // ***************** 1st Method ******************
+    // Approach 1: Add elements in words[] to queue while consider the #chars + #spaces <= maxWidth
+    // String in queue is one line of ans that is needed to format with spaces
+    // Runtime  : 2ms           -> + 46.38%
+    // Memory   : 41.52MB       -> + 79.62%
     public static List<String> fullJustify(String[] words, int maxWidth) {
         List<String> ans = new ArrayList<>();
 
@@ -25,7 +31,6 @@ public class TextJustification {
             queue.add(words[i]);
             while(nextIndex < words.length) {
                 if(curLen + (queue.size()-1) + words[nextIndex].toCharArray().length >= maxWidth) {
-                    System.out.println("break at nextIndex = " + nextIndex);
                     break;
                 }
                 curLen += words[nextIndex].toCharArray().length;
@@ -55,7 +60,6 @@ public class TextJustification {
                 ans.add(txt);
             }
         }
-
         return ans;
     }
 
@@ -83,4 +87,5 @@ public class TextJustification {
         }
         return str.toString();
     }
+    //  ***************** End of 1st Method ******************
 }
