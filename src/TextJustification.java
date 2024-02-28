@@ -88,4 +88,53 @@ public class TextJustification {
         return str.toString();
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Similar approach as the 1st but more organised and optimized
+    // Runtime  : 0ms           -> + 100.00%
+    // Memory   : 41.60MB       -> + 66.62%
+    public static List<String> fullJustify2(String[] words, int maxWidth) {
+        List<String> list = new ArrayList<>();
+
+        int i = 0;
+        while (i < words.length) {
+            int sum = 0;
+            int prefixLength = 0;
+            int j = i;
+            while (j < words.length && sum + prefixLength + words[j].length() <= maxWidth) {
+                sum += prefixLength + words[j].length();
+                prefixLength = 1;
+                j++;
+            }
+            var sb = new StringBuilder();
+            if (j != words.length) {
+                var numOfAdditionalSpaces = maxWidth - sum;
+                var numOfGuaranteedSpaces = j > i + 1
+                        ? numOfAdditionalSpaces / (j - i - 1) : 0;
+                var spacesLeft = numOfAdditionalSpaces - numOfGuaranteedSpaces * (j - i - 1);
+
+                sb.append(words[i]);
+                for (int k = i + 1; k < j; k++) {
+                    sb.append(" ".repeat(numOfGuaranteedSpaces + 1));
+                    if (spacesLeft > 0) {
+                        sb.append(" ");
+                        spacesLeft--;
+                    }
+                    sb.append(words[k]);
+                }
+
+                sb.append(" ".repeat(spacesLeft));
+            } else {
+                sb.append(words[i]);
+                for (int k = i + 1; k < words.length; k++)
+                    sb.append(" ").append(words[k]);
+                sb.append(" ".repeat(maxWidth - sum));
+            }
+            list.add(sb.toString());
+            i = j;
+        }
+
+        return list;
+    }
+    //  ***************** End of 2nd Method ******************
 }
