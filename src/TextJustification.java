@@ -44,30 +44,28 @@ public class TextJustification {
                 while(tmp.length() < maxWidth) {
                     tmp.append(" ");
                 }
-                ans.add(tmp.toString());
+
+                if(tmp.length() > maxWidth) {
+                    ans.add(tmp.substring(0,tmp.length()-1));
+                } else {
+                    ans.add(tmp.toString());
+                }
             } else {
                 String txt = formatText(queue, maxWidth, curLen);
                 ans.add(txt);
             }
-
-            System.out.println(queue);
-            System.out.println("cur i = " + i + " with curlen = " + curLen);
-            System.out.println("*************\n");
         }
 
         return ans;
     }
 
     private static String formatText(Queue<String> queue, int maxWidth, int totalChar) {
-        System.out.println("==== Sub Method =====");
-
         // calculate space and store in queue
         int totalSpaces = maxWidth - totalChar;
-        int curSpace = (int) Math.ceil((double) totalSpaces / (queue.size()-1));
         Queue<Integer> space = new ArrayDeque<>();
 
-        System.out.println(totalSpaces + " : " + curSpace);
         for(int i=0; i<queue.size()-1; i++) {
+            int curSpace = (int) Math.ceil((double) totalSpaces / (queue.size()-1-i));
             if(totalSpaces < curSpace) {
                 space.add(totalSpaces);
             } else {
@@ -75,7 +73,6 @@ public class TextJustification {
             }
             totalSpaces -= curSpace;
         }
-        System.out.println("space ==> "+space);
         StringBuilder str = new StringBuilder();
         while(!queue.isEmpty()) {
             str.append(queue.poll());
@@ -84,8 +81,6 @@ public class TextJustification {
                 str.append(" ");
             }
         }
-
-        System.out.println(str);
         return str.toString();
     }
 }
