@@ -63,4 +63,30 @@ public class FindBottomLeftTreeValue {
         return ans;
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Use dfs traversal method, when level > maxDept
+    // Update res to root.val and update maxDept to new level
+    // Runtime  : 0ms           -> + 100.00%
+    // Memory   : 43.10MB       -> + 88.49%
+    static private int maxDepth = 0;
+    static private int res = 0;
+    public static int findBottomLeftValue2(TreeNode root) {
+        traversal(root, 1);
+        return res;
+    }
+
+    private static void traversal(TreeNode root, int level) {
+        if(root == null) return;
+
+        // if level > maxDepth => update res to root.val
+        if(level > maxDepth) {
+            maxDepth = level;
+            res = root.val;
+        }
+
+        traversal(root.left, level+1);
+        traversal(root.right, level+1);
+    }
+    //  ***************** End of 2nd Method ******************
 }
