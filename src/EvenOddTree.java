@@ -1,3 +1,7 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Stack;
+
 public class EvenOddTree {
     public static class TreeNode {
         int val;
@@ -35,25 +39,14 @@ public class EvenOddTree {
     // even-level => odd nodes, strictly increasing
 
     public static boolean isEvenOddTree(TreeNode root) {
-        return traversal(root,0);
-    }
+        boolean even = true;
+        Deque<TreeNode> q = new ArrayDeque<>();
+        q.offer(root);
 
-    private static boolean traversal(TreeNode root, int level) {
-        if(root == null) return true;
+        while(!q.isEmpty()) {
 
-        if(level % 2 == 0) {
-            if(root.val % 2 == 0) {
-                return false;
-            }
-        } else {
-            if(root.val % 2 != 0) {
-                return false;
-            }
         }
-
-        traversal(root.left, level+1);
-        traversal(root.right, level+1);
-
-        return true;
     }
+
+
 }
