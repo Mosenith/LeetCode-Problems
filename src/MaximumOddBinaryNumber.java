@@ -41,4 +41,24 @@ public class MaximumOddBinaryNumber {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: More organised and short version
+    // Runtime  : 2ms           -> + 83.02%
+    // Memory   : 43.04MB       -> + 85.29%
+    public static String maximumOddBinaryNumber2(String s) {
+        int oneCount = -1;
+        StringBuilder ans = new StringBuilder();
+        for (int i = 0; i < s.length(); ++i) {
+            oneCount += (s.charAt(i) == '1') ? 1 : 0;
+        }
+        for (int i = 0; i < s.length(); i++, oneCount--) {
+            ans.append(oneCount > 0 ? '1' : '0');
+        }
+
+        // the rightest char must always be '1' to make ans odd
+//        ans.deleteCharAt(ans.length() - 1);
+        ans.replace(ans.length()-1,ans.length(), "1");
+        return ans.toString();
+    }
+    //  ***************** End of 2nd Method ******************
 }
