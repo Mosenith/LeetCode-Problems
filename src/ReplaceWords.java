@@ -40,4 +40,27 @@ public class ReplaceWords {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Similar approach to the 1st method but more organized and short
+    // Runtime  : 700ms          -> + 12.74%
+    // Memory   : 54.86MB        -> + 93.12%
+    public static String replaceWords2(List<String> dictionary, String sentence) {
+        Set<String> s = new HashSet<>(dictionary);
+        String[] words = sentence.split(" ");
+
+        for (int i = 0; i < words.length; ++i) {
+            String word = words[i];
+            for (int j = 1; j <= word.length(); ++j) {
+                String t = word.substring(0, j);
+                if (s.contains(t)) {
+                    words[i] = t;
+                    break;
+                }
+            }
+        }
+
+        return String.join(" ", words);
+    }
+    //  ***************** End of 2nd Method ******************
+
 }
