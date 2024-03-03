@@ -5,7 +5,7 @@ public class FindAndReplacePattern {
         String[] words = {"abc","deq","mee","aqq","dkd","ccc"};
         String pattern = "abb";
 
-        System.out.println(findAndReplacePattern(words,pattern));
+        System.out.println(findAndReplacePattern2(words,pattern));
     }
 
     // ***************** 1st Method ******************
@@ -50,4 +50,37 @@ public class FindAndReplacePattern {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Check every word with pattern by comparing 2 arrays of size 128 to store each char i+1 pos
+    // if m1[w] != m2[p], return false. Otherwise, update both m1[w] & m2[p] to i+1
+    // Runtime  : 1ms        -> + 74.34%
+    // Memory   : 42.79MB    -> + 17.34%
+    public static List<String> findAndReplacePattern2(String[] words, String pattern) {
+        List<String> ans = new ArrayList<>();
+        for (String word : words) {
+            if (checkPattern(word, pattern)) {
+                ans.add(word);
+            }
+        }
+        return ans;
+    }
+
+    private static boolean checkPattern(String word, String pattern) {
+        int[] m1 = new int[128]; // store #char of word
+        int[] m2 = new int[128]; // store #char of pattern
+
+        for(int i=0; i<pattern.length(); i++) {
+            char w = word.charAt(i);
+            char p = pattern.charAt(i);
+
+            // 'a' = 97th index, ...
+            if(m1[w] != m2[p]) {
+                return false;
+            }
+            m1[w] = i+1;
+            m2[p] = i+1;
+        }
+        return true;
+    }
+    //  ***************** End of 2nd Method ******************
 }
