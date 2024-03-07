@@ -38,4 +38,37 @@ public class UniqueSubstringsInWraparoundString {
         return ans;
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Init prev='`' (backtick) to represent the character
+    // before the first character of the input string. This is used to
+    // compare whether the current character c` is the next character in the wraparound string.
+    // Init len = 0 the length of the current increasing substring
+    // If c is the next character in the wraparound string
+    // (i.e., it follows prev in alphabetical order, considering wraparound),
+    // len is incremented. Otherwise, len is reset to 1.
+    // The length of the substring ending at character c is updated in the maxLen array
+    // Runtime  : 4ms           -> + 99.45%
+    // Memory   : 44.30MB       -> + 31.69%
+    public static int findSubstringInWraproundString2(String s) {
+        int[] maxLen = new int[26];
+        char prev = '`';
+        int len = 0;
+
+        for(char c: s.toCharArray()){
+            if((char)(prev + 1) == c || (prev == 'z' && c == 'a')){
+                len++;
+            }else{
+                len = 1;
+            }
+            maxLen[c - 'a'] = Math.max(len, maxLen[c - 'a']);
+            prev = c;
+        }
+
+        int ans = 0;
+        for(int i: maxLen) ans += i;
+
+        return ans;
+    }
+    //  ***************** End of 2nd Method ******************
 }
