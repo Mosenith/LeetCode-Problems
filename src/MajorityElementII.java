@@ -31,8 +31,8 @@ public class MajorityElementII {
     //  ***************** End of 1st Method ******************
 
     // ***************** 2nd Method ******************
-    // Approach 2: Use map to store nums[] elements as key, #occurance as value
-    // Then loop through map, if value > nums.len/3, add to ansList
+    // Approach 2: Sort given array first and loop through while counting same element
+    // If #occurence > nums.len/3, add element to listAns
     // Runtime  : 4ms         -> + 59.79%
     // Memory   : 48.44MB     -> + 6.96%
     public static List<Integer> majorityElement2(int[] nums) {
