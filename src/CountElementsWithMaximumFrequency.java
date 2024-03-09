@@ -72,4 +72,28 @@ public class CountElementsWithMaximumFrequency {
         return count;
     }
     //  ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Init cnt[] to int of 101 len since 1 <= nums[i] <= 100
+    // Init ans=0, mx=-1 and loop through cnt[], if mx<cnt[i], update mx to cnt[i] & set ans=cnt[i]
+    // Else if mx=x => max frequency, ans += cnt[i]
+    // Runtime  : 1ms         -> + 99.63%
+    // Memory   : 41.92MB     -> + 88.70%
+    public static int maxFrequencyElements3(int[] nums) {
+        int[] cnt = new int[101];
+        for (int x : nums) {
+            ++cnt[x];
+        }
+        int ans = 0, mx = -1;
+        for (int x : cnt) {
+            if (mx < x) {
+                mx = x;
+                ans = x;
+            } else if (mx == x) {
+                ans += x;
+            }
+        }
+        return ans;
+    }
+    //  ***************** End of 3rd Method ******************
 }
