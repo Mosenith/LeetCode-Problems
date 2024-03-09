@@ -11,8 +11,8 @@ public class NextGreaterElementII {
     // Approach 1:Loop from i+1 to nums.len, if encounter greater one, add to ans[i]
     // Otherwise, means next greater is not on the right, look from the left to i-1
     // If left=i, means it's the max element so ans[i]=-1
-    // Runtime  : 7ms           -> + 68.12%
-    // Memory   : 43.26MB       -> + 57.96%
+    // Runtime  : 31ms          -> + 10.98%
+    // Memory   : 45.84MB       -> + 79.29%
     public static int[] nextGreaterElements(int[] nums) {
         int[] ans = new int[nums.length];
         int len = nums.length;
