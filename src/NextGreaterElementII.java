@@ -4,7 +4,7 @@ public class NextGreaterElementII {
     public static void main(String[] args) {
         int[] nums = {5,4,3,2,1};
 
-        System.out.println(Arrays.toString(nextGreaterElements(nums)));
+        System.out.println(Arrays.toString(nextGreaterElements2(nums)));
     }
 
     // ***************** 1st Method ******************
@@ -43,4 +43,25 @@ public class NextGreaterElementII {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Use queue(Deque) to store elements when nums[q.lastEle] >= nums[j]
+    // Loop from i=0 to len*2, let j = i%n, if nums[q.lastEle] < nums[j], ans[q.polllast] = nums[j]
+    // Runtime  : 6ms           -> + 83.86%
+    // Memory   : 42.94MB       -> + 73.30%
+    public static int[] nextGreaterElements2(int[] nums) {
+        int n = nums.length;
+        int[] ans = new int[n];
+        Arrays.fill(ans, -1);
+
+        Deque<Integer> q = new ArrayDeque<>();
+        for(int i = 0; i < n * 2; i++) {
+            int j = i % n;
+            while (!q.isEmpty() && nums[q.getLast()] < nums[j]) {
+                ans[q.pollLast()] = nums[j];
+            }
+            q.addLast(j);
+        }
+        return ans;
+    }
+    //  ***************** End of 2nd Method ******************
 }
