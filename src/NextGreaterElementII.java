@@ -64,4 +64,23 @@ public class NextGreaterElementII {
         return ans;
     }
     //  ***************** End of 2nd Method ******************
+
+    // ***************** 3rd Method ******************
+    // Approach 3: Similar to 2nd approach but use stack
+    // Runtime  : 10ms          -> + 83.62%
+    // Memory   : 46.58MB       -> + 13.04%
+    public static int[] nextGreaterElements3(int[] nums) {
+        Stack<Integer> stack = new Stack<>();
+        int[] ret = new int[nums.length];
+        Arrays.fill(ret, -1);
+        for(int i = 0; i < 2 * nums.length; i++){
+            while(!stack.isEmpty() && nums[stack.peek()] < nums[i % nums.length]){
+                ret[stack.pop()] = nums[i % nums.length];
+            }
+            if(i < nums.length) stack.push(i);
+        }
+        return ret;
+    }
+    //  ***************** End of 3rd Method ******************
+
 }
