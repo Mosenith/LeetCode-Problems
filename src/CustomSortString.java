@@ -1,9 +1,10 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CustomSortString {
     public static void main(String[] args) {
         // s = "abcabcd"
-        String order = "kqep", s = "pekeq";
+        String order = "cba", s = "abcd";
 
         System.out.println(customSortString(order,s));
     }
@@ -58,4 +59,16 @@ public class CustomSortString {
     }
     //  ***************** End of 1st Method ******************
 
+    public static String customSortString2(String order, String s) {
+        int[] d = new int[26];
+        for (int i=0; i<order.length(); ++i) {
+            d[order.charAt(i) - 'a'] = i;
+        }
+        List<Character> cs = new ArrayList<>();
+        for (int i=0; i<s.length(); ++i) {
+            cs.add(s.charAt(i));
+        }
+        cs.sort(Comparator.comparingInt(a -> d[a - 'a']));
+        return cs.stream().map(String::valueOf).collect(Collectors.joining());
+    }
 }
