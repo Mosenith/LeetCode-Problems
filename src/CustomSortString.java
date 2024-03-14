@@ -6,7 +6,7 @@ public class CustomSortString {
         // s = "abcabcd"
         String order = "cba", s = "abcd";
 
-        System.out.println(customSortString(order,s));
+        System.out.println(customSortString2(order,s));
     }
 
     // ***************** 1st Method ******************
@@ -59,16 +59,25 @@ public class CustomSortString {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method : short but take time ******************
+    // Approach 2: Map char in cs with lower frequency in d[] will appear first
+    // The none exist in cs will appear last
+    // Runtime  : 6ms           -> + 17.93%
+    // Memory   : 41.90MB       -> + 24.07%
     public static String customSortString2(String order, String s) {
         int[] d = new int[26];
         for (int i=0; i<order.length(); ++i) {
             d[order.charAt(i) - 'a'] = i;
         }
+
         List<Character> cs = new ArrayList<>();
         for (int i=0; i<s.length(); ++i) {
             cs.add(s.charAt(i));
         }
+
         cs.sort(Comparator.comparingInt(a -> d[a - 'a']));
         return cs.stream().map(String::valueOf).collect(Collectors.joining());
     }
+    //  ***************** End of 2nd Method ******************
+
 }
