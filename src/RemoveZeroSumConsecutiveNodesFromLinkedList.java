@@ -33,25 +33,26 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
         removeZeroSumSublists(myNode);
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: covert linkedList to list and Loop through list
+    // Check elements sum up to 0 & remove them
+    // Runtime  : 16ms          -> + 5.39%
+    // Memory   : 44.12MB       -> + 38.96%
     // Loop till encounter minus element - i-th
     // Check the left element next to the minus element(i-1), if sum=0, delete both of them
     // Otherwise, check the sum of lefter (i-2,i-3,...,0), if at any point sum=0, delete all of them
     public static ListNode removeZeroSumSublists(ListNode head) {
         List<Integer> ls = new ArrayList<>();
 
-        // covert linkedList to list
         while (head != null) {
             ls.add(head.val);
             head = head.next;
         }
-        System.out.println(ls);
 
-        // Loop through list & check elements sum up to 0 & remove them
         for(int i=0; i<ls.size(); i++) {
-            if(ls.get(i) < 0) {
+            if(i > 0) {
                 int prevI = i-1;
                 int curSum = ls.get(i);
-                System.out.println("Start prevI = " + prevI + ", i = " + i);
                 while(prevI >= 0) {
                     curSum += ls.get(prevI);
                     if(curSum == 0) {
@@ -59,7 +60,6 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
                     }
                     --prevI;
                 }
-                System.out.println(prevI + " & " + i);
                 // delete element from ls
                 while(prevI >= 0 && prevI != i) {
                     ls.set(prevI++,0);
@@ -68,11 +68,8 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
                     ls.set(i,0);
                 }
             }
-            System.out.println(ls);
-            System.out.println("*******\n");
         }
 
-        System.out.println(ls);
         ListNode ans = new ListNode(0);
         ListNode dummy = ans;
         // read the ls to ListNode
@@ -82,9 +79,31 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
                 dummy = dummy.next;
             }
         }
-
-        printListNode(ans);
-
         return ans.next;
     }
+    //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Loop through a copy of listNode head while keeping the sum of each node
+    // If at one point sum=0, move head to cur.next & recursive head again
+    // Otherwise keep looping cur = cur.next and after exit loop (cur=null),
+    // recursive head.next by assigning head.next=recursive(head.next) cos the leftest element of head can't sum up to 0
+    // Runtime  : 1ms          -> + 100.00%
+    // Memory   : 42.57MB      -> + 98.15%
+    public static ListNode removeZeroSumSublists2(ListNode head) {
+        if (head == null) return head;
+        ListNode cur = head;
+        int running_sum = 0;
+        while (cur != null) {
+            running_sum += cur.val;
+            if (running_sum == 0) {
+                head = cur.next;
+                return removeZeroSumSublists(head);
+            }
+            cur = cur.next;
+        }
+        head.next = removeZeroSumSublists(head.next);
+        return head;
+    }
+    //  ***************** End of 2nd Method ******************
 }
