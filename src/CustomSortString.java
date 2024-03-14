@@ -6,7 +6,7 @@ public class CustomSortString {
         // s = "abcabcd"
         String order = "cba", s = "abcd";
 
-        System.out.println(customSortString2(order,s));
+        System.out.println(customSortString3(order,s));
     }
 
     // ***************** 1st Method ******************
@@ -80,4 +80,39 @@ public class CustomSortString {
     }
     //  ***************** End of 2nd Method ******************
 
+    // ***************** 3rd Method ******************
+    // Approach 3: Count each char in both order & s => store its frequency in ss[] & orders[]
+    // Chars of s -> orderss[], Char of order -> ss[]
+    // Loop through each char of order while check if orderss[a-'a']>=1, append char to ans
+    // Loop through each char of s while check if wordss[a-'a']=0, append char to ans
+    // Runtime  : 0ms          -> + 100.00%
+    // Memory   : 41.95MB      -> + 20.51%
+    public static String customSortString3(String order, String s) {
+        int [] orderss = new int[26];
+        int [] wordss = new int[26];
+        char [] ss = s.toCharArray();
+        char [] orders = order.toCharArray();
+
+        for(char i:ss) {
+            orderss[i-'a']++;
+        }
+        for(char i:orders) {
+            wordss[i-'a']++;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(char a:orders) {
+            for(int j=1;j<=orderss[a-'a'];j++) {
+                sb.append(a);
+            }
+        }
+
+        for(char a:ss) {
+            if(wordss[a-'a']==0) {
+                sb.append(a);
+            }
+        }
+        return sb.toString();
+    }
+    //  ***************** End of 3rd Method ******************
 }
