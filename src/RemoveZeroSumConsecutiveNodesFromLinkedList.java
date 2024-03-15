@@ -28,9 +28,12 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
         System.out.println("~~~~~~~~");
     }
     public static void main(String[] args) {
-        ListNode myNode = new ListNode(5, new ListNode(-3,
-                new ListNode(-4, new ListNode(1, new ListNode(6,
-                        new ListNode(-2, new ListNode(-5)))))));
+//        ListNode myNode = new ListNode(5, new ListNode(-3,
+//                new ListNode(-4, new ListNode(1, new ListNode(6,
+//                        new ListNode(-2, new ListNode(-5)))))));
+
+        ListNode myNode = new ListNode(1, new ListNode(2,
+                new ListNode(-3, new ListNode(3, new ListNode(1)))));
 
         removeZeroSumSublists3(myNode);
     }
@@ -109,13 +112,21 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
     }
     //  ***************** End of 2nd Method ******************
 
-    // Use HashMap last with key-cumulative sum of node values, value-corresponding node
+    // ***************** 3rd Method ******************
+    // Approach 3: Use HashMap last with key-cumulative sum of node values, value-corresponding node
     // Iterate through linkedList, add each node.val to s
+    // 1st loop -> To locate the starting point of each sequence of nodes with a sum of 0
+    // 2nd loop -> To remove Zero-Sum Sequences and track ans sequence
+    // Runtime  : 10ms          -> + 83.62%
+    // Memory   : 46.58MB       -> + 13.04%
     public static ListNode removeZeroSumSublists3(ListNode head) {
         ListNode dummy = new ListNode(0, head);
         Map<Integer, ListNode> last = new HashMap<>();
         int s = 0;
         ListNode cur = dummy;
+        printListNode(cur);
+
+        // key = 0, its value will point to the head of ans
         while (cur != null) {
             s += cur.val;
             last.put(s, cur);
@@ -123,19 +134,15 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
         }
         s = 0;
         cur = dummy;
-        // 2nd traversal is used to remove Zero-Sum Sequences
+
+        // Get ans head and track its sequence in map
         while (cur != null) {
             s += cur.val;
             cur.next = last.get(s).next;
             cur = cur.next;
         }
-
-        for(int key : last.keySet()) {
-            printListNode(last.get(key));
-        }
-
-        printListNode(dummy);
-
         return dummy.next;
     }
+    //  ***************** End of 3rd Method ******************
+
 }
