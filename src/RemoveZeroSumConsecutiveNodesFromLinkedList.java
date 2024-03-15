@@ -43,9 +43,6 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
     // Check elements sum up to 0 & remove them
     // Runtime  : 16ms          -> + 5.39%
     // Memory   : 44.12MB       -> + 38.96%
-    // Loop till encounter minus element - i-th
-    // Check the left element next to the minus element(i-1), if sum=0, delete both of them
-    // Otherwise, check the sum of lefter (i-2,i-3,...,0), if at any point sum=0, delete all of them
     public static ListNode removeZeroSumSublists(ListNode head) {
         List<Integer> ls = new ArrayList<>();
 
