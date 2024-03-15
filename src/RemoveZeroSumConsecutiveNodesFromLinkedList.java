@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RemoveZeroSumConsecutiveNodesFromLinkedList {
     public static class ListNode {
@@ -30,7 +32,7 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
                 new ListNode(-4, new ListNode(1, new ListNode(6,
                         new ListNode(-2, new ListNode(-5)))))));
 
-        removeZeroSumSublists(myNode);
+        removeZeroSumSublists3(myNode);
     }
 
     // ***************** 1st Method ******************
@@ -106,4 +108,34 @@ public class RemoveZeroSumConsecutiveNodesFromLinkedList {
         return head;
     }
     //  ***************** End of 2nd Method ******************
+
+    // Use HashMap last with key-cumulative sum of node values, value-corresponding node
+    // Iterate through linkedList, add each node.val to s
+    public static ListNode removeZeroSumSublists3(ListNode head) {
+        ListNode dummy = new ListNode(0, head);
+        Map<Integer, ListNode> last = new HashMap<>();
+        int s = 0;
+        ListNode cur = dummy;
+        while (cur != null) {
+            s += cur.val;
+            last.put(s, cur);
+            cur = cur.next;
+        }
+        s = 0;
+        cur = dummy;
+        // 2nd traversal is used to remove Zero-Sum Sequences
+        while (cur != null) {
+            s += cur.val;
+            cur.next = last.get(s).next;
+            cur = cur.next;
+        }
+
+        for(int key : last.keySet()) {
+            printListNode(last.get(key));
+        }
+
+        printListNode(dummy);
+
+        return dummy.next;
+    }
 }
