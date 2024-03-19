@@ -45,4 +45,24 @@ public class MinimumNumberOfArrowsToBurstBalloons {
         return shots;
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Similar approach to the 1st
+    // Runtime  : 57ms         -> + 34.97%
+    // Memory   : 68.67MB      -> + 77.08%
+    public static int findMinArrowShots2(int[][] points) {
+        Arrays.sort(points, Comparator.comparingInt(a -> a[1]));
+        int ans = 0;
+        long last = -(1L << 60); // As small as possible
+        for (var p : points) {
+            int a = p[0], b = p[1];
+            if (a > last) {
+                ++ans;
+                last = b;
+            }
+        }
+        return ans;
+    }
+    //  ***************** End of 2nd Method ******************
+
 }
