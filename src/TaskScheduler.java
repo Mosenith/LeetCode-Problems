@@ -22,6 +22,7 @@ public class TaskScheduler {
             if(!waitQueue.isEmpty()) {
                 if(waitQueue.peek() != c) {
                     coolDown++;
+                    System.out.println("update coolDown=" + coolDown);
                 } else {
                     waitQueue.add(c);
                     continue;
@@ -42,7 +43,8 @@ public class TaskScheduler {
             }
             System.out.println(intakeMap);
             System.out.println(waitQueue);
-            System.out.println("***********\n");
+            System.out.println("coolDown=" + coolDown);
+            System.out.println("****** " + intervals + " ******\n");
         }
         return intervals;
     }
