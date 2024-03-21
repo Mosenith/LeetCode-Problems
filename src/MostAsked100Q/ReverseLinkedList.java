@@ -1,5 +1,7 @@
 package MostAsked100Q;
 
+import java.util.Stack;
+
 public class ReverseLinkedList {
     public static class ListNode {
         int val;
@@ -22,7 +24,9 @@ public class ReverseLinkedList {
         ListNode myNode = new ListNode(1, new ListNode(2,
                 new ListNode(3, new ListNode(4, new ListNode(5)))));
 
-        printListNode(reverseList(myNode));
+//        printListNode(reverseList(myNode));
+
+        printListNode(reverseList2(myNode));
     }
 
     private static void printListNode(ListNode myNode) {
@@ -50,4 +54,30 @@ public class ReverseLinkedList {
 
         return pre;
     }
+    //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Use Stack and read all nodes store in stack
+    // Pop out one by one to ansListNode
+    // Runtime  : 1ms         -> + 5.28%
+    // Memory   : 45.61MB     -> + 58.12%
+    public static ListNode reverseList2(ListNode head) {
+        Stack<Integer> stk = new Stack<>();
+
+        while (head != null) {
+            stk.push(head.val);
+            head = head.next;
+        }
+        // init return listnode
+        ListNode ans = new ListNode(0);
+        ListNode dummy = ans;
+
+        while(!stk.isEmpty()) {
+            dummy.next = new ListNode(stk.pop());
+            dummy = dummy.next;
+        }
+        return ans.next;
+    }
+    //  ***************** End of 2nd Method ******************
+
 }
