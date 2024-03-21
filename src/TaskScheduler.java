@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class TaskScheduler {
     public static void main(String[] args) {
@@ -13,57 +10,25 @@ public class TaskScheduler {
     }
 
     public static int leastInterval(char[] tasks, int n) {
-        Map<Character, Integer> intakeMap = new HashMap<>();
+        Set<Character> intakeSet = new HashSet<>();
         Queue<Character> waitQueue = new LinkedList<>();
         int intervals = 0, coolDown = 0;
 
         for(int i=0; i<tasks.length; i++) {
             char c = tasks[i];
             System.out.println("at i=" + i + " => c=" + c);
-            if(!waitQueue.isEmpty()) {
-                if(waitQueue.peek() != c) {
-                    coolDown++;
-                    System.out.println("update coolDown=" + coolDown);
-                } else {
-                    waitQueue.add(c);
-                    continue;
-                }
-            }
-            if(intakeMap.isEmpty() || !intakeMap.containsKey(c) || intakeMap.get(c) < n-1) {
-                intakeMap.put(c,intakeMap.getOrDefault(c,0) + 1);
-                intervals++;
-                if(i>0 && c!=tasks[i-1]) {
-                    intakeMap.put(tasks[i-1],intakeMap.getOrDefault(c,0)-1);
-                    if(intakeMap.get(tasks[i-1])<=0) {
-                        intakeMap.remove(tasks[i-1]);
-                    }
-                }
+            // no char or not contain c, add to set
+            if(intakeSet.isEmpty() || ! intakeSet.contains(c)) {
+                intakeSet.add(c);
             } else {
-                if(intakeMap.containsKey(c) && intakeMap.get(c) == n) {
-                    intakeMap.remove(c);
-                }
                 waitQueue.add(c);
             }
-            if(coolDown == n) {
-                intervals += (coolDown + 1);
-                waitQueue.poll();
-                coolDown = 0;
-            }
-            System.out.println(intakeMap);
-            System.out.println(waitQueue);
             System.out.println("coolDown=" + coolDown);
             System.out.println("****** " + intervals + " ******\n");
         }
+        System.out.println(intakeSet);
+        System.out.println(waitQueue);
 
-        while(!waitQueue.isEmpty()) {
-            System.out.println(coolDown);
-            coolDown++;
-            if(coolDown == n) {
-                intervals += (n-1);
-                coolDown = 0;
-                waitQueue.poll();
-            }
-        }
         return intervals;
     }
 }
