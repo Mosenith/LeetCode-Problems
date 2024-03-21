@@ -47,6 +47,28 @@ public class TaskScheduler {
 
     // ***************** 2nd Method ******************
     // Approach 2: Similar approach to the 1st
-    // Runtime  : 57ms         -> + 34.97%
-    // Memory   : 68.67MB      -> + 77.08%
+    // First find freq(cnt[]) of tasks & maxFreq
+    // Find #maxFreq of char in cnt[] & find interval by max(tasks.length, (maxFreq-1)*(n+1)+s)
+    // Runtime  : 3ms         -> + 78.07%
+    // Memory   : 45.61MB     -> + 58.12%
+    public static int leastInterval2(char[] tasks, int n) {
+        int[] cnt = new int[26];
+        int maxFreq = 0;
+        // track frequency while also getting maxFreq
+        for (char c : tasks) {
+            c -= 'A';
+            ++cnt[c];
+            maxFreq = Math.max(maxFreq, cnt[c]);
+        }
+        int s = 0;
+        // find number of tasks that has maxFreq
+        for (int v : cnt) {
+            if (v == maxFreq) {
+                ++s;
+            }
+        }
+
+        return Math.max(tasks.length, (maxFreq - 1) * (n + 1) + s);
+    }
+    //  ***************** End of 2nd Method ******************
 }
