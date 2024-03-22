@@ -1,33 +1,63 @@
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Stack;
+
 public class DecodeString {
     public static void main(String[] args) {
-        String s = "3[a2[c]]";  // "accaccacc"
+        String s1 = "3[a2[c]]";  // "accaccacc"
+        String s2 = "2[abc]3[cd]ef";    // "abcabccdcdcdef"
+        String s3 = "3[a]2[bc]";    // "aaabcbc"
 
-        System.out.println(decodeString(s));
+        System.out.println(decodeString(s3));
     }
     // num,[,char,] -> 4*n-1
     // 8-1=7
     public static String decodeString(String s) {
         StringBuilder sb = new StringBuilder();
+        Stack<String> stk = new Stack<>();
 
+        System.out.println("===== Start Func =====");
         for(int i=0; i<s.length(); i++) {
-            StringBuilder tmp = new StringBuilder();
-            char cur = s.charAt(i);
-            int next = i+2;
-            if(Character.isDigit(cur)) {
-                System.out.println("cur = " + cur);
-                // skip 1 to get char
-                if(Character.isAlphabetic(s.charAt(next))) {
-                    tmp.append(next++);
-                } else {
-                    tmp.append(decodeString(s.substring(next)));
-                }
-                System.out.println("repeat => " + Character.getNumericValue(cur));
-                sb.append(String.valueOf(tmp).repeat(Math.max(0, Character.getNumericValue(cur))));
+            int prev = i;
+            while(prev<s.length() && !Character.isAlphabetic(s.charAt(prev))){
+                prev++;
             }
-            i += next-1;
-            System.out.println(sb);
+
+            System.out.println("mid prev = " + prev);
+            StringBuilder tmp = new StringBuilder();
+            while(prev<s.length() && Character.isAlphabetic(s.charAt(prev))){
+                tmp.append(s.charAt(prev++));
+            }
+
+            if(!tmp.isEmpty()) {
+                stk.add(tmp.toString());
+            }
+            i = prev;
+            System.out.println("cur i=" + i);
             System.out.println("********\n");
         }
+        System.out.println(stk);
+
+
+        // start from right till meet numeric
+        for(int i=s.length()-1; i>=0; i--) {
+            if(s.charAt(i) == '[') {
+                int next = i;
+                while(s.charAt(next) != ']') {
+                    next++;
+                }
+                String cur = s.substring(i, next);
+                if(stk.peek() != cur) {
+                    sb.append(stk.pop());
+                } else {
+                    sb.append(cur);
+                    // i-1 is numeric, so loop i-1 times
+                    for(int j=0;)
+                }
+            }
+        }
+
+
         return sb.toString();
     }
 }
