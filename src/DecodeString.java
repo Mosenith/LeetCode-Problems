@@ -41,6 +41,7 @@ public class DecodeString {
 
         // start from right till meet numeric
         for(int i=s.length()-1; i>=0; i--) {
+            System.out.println(i + " -> " + s.charAt(i));
             if(s.charAt(i) == '[') {
                 int next = i;
                 while(s.charAt(next) != ']') {
@@ -50,11 +51,15 @@ public class DecodeString {
                 if(stk.peek() != cur) {
                     sb.append(stk.pop());
                 } else {
-                    sb.append(cur);
+                    String loopChar = stk.pop();
+                    int time = Character.getNumericValue(s.charAt(i-1));
                     // i-1 is numeric, so loop i-1 times
-                    for(int j=0;)
+                    for(int j=0; j<time; j++) {
+                        sb.insert(0,loopChar);
+                    }
                 }
             }
+            System.out.println("************\n");
         }
 
 
