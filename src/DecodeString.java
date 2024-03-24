@@ -40,5 +40,41 @@ public class DecodeString {
         return currentString.toString();
     }
 
+    // using recursion
+    public static String decodeString2(String s) {
+        return helper(s,0,s.length()-1);
+    }
+    private static String helper(String s, int l , int r){
+        if(l>r) return "";
+        StringBuilder sb=new StringBuilder();
+
+        for(int i=l;i<=r;i++){
+            char c=s.charAt(i);
+            if(c>='0' && c<='9'){
+                int k=0;
+                while(i<s.length() && s.charAt(i)<='9' && s.charAt(i)>='0'){
+                    k*=10;
+                    k+=s.charAt(i)-'0';
+                    i++;
+                }
+                int cnt=0;
+                int start=i+1;
+                while(i<s.length()){
+                    c=s.charAt(i);
+                    if(c=='[') cnt++;
+                    else if(c==']') cnt--;
+                    if(cnt==0) break;
+                    i++;
+                }
+                String str=helper(s,start,i-1);
+                for(int j=0;j<k;j++){
+                    sb.append(str);
+                }
+            }else{
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
 
 }
