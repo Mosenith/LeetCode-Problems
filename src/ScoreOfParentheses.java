@@ -5,12 +5,11 @@ import java.util.Stack;
 
 public class ScoreOfParentheses {
     public static void main(String[] args) {
-        String s1 = "(()(()))";
-        String s2 = "(())";
-        String s3 = "()";
+        String s1 = "(()(()))"; // 6
+        String s2 = "(())(())"; // 4
+        String s3 = "(())()";
 
-        System.out.println(s1.length());
-        System.out.println(scoreOfParentheses(s1));
+        System.out.println(scoreOfParentheses(s2));
     }
 
     // ***************** 1st Method ******************
@@ -18,19 +17,25 @@ public class ScoreOfParentheses {
     // Runtime  : 2ms         -> + 99.14%
     // Memory   : 45.15MB     -> + 93.26%
     public static int scoreOfParentheses(String s) {
-        int score = s.length()/2; // since it balanced parentheses
-        Stack<Character> stk = new Stack<>();
-
-        for(char c : s.toCharArray()) {
-            stk.push(c);
-        }
-        System.out.println(stk);
-
-        for(int i=0; i<s.length()/2; i++) {
-            if(stk.size()>2 && s.charAt(i) == '(' && stk.peek() == ')') {
+        int score = 0; // since it balanced parentheses
+        for(int i=0,j=s.length()-1; i<j;) {
+            if(s.charAt(i) == '(' && s.charAt(i+1) != ')'
+                    && s.charAt(j) == ')' && s.charAt(j-1) != '(') {
+                System.out.println("2A rule");
                 // (A) rule => 2*A
-                score += (stk.size()-2);
+                score += ((j-i-1));
+                break;
+            } else if(s.charAt(i) == '(' && s.charAt(i+1) == ')'){
+                System.out.println("Form at the front");
+                score++;
+                i += 2;
+            } else if(s.charAt(j) == ')' && s.charAt(j-1) == '(') {
+                System.out.println("Form at the back");
+                score++;
+                j -= 2;
             }
+            System.out.println(i + " : " + j);
+            System.out.println("******** " + score + " *********\n");
         }
         return score;
     }
