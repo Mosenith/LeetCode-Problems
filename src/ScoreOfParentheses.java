@@ -9,7 +9,7 @@ public class ScoreOfParentheses {
         String s2 = "(())(())"; // 4
         String s3 = "(())()";
 
-        System.out.println(scoreOfParentheses(s2));
+        System.out.println(scoreOfParentheses2(s3));
     }
 
     // ***************** 1st Method ******************
@@ -34,10 +34,24 @@ public class ScoreOfParentheses {
     //  ***************** End of 1st Method ******************
 
     // ***************** 2nd Method ******************
-    // Approach 2: Similar approach to the 1st
-    // First find freq(cnt[]) of tasks & maxFreq
-    // Find #maxFreq of char in cnt[] & find interval by max(tasks.length, (maxFreq-1)*(n+1)+s)
+    // Approach 2: Use stack when encounter '(', push score to stack and reset score
+    // Otherwise, set score = stack.pop() + max(2*score, 1)
     // Runtime  : 3ms         -> + 78.07%
     // Memory   : 45.61MB     -> + 58.12%
+    public static int scoreOfParentheses2(String s) {
+        Stack<Integer> stack = new Stack<>();
+        int score = 0;
+        int index = 0;
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push(score);
+                score = 0; // Reset score for inner parentheses
+            } else {
+                score = stack.pop() + Math.max(2 * score, 1);
+            }
+        }
 
+        return score;
+    }
+    //  ***************** End of 2nd Method ******************
 }
