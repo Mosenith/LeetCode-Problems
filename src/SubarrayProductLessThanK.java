@@ -1,9 +1,9 @@
 public class SubarrayProductLessThanK {
     public static void main(String[] args) {
-        int[] nums = {1,1,1};
+        int[] nums = {10,5,2,6};
         int k = 100;
 
-        System.out.println(numSubarrayProductLessThanK2(nums, 2));
+        System.out.println(numSubarrayProductLessThanK2(nums, k));
     }
 
     // ***************** 1st Method ******************
@@ -28,36 +28,23 @@ public class SubarrayProductLessThanK {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method : Sliding window ******************
+    // Approach 2: Use 2 pointers i & j for sliding window and s to keep product under k
+    // Iterate from left to right (i=0) while updating s *= nums[i]
+    // Check if s>=k means current window is too large => shrink the j(j++) until s<k
+    // Each iteration update ans by calculate the distance between i & j
+    // Runtime  : 4ms       -> + 99.99%
+    // Memory   : 47.71MB   -> + 31.98%
     public static int numSubarrayProductLessThanK2(int[] nums, int k) {
-        int cnt = 0;
-        int maxProduct = 1;
-        for(int n : nums) {
-            maxProduct *= n;
+        int ans = 0;
+        for (int i=0, j=0, s=1; i<nums.length; ++i) {
+            s *= nums[i];
+            while (j<=i && s>=k) {
+                s /= nums[j++]; // too large divide by nums[j++] to make sure s<k
+            }
+            ans += i - j + 1;
         }
-        System.out.println(maxProduct);
-
-        int curProduct = 1;
-        int len = nums.length-1;
-        for(int i=0; i+1<len && curProduct<k; i++) {
-            curProduct *= nums[i];
-            if(curProduct >= k) break;
-
-            cnt += factorial(len-i);
-            System.out.println();
-            System.out.println("*******\n");
-        }
-
-        return cnt;
+        return ans;
     }
-
-    private static int factorial(int i) {
-        if(i == 0 || i == 1) return 1;
-
-        return i * factorial(i-1);
-    }
+    //  ***************** End of 2nd Method ******************
 }
-
-// 600 : 100
-// 600 / 10 = 60 => 0-3 = 3! = 6
-// 600 / 50 = 12 => 2! = 2
-// 600 / 100=k => x
