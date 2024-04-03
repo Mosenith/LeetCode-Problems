@@ -8,7 +8,7 @@ public class SubarraysWithKDifferentIntegers {
         int[] nums = {1,2,1,2,3};
         int k = 2;
 
-        System.out.println(subarraysWithKDistinct(nums,2));
+        System.out.println(subarraysWithKDistinct2(nums,2));
     }
     // ***************** 1st Method ******************
     // Approach 1: Work but exceed time limit
@@ -39,8 +39,10 @@ public class SubarraysWithKDifferentIntegers {
     //  ***************** End of 1st Method ******************
 
     // ***************** 2nd Method ******************
-    // Approach 2: Use stack when encounter '(', push score to stack and reset score
-    // Otherwise, set score = stack.pop() + max(2*score, 1)
+    // Approach 2: Use 2 maps to keep track of frequency of each element
+    // 2 variables (left1 & left2) starting from 0 to keep track of elements to remove from maps when map.size >k or map.size>=k
+    // map2 will be removed first since it checks map2.size>=k
+    // Count ans += diff(left1,left2)
     // Runtime  : 3ms         -> + 78.07%
     // Memory   : 45.61MB     -> + 58.12%
     public static int subarraysWithKDistinct2(int[] nums, int k) {
@@ -48,15 +50,17 @@ public class SubarraysWithKDifferentIntegers {
         int count = 0;
         Map<Integer, Integer> freqMap1 = new HashMap<>();
         Map<Integer, Integer> freqMap2 = new HashMap<>();
-        int left1 = 0, left2 = 0, right = 0;
+        int left1 = 0, left2 = 0; // left1 -> freqMap1, left2 -> freqMap2
 
-        for (right = 0; right < n; right++) {
+        for (int right=0; right<n; right++) {
             int num = nums[right];
             freqMap1.put(num, freqMap1.getOrDefault(num, 0) + 1);
             freqMap2.put(num, freqMap2.getOrDefault(num, 0) + 1);
 
+            // when maps have more elements than k
             while (freqMap1.size() > k) {
                 int leftMost = nums[left1++];
+                // can't just remove the keys cos needs to go through elements from left to right
                 freqMap1.put(leftMost, freqMap1.get(leftMost) - 1);
                 if (freqMap1.get(leftMost) == 0) {
                     freqMap1.remove(leftMost);
@@ -71,9 +75,10 @@ public class SubarraysWithKDifferentIntegers {
                 }
             }
 
-            count += left2 - left1;
+            count += left2-left1;
         }
 
         return count;
     }
+    //  ***************** End of 2nd Method ******************
 }
