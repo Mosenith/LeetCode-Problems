@@ -7,21 +7,23 @@ public class MaximumNestingDepthOfTheParentheses {
         System.out.println(maxDepth(s));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Init 2 variables depth & curDepth
+    // If encounters ( => update depth with max(depth, ++tmpDepth)
+    // Else if encounters ) => --tmpDepth
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 41.16MB     -> + 72.08%
     public static int maxDepth(String s) {
-        int depth = 0, curDepth = 0;
+        int depth = 0, tmpDepth = 0;
 
         for (char c : s.toCharArray()) {
             if (c == '(') {
-                depth = Math.max(depth, ++curDepth);
+                depth = Math.max(depth, ++tmpDepth);
             } else if (c == ')') {
-                --curDepth;
+                --tmpDepth;
             }
-
-            System.out.println(c);
-            System.out.println(depth + " : " + curDepth);
-            System.out.println("******\n");
         }
-
         return depth;
     }
+    //  ***************** End of 1st Method ******************
 }
