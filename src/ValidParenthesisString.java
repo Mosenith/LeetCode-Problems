@@ -4,43 +4,41 @@ public class ValidParenthesisString {
     public static void main(String[] args) {
         String s = "(((((*(()((((*((**(((()()*)()()()*((((**)())*)*)))))))(())(()))())((*()()(((()((()*(())*(()**)()(())";
 
-        System.out.println(checkValidString("s"));
+        System.out.println(checkValidString("(*))"));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Init lowerBound(l) and upperBound(u) to keep track of min & max of (
+    // When c='(', both +1, when c=')', both -1
+    // When c='*', l-- & u++. Check if upperBound<0, return false.
+    // If lowerBound<0, reset to 0. Out of loop return lowerBound=0
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 40.97MB     -> + 90.85%
     public static boolean checkValidString(String s) {
-        Stack<Character> stkLeft = new Stack<>();
-        Stack<Character> stkRight = new Stack<>();
-        Stack<Character> stkStar = new Stack<>();
-        char[] sChar = s.toCharArray();
+        int lowerBound = 0, upperBound = 0;
 
-        for(int i=0; i<sChar.length; i++) {
-            char c = sChar[i];
-            if(c == '(') {
-                stkLeft.push(c);
-            } else if(c == '*') {
-                if(i<sChar.length-1 && sChar[i+1] == '(') {
-                    stkStar.push(c);
-                } else {
-                    if(!stkLeft.isEmpty()) stkLeft.pop();
-                    stkStar.push(c);
-
-                    i++;
-                }
-            } else {
-                // c = ')'
-                stkRight.push(c);
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                lowerBound++;
+                upperBound++;
+            } else if (c == ')') {
+                lowerBound--;
+                upperBound--;
+            } else { // '*'
+                lowerBound--;
+                upperBound++;
             }
+
+            // Check if upperBound becomes negative
+            if (upperBound < 0) return false;
+
+            // Reset lowerBound if it becomes negative
+            if (lowerBound < 0) lowerBound = 0;
         }
-        System.out.println(stkLeft.size());
-        System.out.println(stkRight.size());
-        System.out.println(stkStar.size());
 
-        if(stkLeft.size()==stkRight.size()) {
-            return true; }
-
-        return Math.min(stkLeft.size(), stkRight.size()) + stkStar.size() ==
-                Math.max(stkRight.size(), stkLeft.size());
+        return lowerBound == 0;
     }
+    //  ***************** End of 1st Method ******************
 }
 
 
