@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.*;
 
 public class SumRootToLeafNumbers {
     public static class TreeNode {
@@ -75,21 +72,24 @@ public class SumRootToLeafNumbers {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Similar recursion approach but let s*10+node.val so no need to use stack
+    // If root both sides are null, return s. Otherwise dfs(left) + dfs(right)
+    // Runtime  : 0ms         -> + 100.00%
+    // Memory   : 40.61MB     -> + 93.05%
+    public static int sumNumbers2(TreeNode root) {
+        return dfs(root, 0);
+    }
 
-
-//    private static int checkBothSidesNull(TreeNode node, LinkedList<Integer> ans, int sum) {
-//        if(node.left == null && node.right == null) {
-//            System.out.println("Both Null");
-//            LinkedList<Integer> cloned = new LinkedList<>();
-//            cloned.addAll(ans);
-//            StringBuilder sb = new StringBuilder();
-//            while(!cloned.isEmpty()) {
-//                sb.append(cloned.pop());
-//            }
-//            System.out.println("sb - " + sb);
-//            sum += Integer.parseInt(sb.reverse().toString());
-//            ans.pollLast();
-//        }
-//        return sum;
-//    }
+    private static int dfs(TreeNode root, int s) {
+        if (root == null) {
+            return 0;
+        }
+        s = s * 10 + root.val;
+        if (root.left == null && root.right == null) {
+            return s;
+        }
+        return dfs(root.left, s) + dfs(root.right, s);
+    }
+    //  ***************** End of 2nd Method ******************
 }
