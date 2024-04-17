@@ -7,6 +7,9 @@ public class SubarraySumEqualsK {
         int k = 0;
 
         System.out.println(subarraySum2(nums, k));
+
+        int n = 25;
+        System.out.println(String.valueOf((char) (n + 'a')));
     }
 
     // ***************** 1st Method ******************
