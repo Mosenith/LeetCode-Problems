@@ -71,4 +71,37 @@ public class AddOneRowToTree {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Similar approach but use recursion while also keep track of level
+    // Initial level is 1 and if level == dept-1, add new Tree to the current level
+    // Then, just call recursion from left & then right node with level+1
+    // Runtime  : 0ms      -> + 100.00%
+    // Memory   : 44.90MB  -> + 9.21%
+    private static int val;
+    private static int depth;
+    public TreeNode addOneRow2(TreeNode root, int val, int depth) {
+        if (depth == 1) {
+            return new TreeNode(val, root, null);
+        }
+        this.val = val;
+        this.depth = depth;
+        dfs(root, 1);
+        return root;
+    }
+
+    private static void dfs(TreeNode root, int d) {
+        if (root == null) {
+            return;
+        }
+        if (d == depth - 1) {
+            TreeNode l = new TreeNode(val, root.left, null);
+            TreeNode r = new TreeNode(val, null, root.right);
+            root.left = l;
+            root.right = r;
+            return;
+        }
+        dfs(root.left, d + 1);
+        dfs(root.right, d + 1);
+    }
+    //  ***************** End of 2nd Method ******************
 }
