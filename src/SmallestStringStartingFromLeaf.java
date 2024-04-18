@@ -39,6 +39,8 @@ public class SmallestStringStartingFromLeaf {
         root.left.right = new TreeNode(3);
 
         System.out.println(smallestFromLeaf(root));
+
+        System.out.println(smallestFromLeaf2(root));
     }
 
     // ***************** 1st Method ******************
@@ -74,5 +76,37 @@ public class SmallestStringStartingFromLeaf {
         sb = new StringBuilder(sb.substring(0, sb.length() - 1));
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Optimized the 1st method by using string(ans) instead of list
+    // In recursion  method, when both nodes are null, compare sb.reverse() with ans, if<0 update ans with sb
+    // Reverse back sb. Then, recursion left & right, after that delete sb at chars sb.len-1
+    // Runtime  : 1ms      -> + 99.50%
+    // Memory   : 44.25MB  -> + 69.42%
+    static String ans = "|"; // bigger than 'z'
+    public static String smallestFromLeaf2(TreeNode root) {
+        helper(root,new StringBuilder());
+        return ans;
+    }
+
+    private static void helper(TreeNode root, StringBuilder sb) {
+        if(root == null) {
+            return;
+        }
+
+        sb.append((char)(root.val + 'a'));
+        if(root.left == null && root.right == null) {
+            String cloned = sb.reverse().toString();
+            if(cloned.compareTo(ans)<0) {
+                ans = cloned;
+            }
+            sb.reverse();
+        }
+
+        helper(root.left, sb);
+        helper(root.right, sb);
+        sb.deleteCharAt(sb.length()-1);
+    }
+    //  ***************** End of 2nd Method ******************
 
 }
