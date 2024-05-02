@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ZDWNdmo6iCKOQVm+WuV4R/8FoXy/v9sMooK07NZo/sZjhipKHuVX67VqstRwqkc9TDryWe8lu/DBzVbm7QwZ9A==",
+  "dgSpecHash": "ItBEpX0Tep2dKNLuQbv8tMhEEGkNm5TvAwgf9XIeBwihsEoG3xnUz4QX14LFjgsYe5lvWSOXQYfYbWLW6jiSxQ==",
   "success": true,
   "projectFilePath": "/Users/mosenithheang/IntelliJProjects/LeetCodePractice/CSharp-Solutions/LeetCodeCSharp/LeetCodeCSharp/LeetCodeCSharp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/mosenithheang/.nuget/packages/microsoft.netcore.app.ref/7.0.18/microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
+    "/Users/mosenithheang/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.18/microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
+    "/Users/mosenithheang/.nuget/packages/microsoft.netcore.app.host.osx-x64/7.0.18/microsoft.netcore.app.host.osx-x64.7.0.18.nupkg.sha512"
+  ],
   "logs": []
 }
