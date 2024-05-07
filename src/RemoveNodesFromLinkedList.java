@@ -32,7 +32,8 @@ public class RemoveNodesFromLinkedList {
 //        head.next.next = new ListNode(1);
 //        head.next.next.next = new ListNode(1);
 
-        printList(removeNodes(head));
+        printList(removeNodes2(head));
+//        printList(reverse(head));
     }
 
     // ***************** 1st Method ******************
@@ -62,5 +63,40 @@ public class RemoveNodesFromLinkedList {
     }
     // ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Reverse given ListNode then loop while check if
+    // curNode > curNode.next.val, have curNode.next points to curNode.next.next
+    // If not, just move curNode to curNode.next. Out of loop, reverse headListNode again
+    // Runtime  : 6m      -> + 94.04%
+    // Memory   : 69.41MB  -> + 32.87%
+    public static ListNode removeNodes2(ListNode head) {
+        head = reverse(head);
+        printList(head);
+        ListNode temp = head;
+        while (temp.next != null){
+            if (temp.next.val < temp.val){
+                temp.next = temp.next.next;
+            }
+            else {
+                temp = temp.next;
+            }
+        }
+        return reverse(head);
+    }
 
+    private static ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        ListNode cur = head;
+        ListNode next;
+
+        while (cur != null) {
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+
+        return prev;
+    }
+    // ***************** End of 2nd Method ******************
 }
