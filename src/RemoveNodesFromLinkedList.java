@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class RemoveNodesFromLinkedList {
     public static class ListNode {
@@ -24,44 +21,46 @@ public class RemoveNodesFromLinkedList {
 
     public static void main(String[] args) {
         // head = [5,2,13,3,8] -> [1,2,3]
-//        ListNode head = new ListNode(5);
-//        head.next = new ListNode(2);
-//        head.next.next = new ListNode(13);
-//        head.next.next.next = new ListNode(3);
-//        head.next.next.next.next = new ListNode(8);
+        ListNode head = new ListNode(5);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(13);
+        head.next.next.next = new ListNode(3);
+        head.next.next.next.next = new ListNode(8);
 
-//
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(1);
-        head.next.next = new ListNode(1);
-        head.next.next.next = new ListNode(1);
+//        ListNode head = new ListNode(1);
+//        head.next = new ListNode(1);
+//        head.next.next = new ListNode(1);
+//        head.next.next.next = new ListNode(1);
 
         printList(removeNodes(head));
     }
 
+    // ***************** 1st Method ******************
+    // Approach 1: Use dummy listnode with max element as initial head
+    // Use ArrayDeque stk and offer dummy, then loop from head till head==null
+    // Check if stk.peeklast.val < cur.val, remove one by one till condition false
+    // Have stk.peek.next points to cur, then stk.offerLast(cur)
+    // This stk will always have one element which is dummy initial max head
+    // Return dummy.next;
+    // Runtime  : 20m      -> + 36.69%
+    // Memory   : 61.89MB  -> + 90.13%
     public static ListNode removeNodes(ListNode head) {
-        Queue<ListNode> queue = new ArrayDeque<>();
-        ListNode ans = new ListNode(0);
-        ListNode dummy = ans;
+        ListNode dummy = new ListNode(1 << 30, head);
+        Deque<ListNode> stk = new ArrayDeque<>();
+        stk.offerLast(dummy);
 
-        while(head != null) {
-            if(queue.isEmpty() || queue.peek().val >= head.val) {
-                queue.offer(head);
-            } else {
-                while(!queue.isEmpty()) {
-                    queue.poll();
-                }
-                dummy.next = head;
-                dummy = dummy.next;
+        for (ListNode cur = head; cur != null; cur = cur.next) {
+            while (!stk.isEmpty() && stk.peekLast().val < cur.val) {
+                stk.pollLast();
             }
-            head = head.next;
+            if (!stk.isEmpty()) {
+                stk.peekLast().next = cur;
+            }
+            stk.offerLast(cur);
         }
-
-        while(!queue.isEmpty()) {
-            dummy.next = queue.poll();
-            dummy = dummy.next;
-        }
-
-        return ans.next;
+        return dummy.next;
     }
+    // ***************** End of 1st Method ******************
+
+
 }
