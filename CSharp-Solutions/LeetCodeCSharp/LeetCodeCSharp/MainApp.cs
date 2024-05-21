@@ -1,13 +1,22 @@
 namespace LeetCodeCSharp;
 
-public class MainApp {
-    static void Main(string[] args) {
-        // int[] deck = { -9,-43,24,-23,-16,-30,-38,-30 };
-        // Console.WriteLine(LargestPositiveIntegerThatExistsWithItsNegative.findMaxK(deck));
-        
-        string version1 = "1.1", version2 = "1.10";
-        
-        Console.WriteLine(CompareVersionNumbers.CompareVersion(version1,version2));
-        
+public class MainApp
+{
+    static void Main(string[] args)
+    {
+        int[] nums = { 1, 2, 3 };
+
+        Subsets s = new Subsets();
+        IList<IList<int>> ans = s.GetSubsets(nums);
+
+        foreach (IList<int> inner in ans)
+        {
+            Console.Write("[");
+            foreach (int num in inner)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine("]");
+        }
     }
 }
