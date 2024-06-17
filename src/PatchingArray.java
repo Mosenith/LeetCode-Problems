@@ -9,8 +9,8 @@ public class PatchingArray {
     // Approach 1: upto starts from 0 and must be less than n
     // If nums[i] <= upto+1, upto += nums[i++]
     // Else, patches++, upto += upto+1
-    // Runtime  : 4ms       -> + 86.93%
-    // Memory   : 43.80MB   -> + 31.65%
+    // Runtime  : 0ms       -> + 100.00%
+    // Memory   : 43.55MB   -> + 95.47%
     public static int minPatches(int[] nums, int n) {
         int patches = 0;
         long upto = 0;
