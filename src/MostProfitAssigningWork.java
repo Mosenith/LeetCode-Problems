@@ -84,6 +84,46 @@ public class MostProfitAssigningWork {
     }
     //  ***************** End of 2nd Method ******************
 
+    // ***************** 3rd Method ******************
+    // Approach 3: Calculate the maxDifficulty
+    // Create bestProfit array to store the best profit for each difficulty, bestProfit has the length of maxDifficulty + 1
+    // Iterate through bestProfit and get maxProfit, then store it in bestProfit
+    // Iterate through worker, if worker is greater than maxDifficulty, add bestProfit[maxDifficulty] to result
+    // Else, add bestProfit[worker] to result
+    // Runtime  : 5ms       -> + 99.02%
+    // Memory   : 45.19MB   -> + 93.73%
+    public static int maxProfitAssignment3(int[] difficulty, int[] profit, int[] worker) {
+        if (difficulty.length != profit.length) {return 0;}
+
+        int maxDifficulty = 0;
+        for (int diff: difficulty) {
+            maxDifficulty = Math.max(maxDifficulty, diff);
+        }
+
+        int[] bestProfit = new int[maxDifficulty + 1];
+        for (int i = 0; i < profit.length; i++) {
+            bestProfit[difficulty[i]] = Math.max(bestProfit[difficulty[i]], profit[i]);
+        }
+
+        int maxProfit = 0;
+        for (int i = 0; i < bestProfit.length; i++) {
+            if (bestProfit[i] > maxProfit) {
+                maxProfit = bestProfit[i];
+            }
+            bestProfit[i] = maxProfit;
+        }
+
+        int result = 0;
+        for (int w: worker) {
+            if (w > maxDifficulty) {
+                result += bestProfit[maxDifficulty];
+            } else {
+                result += bestProfit[w];
+            }
+        }
+        return result;
+    }
+    //  ***************** End of 3rd Method ******************
 }
 
 // 57 + 57 = 114 + 28 = 142
