@@ -10,7 +10,9 @@ public class MostProfitAssigningWork {
     }
 
     // ***************** 1st Method ******************
-    // Approach 1:
+    // Approach 1: Use difWorker to store difficulty and worker, then iterate through profit
+    // If worker is greater than or equal to difficulty, add profit to maxProfit
+    // Return maxProfit
     // Work but exceed time limit
     public static int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
         Map<Integer, List<Integer>> difWorker = new HashMap<>();
