@@ -9,7 +9,7 @@ public class MainApp
         int minutes = 3;
 
         GrumpyBookstoreOwner owner = new GrumpyBookstoreOwner();
-        System.Console.WriteLine(owner.MaxSatisfied(customers, grumpy, minutes));
+        System.Console.WriteLine(owner.MaxSatisfied2(customers, grumpy, minutes));
     }
 
     private static IEnumerable<object> GetEvenNumbers(int v)
