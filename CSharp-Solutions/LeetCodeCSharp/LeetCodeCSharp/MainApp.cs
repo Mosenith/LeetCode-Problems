@@ -4,19 +4,22 @@ public class MainApp
 {
     static void Main(string[] args)
     {
-        int[] nums = { 1, 2, 3 };
+        int[] customers = { 1, 0, 1, 2, 1, 1, 7, 5 };
+        int[] grumpy = { 0, 1, 0, 1, 0, 1, 0, 1 };
+        int minutes = 3;
 
-        Subsets s = new Subsets();
-        IList<IList<int>> ans = s.GetSubsets(nums);
+        GrumpyBookstoreOwner owner = new GrumpyBookstoreOwner();
+        System.Console.WriteLine(owner.MaxSatisfied(customers, grumpy, minutes));
+    }
 
-        foreach (IList<int> inner in ans)
+    private static IEnumerable<object> GetEvenNumbers(int v)
+    {
+        for (int i = 0; i <= v; i++)
         {
-            Console.Write("[");
-            foreach (int num in inner)
+            if (i % 2 == 0)
             {
-                Console.Write(num + " ");
+                yield return i;
             }
-            Console.WriteLine("]");
         }
     }
 }
