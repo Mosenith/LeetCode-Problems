@@ -43,4 +43,29 @@ public class GrumpyBookstoreOwner {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Optimized the 1st method by using 2 pointers for 2 loops
+    // Find the total satisfied customers and unsatisfied customers in the first minutes
+    // Then, in the second loop, find the maximum unsatisfied customers in minutes
+    // Return satisfied + max
+    // Runtime  : 4ms      -> + 48.61%
+    // Memory   : 47.74MB  -> + 12.15%
+    public static int maxSatisfied2(int[] customers, int[] grumpy, int minutes) {
+        int satisfied = 0;
+        int unsatisfied = 0;
+        for(int i=0; i<minutes && i<customers.length; i++) {
+            if(grumpy[i] == 0) satisfied += customers[i];
+            if(grumpy[i] == 1) unsatisfied += customers[i];
+        }
+
+        int max = unsatisfied;
+        for(int i=minutes; i<customers.length; i++) {
+            if(grumpy[i] == 0) satisfied += customers[i];
+            if(grumpy[i] == 1) unsatisfied += customers[i];
+            if(grumpy[i-minutes] == 1) unsatisfied -= customers[i-minutes];
+            max = Math.max(max,unsatisfied);
+        }
+        return satisfied + max;
+    }
+    //  ***************** End of 2nd Method ******************
 }
