@@ -49,4 +49,24 @@ public class CountNumberOfNiceSubarrays {
         return count;
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Use cnt array to store the count of odd numbers
+    // Loop through nums, if nums[i] is odd, cnt++ and init t to 0 as the count of odd numbers
+    // Runtime  : 3ms      -> + 100.00%
+    // Memory   : 52.34MB  -> + 98.50%
+    public static int numberOfSubarrays2(int[] nums, int k) {
+        int n = nums.length;
+        int[] cnt = new int[n + 1];
+        cnt[0] = 1;
+        int ans = 0, t = 0;
+        for (int v : nums) {
+            t += v & 1;
+            if (t - k >= 0) {
+                ans += cnt[t - k];
+            }
+            cnt[t]++;
+        }
+        return ans;
+    }
 }
