@@ -42,15 +42,15 @@ public class IntersectionOfTwoArraysII {
     // ***************** 2nd Method ******************
     // Approach : Using 2 pointers on sorted arrays
     // Since ans order is not important, sort both array and find common elements
-    // Runtime  : 3ms        -> + 66.84%
-    // Memory   : 42.34 MB      -> + 67.19%
+    // Runtime  : 3ms        -> + 90.95%
+    // Memory   : 42.41 MB   -> + 98.36%
     public static int[] intersect2(int[] nums1, int[] nums2) {
         // Sort both the arrays first...
         Arrays.sort(nums1);
         Arrays.sort(nums2);
 
         // Create an array list...
-        ArrayList<Integer> arr = new ArrayList<Integer>();
+        ArrayList<Integer> arr = new ArrayList<>();
 
         // Use two pointers i and j for the two arrays and initialize both with zero.
         int i = 0, j = 0;
