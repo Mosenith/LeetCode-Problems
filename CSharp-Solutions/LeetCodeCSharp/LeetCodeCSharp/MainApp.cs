@@ -4,12 +4,7 @@ public class MainApp
 {
     static void Main(string[] args)
     {
-        int[] customers = { 1, 0, 1, 2, 1, 1, 7, 5 };
-        int[] grumpy = { 0, 1, 0, 1, 0, 1, 0, 1 };
-        int minutes = 3;
-
-        GrumpyBookstoreOwner owner = new GrumpyBookstoreOwner();
-        System.Console.WriteLine(owner.MaxSatisfied2(customers, grumpy, minutes));
+        
     }
 
     private static IEnumerable<object> GetEvenNumbers(int v)
