@@ -2,8 +2,8 @@ public class PassThePillow {
     public static void main(String[] args) {
         int n=33, time=218;
 
-        System.out.println(passThePillow(2,341));
-
+        System.out.println(passThePillow(n,time));
+        System.out.println(passThePillow2(n,time));
     }
 
     // ***************** 1st Method ******************
@@ -20,24 +20,22 @@ public class PassThePillow {
     }
     //  ***************** End of 1st Method ******************
 
-
-    // 218/(33-1)=7
-    // 218%32=2
-    // 33*6=198
-    // 218-198=20
-    // from 1 move 26 steps => 27
+    // ***************** 2nd Method ******************
+    // Approach 2: Init ans as the position of the pillow after time passes to 1
+    // k is the direction of the pillow, if 1, pillow is passed to the right,
+    // if -1, pillow is passed to the left. If ans is 1 or n, change direction
+    // Each iteration decrement time by 1 and increment ans by k
+    // Runtime  : 0ms      -> + 100.00%
+    // Memory   : 40.43MB  -> + 23.37%
     public static int passThePillow2(int n, int time) {
-        if(time < n) return time+1;
-
-        int direction = time/n;
-        int remainSteps = time - ((n-1)*direction);
-
-        // even -> to left
-        if(direction % 2 != 0) {
-            return remainSteps+1;
+        int ans = 1, k = 1;
+        while (time-- > 0) {
+            ans += k;
+            if (ans == 1 || ans == n) {
+                k *= -1;
+            }
         }
-
-        // odd -> to right
-        return n-remainSteps;
+        return ans;
     }
+    //  ***************** End of 2nd Method ******************
 }
