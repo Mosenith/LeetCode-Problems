@@ -1,20 +1,23 @@
-namespace LeetCodeCSharp;
-
-public class MainApp
+namespace LeetCodeCSharp
 {
-    static void Main(string[] args)
+    public class MainApp
     {
-        
-    }
-
-    private static IEnumerable<object> GetEvenNumbers(int v)
-    {
-        for (int i = 0; i <= v; i++)
+        static void Main(string[] args)
         {
-            if (i % 2 == 0)
+            FindWinnerOfTheCircularGame ans = new FindWinnerOfTheCircularGame();
+            System.Console.WriteLine(ans.FindTheWinner(6,5));
+        }
+
+        private static IEnumerable<object> GetEvenNumbers(int v)
+        {
+            for (int i = 0; i <= v; i++)
             {
-                yield return i;
+                if (i % 2 == 0)
+                {
+                    yield return i;
+                }
             }
         }
     }
 }
+
