@@ -9,10 +9,10 @@ namespace LeetCodeCSharp
     public class CrawlerLogFolder
     {
         // ***************** 1st Method ******************
-        // Approach : Loop through the customers and grumpy arrays to find the satisfied customers
-        // If customer[i]=0, add it to the satisfiedCustomer and set customer[i]=0
-        // Loop through the customers array for case owner not grumpy for consecutive minutes (curSum)
-        // Add cursum to the satisfiedCustomer and return the result
+        // Approach 1: Use stack and check log[i]
+        // if log[i] == "./" -> continue, if log[i] == "../" -> pop, 
+        // if not "./" or "../" -> push to stack
+        // Before pop check if stack is empty 
         // Runtime  : 58ms      -> + 67.12%
         // Memory   : 40.30MB   -> + 84.93%
         public int MinOperations(string[] logs)
