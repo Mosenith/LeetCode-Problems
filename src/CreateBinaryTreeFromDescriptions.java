@@ -33,6 +33,7 @@ public class CreateBinaryTreeFromDescriptions {
                 {80, 19, 0}
         };
         printTreeNode(createBinaryTree(myArray));
+        printTreeNode(createBinaryTree2(myArray));
     }
 
     // ***************** 1st Method ******************
@@ -100,4 +101,42 @@ public class CreateBinaryTreeFromDescriptions {
 
         return ans;
     }
+    // ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Use Array to store the nodes and children
+    // Init nodes and children array with 100001
+    // Loop through the descriptions, if node is null, init new TreeNode with desc[0]
+    // If node is null, init new TreeNode with desc[1].
+    // If desc[2] == 0, set node[desc[0]].right to node[desc[1]]. Else, set node[desc[0]].left to node[desc[1]]
+    // Set children[desc[1]] to true.
+    // Loop through the descriptions, if children[desc[0]] is false, return node[desc[0]]
+    // Runtime  : 12ms        -> + 99.36%
+    // Memory   : 56.96MB     -> + 15.60%
+    public static TreeNode createBinaryTree2(final int[][] descriptions) {
+        final TreeNode[] nodes = new TreeNode[100001];
+        final boolean[] children = new boolean[100001];
+
+        for(final int[] description : descriptions) {
+            if(nodes[description[0]] == null)
+                nodes[description[0]] = new TreeNode(description[0]);
+
+            if(nodes[description[1]] == null)
+                nodes[description[1]] = new TreeNode(description[1]);
+
+            if(description[2] == 0)
+                nodes[description[0]].right = nodes[description[1]];
+            else
+                nodes[description[0]].left = nodes[description[1]];
+
+            children[description[1]] = true;
+        }
+
+        for(final int[] description : descriptions)
+            if(!children[description[0]])
+                return nodes[description[0]];
+
+        return null;
+    }
+    // ***************** End of 2nd Method ******************
 }
