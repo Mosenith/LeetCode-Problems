@@ -4,10 +4,11 @@ namespace LeetCodeCSharp
     {
         static void Main(string[] args)
         {
-            AverageWaitingTime ans = new AverageWaitingTime();
-            // int[][] intervals = new int[][] { new int[] { 5, 2 }, new int[] { 5, 4 }, new int[] { 10, 3 }, new int[] { 20, 1 } };
-            int[][] intervals = new int[][] { new int[] { 1, 2 }, new int[] { 2, 5 }, new int[] { 4, 3 } };
-            System.Console.WriteLine(ans.AverageWaitingTimeCal(intervals));
+            DeleteNodesAndReturnForest forest = new DeleteNodesAndReturnForest();
+            int[] nums = {3,5};
+
+            var result = forest.DelNodes(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, new TreeNode(6), new TreeNode(7))), nums);
+            System.Console.WriteLine(result.ToString());
         }
 
         private static IEnumerable<object> GetEvenNumbers(int v)
