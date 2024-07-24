@@ -4,11 +4,12 @@ namespace LeetCodeCSharp
     {
         static void Main(string[] args)
         {
-            DeleteNodesAndReturnForest forest = new DeleteNodesAndReturnForest();
-            int[] nums = {3,5};
+            SortTheJumbledNumbers jumbledNumbers = new SortTheJumbledNumbers();
+            int[] mapping = {8,9,4,0,2,1,3,5,7,6};
+            int[] nums = {991,338,38};
 
-            var result = forest.DelNodes(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, new TreeNode(6), new TreeNode(7))), nums);
-            System.Console.WriteLine(result.ToString());
+            int[] result = jumbledNumbers.SortJumbled(mapping, nums);
+            System.Console.WriteLine(string.Join(", ", result));
         }
 
         private static IEnumerable<object> GetEvenNumbers(int v)
