@@ -4,11 +4,10 @@ namespace LeetCodeCSharp
     {
         static void Main(string[] args)
         {
-            SortTheJumbledNumbers jumbledNumbers = new SortTheJumbledNumbers();
-            int[] mapping = {8,9,4,0,2,1,3,5,7,6};
-            int[] nums = {991,338,38};
+            FindCityWithSmallestNumberNeighborsAtThresholdDistance city = new FindCityWithSmallestNumberNeighborsAtThresholdDistance();
+            int[][] edges = new int[][] { new int[] { 2, 3, 1 }, new int[] { 1, 2, 1 }, new int[] { 0, 1, 3 }, new int[] { 1, 3, 4 } };
 
-            int[] result = jumbledNumbers.SortJumbled(mapping, nums);
+            int result = city.FindTheCity(4, edges, 4);
             System.Console.WriteLine(string.Join(", ", result));
         }
 

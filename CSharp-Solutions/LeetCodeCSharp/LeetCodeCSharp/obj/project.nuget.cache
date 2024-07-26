@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "+1G1cKbEY+pbOigVjhQ8qUTZ5PESpowMazZnKU8PEaYxsE8PxvIU1g30gAlNvUclpy0QIwgtw0NSknrUSjsQEQ==",
+  "dgSpecHash": "w4o9H5W7xYA=",
   "success": true,
   "projectFilePath": "/Users/mosenithheang/IntelliJProjects/LeetCodePractice/CSharp-Solutions/LeetCodeCSharp/LeetCodeCSharp/LeetCodeCSharp.csproj",
   "expectedPackageFiles": [
-    "/Users/mosenithheang/.nuget/packages/microsoft.netcore.app.ref/7.0.18/microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
-    "/Users/mosenithheang/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.18/microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
-    "/Users/mosenithheang/.nuget/packages/microsoft.netcore.app.host.osx-x64/7.0.18/microsoft.netcore.app.host.osx-x64.7.0.18.nupkg.sha512"
+    "/Users/mosenithheang/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/mosenithheang/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/mosenithheang/.nuget/packages/microsoft.netcore.app.host.osx-x64/7.0.20/microsoft.netcore.app.host.osx-x64.7.0.20.nupkg.sha512"
   ],
   "logs": []
 }
