@@ -2,9 +2,11 @@ import java.util.Stack;
 
 public class CountNumberOfTeams {
     public static void main(String[] args) {
-        int[] nums = {1,2,3,4};
+        int[] nums = {2,5,3,4,1};
 
         System.out.println(numTeams(nums));
+        System.out.println(numTeams2(nums));
+
     }
 
 
@@ -65,5 +67,42 @@ public class CountNumberOfTeams {
         findTeamsDecrement(rating, start+1, decrement);
     }
     //  ***************** End of 1st Method ******************
+
+    // ***************** 2nd Method ******************
+    // Approach 2: Optimize the 1st method by using nested loop
+    // The main idea is to choose a middle soldier and count the number of soldiers on the left and right side
+    // Count solders on the left that are less than the middle soldier and more than the middle soldier
+    // Count solders on the right that are less than the middle soldier and more than the middle soldier
+    // Multiplying the number of soldiers that are less on the left and more on the right
+    // Multiply the number of soldiers that are more on the left and less on the right
+    // Add the result to the count
+    // Runtime  : 16ms     -> + 82.28%
+    // Memory   : 41.78MB  -> + 98.45%
+    public static int numTeams2(int[] rating) {
+        int count = 0;
+        int n = rating.length;
+
+        // Loop through each soldier as the middle soldier
+        for (int j = 1; j < n - 1; j++) {
+            int lessLeft = 0, moreLeft = 0, lessRight = 0, moreRight = 0;
+            // Count soldiers on the left side
+            for (int i = 0; i < j; i++) {
+                if (rating[i] < rating[j]) lessLeft++;
+                if (rating[i] > rating[j]) moreLeft++;
+            }
+
+            // Count soldiers on the right side
+            for (int k = j + 1; k < n; k++) {
+                if (rating[k] < rating[j]) lessRight++;
+                if (rating[k] > rating[j]) moreRight++;
+            }
+
+            // Calculate the number of valid teams
+            count += lessLeft * moreRight + moreLeft * lessRight;
+        }
+
+        return count;
+    }
+    //  ***************** End of 2nd Method ******************
 
 }
