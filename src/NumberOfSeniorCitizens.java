@@ -3,6 +3,7 @@ public class NumberOfSeniorCitizens {
         String[] details = {"5612624052M0130","5378802576M6424","5447619845F0171","2941701174O9078"};
 
         System.out.println(countSeniors(details));
+        System.out.println(countSeniors2(details));
     }
 
     // ***************** 1st Method ******************
@@ -26,6 +27,22 @@ public class NumberOfSeniorCitizens {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Loop through each string in details
+    // Convert substring between index 11 and 13 to integer using Integer.parseInt()
+    // Check if it's greater than 60, increment count
+    // Runtime  : 19ms     -> + 92.48%
+    // Memory   : 45.24MB  -> + 77.16%
+    public static int countSeniors2(String[] details) {
+        int count = 0;
 
+        for(String s : details) {
+            if(Integer.parseInt(s,11,13, 10) > 60) {
+                count++;
+            }
+        }
 
+        return count;
+    }
+    //  ***************** End of 2nd Method ******************
 }
