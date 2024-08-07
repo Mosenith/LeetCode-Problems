@@ -12,7 +12,7 @@ public class MinimumNumberOfPushesToTypeWordII {
     // Sort the frequency in ascending order
     // Loop through the frequency from 0, calculate the minimum pushes
     // Using formula i/8 + 1 to calculate the number of pushes
-    // Then multiply with aplha[26-i-1] the number of pushes with the frequency of the character
+    // Then multiply with alpha[26-i-1] the number of pushes with the frequency of the character
     // Runtime  : 8ms      -> + 91.94%
     // Memory   : 45.54MB  -> + 64.49%
     public static int minimumPushes(String word) {
