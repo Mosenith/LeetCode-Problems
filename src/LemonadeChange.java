@@ -1,16 +1,24 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class LemonadeChange {
     public static void main(String[] args) {
         int[] bills = {5,5,10,10,20};
 
-        System.out.println(lemonadeChange(bills));
+        System.out.println(lemonadeChange2(bills));
     }
 
     // ***************** 1st Method ******************
-    // Approach 1:
-    // Runtime  : 3ms      -> + 14.02%
-    // Memory   : 56.10MB  -> + 18.73%
+    // Approach 1: Loop through the bills and check if the cashier can give the correct change
+    // Use an array to store the number of 5 and 10 bills
+    // If the bill is 5, increment the number of 5 bills
+    // If the bill is 10, check if there is a 5 bill to give change
+    // If the bill is 20, check if there is a 10 bill and a 5 bill or three 5 bills to give change
+    // If the cashier cannot give the correct change, return false
+    // Runtime  : 2ms      -> +95.12%
+    // Memory   : 55.74MB  -> +63.21%
     public static boolean lemonadeChange(int[] bills) {
-        int[] money = new int[3];
+        int[] money = new int[2];
 
         for(int bill : bills) {
             if(bill == 5) {
@@ -31,7 +39,6 @@ public class LemonadeChange {
                 } else {
                     return false;
                 }
-                money[2]++;
             }
         }
 
@@ -39,4 +46,33 @@ public class LemonadeChange {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Similar approach but use
+    // Runtime  : 2ms      -> +95.12%
+    // Memory   : 55.74MB  -> +63.21%
+    public static boolean lemonadeChange2(int[] bills) {
+        Map<Integer,Integer> map = new HashMap<>();
+        map.put(5,0);
+        map.put(10,0);
+
+        for(int bill : bills) {
+            if(bill == 5) {
+                map.put(5,map.get(5)+1);
+            } else if(bill == 10) {
+               if(map.get(5) == 0) return false;
+                map.put(5,map.get(5)-1);
+                map.put(10,map.get(10)+1);
+            } else {
+                if(map.get(10)==0 || map.get(5) < 3) return false;
+                if(map.get(10) > 0) {
+                    map.put(5,map.get(5)-1);
+                    map.put(10,map.get(10)-1);
+                } else if(map.get(5) >= 3){
+                    map.put(5,map.get(5)-3);
+                }
+            }
+        }
+        return true;
+    }
+    //  ***************** End of 1st Method ******************
 }
