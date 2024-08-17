@@ -15,7 +15,15 @@ public class MaximumDistanceInArrays {
     }
 
     // ***************** 1st Method ******************
-    // Approach 1:
+    // Approach 1: Sort the arrays in ascending order and store it in a new list
+    // Sort the arrays in descending order and store it in a new list
+    // Check if the first element of the descending list is not the same as the ascending list
+    // If it is not the same, get the max distance between the last element of the descending list
+    // and the first element of the ascending list
+    // If it is the same, get the max distance between the last element of the descending list
+    // and the second element of the ascending list
+    // Get the max distance between the last element of the second descending list
+    // and the first element of the ascending list
     // Runtime  : 67ms     -> + 5.06%
     // Memory   : 65.38MB  -> + 16.46%
     public static int maxDistance(List<List<Integer>> arrays) {
