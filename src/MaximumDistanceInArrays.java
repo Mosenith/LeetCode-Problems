@@ -7,11 +7,12 @@ public class MaximumDistanceInArrays {
     public static void main(String[] args) {
         List<List<Integer>> list = new ArrayList<>();
 
-        list.add(Arrays.asList(1,2,3));
-        list.add(Arrays.asList(4,5,6,7));
+        list.add(Arrays.asList(1,4));
+        list.add(Arrays.asList(0,5));
 //        list.add(Arrays.asList(2, 3));
 
         System.out.println(maxDistance(list));
+        System.out.println(maxDistance2(list));
     }
 
     // ***************** 1st Method ******************
@@ -55,4 +56,37 @@ public class MaximumDistanceInArrays {
     }
     //  ***************** End of 1st Method ******************
 
+    // ***************** 2nd Method ******************
+    // Approach 2: Get the first array and store the min and max values
+    // Iterate through the remaining arrays (from i=1) and store the current min and max values
+    // Calculate the possible max distances by comparing maxDistance, max_0 - currentMin, and currentMax - min_0
+    // Update the min and max values for future comparisons
+    // Runtime  : 5ms      -> + 98.94%
+    // Memory   : 64.22MB  -> + 80.71%
+    public static int maxDistance2(List<List<Integer>> arrays) {
+        int len = arrays.size();
+        int min_0 = arrays.get(0).get(0);
+        int max_0 = arrays.get(0).get(arrays.get(0).size() - 1);
+        int maxDistance = 0;
+
+        // Iterate through the remaining arrays
+        for (int i = 1; i < len; i++) {
+            List<Integer> arr = arrays.get(i);
+            int currentMin = arr.get(0);
+            int currentMax = arr.get(arr.size() - 1);
+
+            // Calculate the possible max distances
+            maxDistance = Math.max(maxDistance, Math.abs(max_0 - currentMin));
+            System.out.println("1st => " + maxDistance);
+            maxDistance = Math.max(maxDistance, Math.abs(currentMax - min_0));
+            System.out.println("2nd => " + maxDistance);
+
+            // Update the min_0 and max_0 for future comparisons
+            min_0 = Math.min(min_0, currentMin);
+            max_0 = Math.max(max_0, currentMax);
+        }
+
+        return maxDistance;
+    }
+    //  ***************** End of 2nd Method ******************
 }
