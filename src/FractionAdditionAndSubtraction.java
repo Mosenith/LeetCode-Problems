@@ -19,7 +19,6 @@ public class FractionAdditionAndSubtraction {
         int len = c.length;
         int t = 0, b = 0;
         for(int i=0; i<len;) {
-            int t1,b1;
             // get top
             StringBuilder top = new StringBuilder();
             while(i<len && c[i] != '/') {
