@@ -7,9 +7,9 @@ public class FindTheClosestPalindrome {
     public static void main(String[] args) {
         String n = "999";
 
-//        System.out.println(Integer.valueOf(n));
-//        System.out.println(n.substring(0,n.length()/2));
         System.out.println(nearestPalindromic(n));
+        System.out.println(nearestPalindromic2(n));
+
     }
 
     // ***************** 1st Method ******************
@@ -61,7 +61,7 @@ public class FindTheClosestPalindrome {
         StringBuilder sb = new StringBuilder(half);
         if (!evenLength)
             sb.setLength(sb.length() - 1); // Remove the last digit for odd length palindromes
-        return half + sb.reverse().toString();
+        return half + sb.reverse();
     }
     // ***************** End of 1st Method ******************
 
