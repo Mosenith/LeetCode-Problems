@@ -83,11 +83,7 @@ public class LinkedListInBinaryTree {
             return true;
         }
 
-        if(root == null) {
-            return false;
-        }
-
-        if(head.val != root.val) {
+        if (root == null || head.val != root.val) {
             return false;
         }
 
